@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon Hub | AI Innovation Sprint 2026</title>
+  <meta name="description" content="State-of-the-art hackathon platform for discovering projects, team matchmaking, AI pitch copilot, and live judging leaderboard.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Application Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <a href="#" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+        <span>Hackathon<span class="brand-highlight">Hub</span></span>
+      </a>
+
+      <div class="header-actions">
+        <div class="event-status-badge">
+          <span class="pulse-dot"></span>
+          <span>LIVE HACKATHON SPRINT</span>
+        </div>
+        <button class="btn btn-primary" id="btn-open-submit">
+          <i class="fa-solid fa-plus"></i> Submit Project
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+
+    <!-- Hero Section -->
+    <section class="hero-banner">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-tag"><i class="fa-solid fa-microchip"></i> Global AI Hackathon 2026</span>
+          <h1 class="hero-title">Build the Future with AI & Next-Gen Tech</h1>
+          <p class="hero-description">
+            Join developers, designers, and AI engineers in a 48-hour sprint. Showcase your innovation, match with stellar teammates, generate pitch decks, and compete for $50,000 in prizes.
+          </p>
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <span class="metric-value" id="stat-projects">124</span>
+              <span class="metric-label">Projects Submitted</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value" id="stat-hacks">480+</span>
+              <span class="metric-label">Hackers Joined</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">$50,000</span>
+              <span class="metric-label">Prize Pool</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Countdown Card -->
+        <div class="countdown-card">
+          <div class="countdown-title">
+            <i class="fa-solid fa-stopwatch"></i> Submission Deadline Countdown
+          </div>
+          <div class="timer-digits">
+            <div class="timer-box">
+              <div class="timer-num" id="cd-hours">36</div>
+              <div class="timer-unit">Hours</div>
+            </div>
+            <div class="timer-box">
+              <div class="timer-num" id="cd-mins">42</div>
+              <div class="timer-unit">Mins</div>
+            </div>
+            <div class="timer-box">
+              <div class="timer-num" id="cd-secs">15</div>
+              <div class="timer-unit">Secs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs-wrapper">
+      <ul class="nav-tabs">
+        <li>
+          <button class="tab-btn active" data-tab="showcase">
+            <i class="fa-solid fa-grip"></i> Project Showcase
+          </button>
+        </li>
+        <li>
+          <button class="tab-btn" data-tab="teams">
+            <i class="fa-solid fa-users"></i> Team Matchmaker
+          </button>
+        </li>
+        <li>
+          <button class="tab-btn" data-tab="schedule">
+            <i class="fa-solid fa-calendar-days"></i> Schedule & Timeline
+          </button>
+        </li>
+        <li>
+          <button class="tab-btn" data-tab="ai-copilot">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> AI Pitch Copilot
+          </button>
+        </li>
+        <li>
+          <button class="tab-btn" data-tab="judging">
+            <i class="fa-solid fa-trophy"></i> Judging Leaderboard
+          </button>
+        </li>
+        <li>
+          <button class="tab-btn" data-tab="kanban">
+            <i class="fa-solid fa-list-check"></i> Sprint Kanban
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- TAB 1: PROJECT SHOWCASE -->
+    <section class="tab-pane active" id="tab-showcase">
+      <div class="section-header">
+        <h2 class="section-title">Submitted Hackathon Projects</h2>
+        <div class="filter-bar">
+          <div class="search-input-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="project-search" class="search-input" placeholder="Search projects by tech, title...">
+          </div>
+          <button class="chip-filter active" data-category="all">All</button>
+          <button class="chip-filter" data-category="AI/ML">AI & Agents</button>
+          <button class="chip-filter" data-category="Web3">Web3 & Cyber</button>
+          <button class="chip-filter" data-category="DevTools">Developer Tools</button>
+          <button class="chip-filter" data-category="Eco">Climate & Eco</button>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="projects-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 2: TEAM MATCHMAKER -->
+    <section class="tab-pane" id="tab-teams">
+      <div class="section-header">
+        <h2 class="section-title">Find Teammates & Join Squads</h2>
+        <button class="btn btn-secondary" id="btn-create-team">
+          <i class="fa-solid fa-user-plus"></i> Post Team Listing
+        </button>
+      </div>
+      <div class="cards-grid" id="teams-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- TAB 3: SCHEDULE -->
+    <section class="tab-pane" id="tab-schedule">
+      <div class="section-header">
+        <h2 class="section-title">48-Hour Sprint Schedule</h2>
+      </div>
+      <div class="hero-banner" style="padding:2rem;">
+        <div class="task-list">
+          <div class="kanban-task" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span class="hero-tag" style="margin-bottom:0.4rem; padding:0.2rem 0.6rem; font-size:0.75rem;">DAY 1 - 09:00 AM</span>
+              <h3 style="font-family:var(--font-heading); margin-top:0.3rem;">Opening Keynote & Theme Reveal</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Kickoff ceremony with challenge tracks announcements and mentor introduction.</p>
+            </div>
+            <span class="event-status-badge"><i class="fa-solid fa-check"></i> Completed</span>
+          </div>
+
+          <div class="kanban-task" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span class="hero-tag" style="margin-bottom:0.4rem; padding:0.2rem 0.6rem; font-size:0.75rem; background:rgba(0,242,254,0.15); color:var(--accent-cyan);">DAY 1 - 02:00 PM</span>
+              <h3 style="font-family:var(--font-heading); margin-top:0.3rem;">AI Agent Architecture Workshop</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Hands-on session on building autonomous multi-agent workflows and API tools.</p>
+            </div>
+            <span class="event-status-badge"><i class="fa-solid fa-circle-play"></i> Happening Now</span>
+          </div>
+
+          <div class="kanban-task" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span class="hero-tag" style="margin-bottom:0.4rem; padding:0.2rem 0.6rem; font-size:0.75rem; background:rgba(245,158,11,0.15); color:var(--accent-amber);">DAY 2 - 12:00 PM</span>
+              <h3 style="font-family:var(--font-heading); margin-top:0.3rem;">Mid-Way Mentor Check-in & Pitch Reviews</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Get 1-on-1 feedback from senior tech leads and VC judges.</p>
+            </div>
+            <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fa-solid fa-clock"></i> Upcoming</span>
+          </div>
+
+          <div class="kanban-task" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span class="hero-tag" style="margin-bottom:0.4rem; padding:0.2rem 0.6rem; font-size:0.75rem; background:rgba(236,72,153,0.15); color:var(--accent-magenta);">DAY 2 - 06:00 PM</span>
+              <h3 style="font-family:var(--font-heading); margin-top:0.3rem;">Final Code Freeze & Demo Submissions</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Project submission deadline. Repositories must be public and include video demo link.</p>
+            </div>
+            <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fa-solid fa-flag-checkered"></i> Deadline</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: AI PITCH COPILOT -->
+    <section class="tab-pane" id="tab-ai-copilot">
+      <div class="section-header">
+        <h2 class="section-title">AI Hackathon Pitch & README Generator</h2>
+      </div>
+
+      <div class="ai-workspace">
+        <div class="ai-card">
+          <h3 style="font-family:var(--font-heading); margin-bottom:1rem;"><i class="fa-solid fa-wand-sparkles" style="color:var(--accent-purple);"></i> Generate Pitch Deck & README</h3>
+          
+          <div class="form-group">
+            <label class="form-label">Project Name</label>
+            <input type="text" id="ai-project-name" class="form-control" placeholder="e.g. NeuroFlow AI">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Category Track</label>
+            <select id="ai-project-category" class="form-control">
+              <option value="AI Multi-Agent Systems">AI Multi-Agent Systems</option>
+              <option value="Web3 & Decentralized Cyber">Web3 & Decentralized Cyber</option>
+              <option value="Developer Productivity Tools">Developer Productivity Tools</option>
+              <option value="Climate Tech & Sustainability">Climate Tech & Sustainability</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">What problem does your hack solve?</label>
+            <textarea id="ai-problem-statement" class="form-control" placeholder="Describe the core problem and how your technology solves it..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Key Features / Tech Stack</label>
+            <input type="text" id="ai-tech-stack" class="form-control" placeholder="e.g. React, Python, Gemini 1.5, Vector DB">
+          </div>
+
+          <button class="btn btn-accent" id="btn-generate-ai" style="width:100%;">
+            <i class="fa-solid fa-sparkles"></i> Generate Pitch Deck & Markdown README
+          </button>
+        </div>
+
+        <div class="ai-card" style="display:flex; flex-direction:column;">
+          <div class="output-header">
+            <h4 style="font-family:var(--font-heading);"><i class="fa-solid fa-code"></i> AI Generated README & Pitch Deck</h4>
+            <button class="btn btn-secondary" id="btn-copy-ai" style="padding:0.35rem 0.8rem; font-size:0.8rem;">
+              <i class="fa-solid fa-copy"></i> Copy Markdown
+            </button>
+          </div>
+          <div class="ai-output-box" id="ai-output-result">
+            // Click "Generate Pitch Deck" to create formatted markdown README, problem solution narrative, architecture overview, and slide deck outline!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: JUDGING LEADERBOARD -->
+    <section class="tab-pane" id="tab-judging">
+      <div class="section-header">
+        <h2 class="section-title">Live Judging Matrix & Leaderboard</h2>
+      </div>
+
+      <div class="leaderboard-grid">
+        <div>
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Project</th>
+                <th>Category</th>
+                <th>Score</th>
+                <th>Community Upvotes</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Judging Simulator Widget -->
+        <div class="judging-panel">
+          <h3 style="font-family:var(--font-heading); margin-bottom:1.2rem; font-size:1.2rem;">
+            <i class="fa-solid fa-gavel" style="color:var(--accent-cyan);"></i> Judge Scoring Calculator
+          </h3>
+
+          <div class="form-group">
+            <label class="form-label">Select Project to Grade</label>
+            <select id="judge-select-project" class="form-control">
+              <!-- Filled dynamically -->
+            </select>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label-val">
+              <span>Innovation & Originality (30%)</span>
+              <span id="val-innovation">8/10</span>
+            </div>
+            <input type="range" min="1" max="10" value="8" class="range-slider" id="score-innovation">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label-val">
+              <span>Technical Complexity (30%)</span>
+              <span id="val-tech">9/10</span>
+            </div>
+            <input type="range" min="1" max="10" value="9" class="range-slider" id="score-tech">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label-val">
+              <span>UI/UX & Design Polish (20%)</span>
+              <span id="val-design">9/10</span>
+            </div>
+            <input type="range" min="1" max="10" value="9" class="range-slider" id="score-design">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label-val">
+              <span>Real-World Impact (20%)</span>
+              <span id="val-impact">8/10</span>
+            </div>
+            <input type="range" min="1" max="10" value="8" class="range-slider" id="score-impact">
+          </div>
+
+          <div style="background:var(--bg-surface-elevated); padding:1rem; border-radius:var(--radius-md); text-align:center; margin-top:1rem; margin-bottom:1rem;">
+            <div style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">Calculated Weighted Score</div>
+            <div style="font-family:var(--font-heading); font-size:2.2rem; font-weight:800; color:var(--accent-cyan);" id="judge-total-calculated">8.6 / 10</div>
+          </div>
+
+          <button class="btn btn-primary" id="btn-submit-grade" style="width:100%;">
+            <i class="fa-solid fa-paper-plane"></i> Submit Judge Score
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: SPRINT KANBAN -->
+    <section class="tab-pane" id="tab-kanban">
+      <div class="section-header">
+        <h2 class="section-title">Sprint Task Board</h2>
+        <button class="btn btn-secondary" id="btn-add-kanban-task">
+          <i class="fa-solid fa-plus"></i> Add Sprint Task
+        </button>
+      </div>
+
+      <div class="kanban-board">
+        <div class="kanban-col">
+          <div class="col-header">
+            <div class="col-title"><i class="fa-solid fa-circle-dot" style="color:var(--text-dim);"></i> To Do</div>
+            <span class="event-status-badge" id="count-todo" style="padding:0.1rem 0.5rem; font-size:0.75rem;">2</span>
+          </div>
+          <div class="task-list" id="col-todo">
+            <!-- Kanban tasks -->
+          </div>
+        </div>
+
+        <div class="kanban-col">
+          <div class="col-header">
+            <div class="col-title"><i class="fa-solid fa-spinner" style="color:var(--accent-cyan);"></i> In Progress</div>
+            <span class="event-status-badge" id="count-in-progress" style="padding:0.1rem 0.5rem; font-size:0.75rem; color:var(--accent-cyan); border-color:var(--accent-cyan);">2</span>
+          </div>
+          <div class="task-list" id="col-in-progress">
+            <!-- Kanban tasks -->
+          </div>
+        </div>
+
+        <div class="kanban-col">
+          <div class="col-header">
+            <div class="col-title"><i class="fa-solid fa-circle-check" style="color:var(--accent-green);"></i> Completed</div>
+            <span class="event-status-badge" id="count-done" style="padding:0.1rem 0.5rem; font-size:0.75rem;">2</span>
+          </div>
+          <div class="task-list" id="col-done">
+            <!-- Kanban tasks -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUBMIT PROJECT MODAL -->
+  <div class="modal-overlay" id="modal-submit-project">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-rocket" style="color:var(--accent-cyan);"></i> Submit Hackathon Project</h3>
+        <button class="modal-close" class="close-modal">&times;</button>
+      </div>
+      <form id="form-submit-project">
+        <div class="form-group">
+          <label class="form-label">Project Title</label>
+          <input type="text" id="sub-title" class="form-control" placeholder="e.g. Agentic Vision AI" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category Track</label>
+          <select id="sub-category" class="form-control">
+            <option value="AI/ML">AI & Agents</option>
+            <option value="Web3">Web3 & Cyber</option>
+            <option value="DevTools">Developer Tools</option>
+            <option value="Eco">Climate & Eco Tech</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Short Tagline</label>
+          <input type="text" id="sub-description" class="form-control" placeholder="1-line summary of what your project does..." required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tech Stack (comma separated)</label>
+          <input type="text" id="sub-tech" class="form-control" placeholder="React, Python, Gemini API, PyTorch">
+        </div>
+        <div class="form-group">
+          <label class="form-label">GitHub Repo / Demo URL</label>
+          <input type="url" id="sub-link" class="form-control" placeholder="https://github.com/user/hackathon-repo">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">
+          <i class="fa-solid fa-paper-plane"></i> Submit to Hackathon Showcase
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADD KANBAN TASK MODAL -->
+  <div class="modal-overlay" id="modal-add-task">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-plus-circle" style="color:var(--accent-purple);"></i> Add Sprint Task</h3>
+        <button class="modal-close" class="close-modal">&times;</button>
+      </div>
+      <form id="form-add-task">
+        <div class="form-group">
+          <label class="form-label">Task Title</label>
+          <input type="text" id="task-title" class="form-control" placeholder="e.g. Connect Gemini API Endpoint" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Assignee / Owner</label>
+          <input type="text" id="task-assignee" class="form-control" placeholder="e.g. Alex (Backend)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select id="task-status" class="form-control">
+            <option value="todo">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Completed</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">
+          Add Task
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
