@@ -58,9 +58,9 @@
                         <img src="assets/hackathon_logo_official.png" alt="Logotipo Oficial PLANEA 2025-2030" class="h-10 sm:h-12 w-auto max-w-[180px] object-contain">
                     </a>
 
-                    <div class="border-l border-slate-800 pl-3.5 max-w-[480px]">
+                    <div class="border-l border-slate-800 pl-3.5 max-w-[410px]">
                         <div class="flex items-center gap-2 mb-1">
-                            <span id="site-badge" class="text-[10px] font-extrabold uppercase tracking-wider text-brand-accent bg-brand-accent/10 px-2.5 py-0.5 rounded border border-brand-accent/20">
+                            <span id="site-badge" class="text-[10px] font-extrabold uppercase tracking-wider text-brand-accent bg-brand-accent/10 px-2.5 py-0.5 rounded border border-brand-accent/20 whitespace-nowrap">
                                 Hackatón Creativa Regional • PLANEA 2025-2030 🇵🇪
                             </span>
                         </div>
@@ -70,10 +70,10 @@
                     </div>
                 </div>
 
-                <!-- Nav Badges, Conmutador de Tema (Claro/Oscuro) y Switcher de Idiomas -->
-                <nav aria-label="Navegación Principal" class="flex flex-wrap items-center gap-2 text-xs">
-                    <div class="flex items-center gap-1.5 text-[11px] text-slate-400 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800">
-                        <span id="endorsed-label" class="font-medium text-slate-400">Con el aval de:</span>
+                <!-- Nav Badges, Conmutador de Tema (Claro/Oscuro) y Switcher de Idiomas (Sin Desplazamiento Ni Slider) -->
+                <nav aria-label="Navegación Principal" class="flex flex-nowrap items-center gap-2 text-xs flex-shrink-0">
+                    <div class="flex items-center gap-1 text-[11px] text-slate-400 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800 flex-shrink-0">
+                        <span id="endorsed-label" class="font-medium text-slate-400 whitespace-nowrap">Con el aval de:</span>
                         <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 font-bold border border-slate-700">MINSA</span>
                         <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-bold border border-slate-700">ORAS-CONHU</span>
                         <span class="px-2 py-0.5 rounded bg-slate-800 text-purple-400 font-bold border border-slate-700">UNFPA</span>
@@ -81,12 +81,12 @@
                     </div>
 
                     <!-- Botón Conmutador de Tema Claro / Oscuro (Dark / Light Theme Toggle) -->
-                    <button onclick="toggleTheme()" id="btn-theme-toggle" aria-label="Cambiar Tema Claro u Oscuro" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 transition-all shadow-sm cursor-pointer">
+                    <button onclick="toggleTheme()" id="btn-theme-toggle" aria-label="Cambiar Tema Claro u Oscuro" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap flex-shrink-0">
                         ☀️ Modo Claro
                     </button>
 
                     <!-- Language Toggle Button -->
-                    <button onclick="toggleLanguage()" id="btn-lang-toggle" aria-label="Cambiar Idioma de la Página" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 transition-all shadow-sm cursor-pointer">
+                    <button onclick="toggleLanguage()" id="btn-lang-toggle" aria-label="Cambiar Idioma de la Página" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap flex-shrink-0">
                         English 🇺🇸
                     </button>
                 </nav>
@@ -656,6 +656,139 @@
                     <button id="p5-btn" onclick="openDeepEvidenceModal('p5')" aria-label="Ver sustento técnico del Cerebro de Datos para la prioridad 5" class="self-start sm:self-auto px-3.5 py-1.5 rounded-lg bg-indigo-500/15 hover:bg-indigo-600 text-indigo-400 hover:text-white text-[11px] font-bold border border-indigo-500/30 transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
                         <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Ver Sustento Técnico
                     </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 8: COMPENDIO DE FUENTES OFICIALES, PUBLICACIONES INSTITUCIONALES Y REFERENCIAS CTI -->
+        <section id="fuentes" aria-labelledby="s8-title" class="scroll-mt-24 border border-slate-800 rounded-3xl bg-slate-900/60 backdrop-blur-lg p-6 sm:p-10 mb-16 shadow-2xl">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/20 text-brand-teal text-lg border border-brand-teal/30 font-bold" aria-hidden="true">📚</span>
+                <div>
+                    <h3 id="s8-title" class="text-xl sm:text-2xl font-bold font-heading">8. Respaldos Oficiales y Referencias Bibliográficas (Fuentes Originales)</h3>
+                    <p id="s8-subtitle" class="text-xs sm:text-sm text-slate-400">Compendio documental, normativo y técnico de las fuentes primarias del Estado Peruano y organismos de cooperación que respaldan los datos de la plataforma.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Source Card 1 -->
+                <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 theme-card flex flex-col justify-between space-y-3 hover:border-brand-teal/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between gap-1 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-teal/15 text-brand-teal border border-brand-teal/30">ORAS-CONHU / MINSA</span>
+                            <span class="text-[10px] text-slate-400 font-semibold">Año: 2024</span>
+                        </div>
+                        <h4 id="src1-title" class="text-sm font-bold text-white mb-1.5 font-heading">Plan Andino (PLANEA 2025-2030)</h4>
+                        <p id="src1-desc" class="text-xs text-slate-300 leading-relaxed font-normal">
+                            Plan Nacional de Prevención del Embarazo en Adolescentes y Matriz Multisectorial de Metas de los países de la Región Andina (Perú, Bolivia, Ecuador, Colombia, Venezuela y Chile).
+                        </p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400 font-mono">ID: REF-PLANEA-2025</span>
+                        <span class="text-brand-teal font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Fuente Oficial
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Source Card 2 -->
+                <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 theme-card flex flex-col justify-between space-y-3 hover:border-brand-accent/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between gap-1 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-accent/15 text-brand-accent border border-brand-accent/30">INEI PERÚ</span>
+                            <span class="text-[10px] text-slate-400 font-semibold">Año: 2023</span>
+                        </div>
+                        <h4 id="src2-title" class="text-sm font-bold text-white mb-1.5 font-heading">Encuesta ENDES 2022-2023</h4>
+                        <p id="src2-desc" class="text-xs text-slate-300 leading-relaxed font-normal">
+                            Encuesta Demográfica y de Salud Familiar del Instituto Nacional de Estadística e Informática (INEI). Fuente primaria de las tasas de fecundidad por departamento y brechas de atención.
+                        </p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400 font-mono">ID: REF-INEI-ENDES</span>
+                        <span class="text-brand-accent font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Fuente Oficial
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Source Card 3 -->
+                <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 theme-card flex flex-col justify-between space-y-3 hover:border-brand-purple/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between gap-1 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-purple/15 text-brand-purple border border-brand-purple/30">UNFPA PERÚ</span>
+                            <span class="text-[10px] text-slate-400 font-semibold">Año: 2021</span>
+                        </div>
+                        <h4 id="src3-title" class="text-sm font-bold text-white mb-1.5 font-heading">Metodología Actuarial MILENA</h4>
+                        <p id="src3-desc" class="text-xs text-slate-300 leading-relaxed font-normal">
+                            Estudio sobre las consecuencias socioeconómicas del embarazo en la adolescencia en el Perú. Sustenta la pérdida del 0.45% del PBI (S/ 1,200 Millones/año) y el ROI de S/ 7:1.
+                        </p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400 font-mono">ID: REF-UNFPA-MILENA</span>
+                        <span class="text-brand-purple font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-calculator" aria-hidden="true"></i> Fuente Oficial
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Source Card 4 -->
+                <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 theme-card flex flex-col justify-between space-y-3 hover:border-pink-500/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between gap-1 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-pink-500/15 text-pink-400 border border-pink-500/30">MINSA PERÚ</span>
+                            <span class="text-[10px] text-slate-400 font-semibold">R.M. N° 650-2017</span>
+                        </div>
+                        <h4 id="src4-title" class="text-sm font-bold text-white mb-1.5 font-heading">NTS N° 130-MINSA/DGIESP</h4>
+                        <p id="src4-desc" class="text-xs text-slate-300 leading-relaxed font-normal">
+                            Norma Técnica de Salud para la Atención Integral de Salud de Adolescentes en el Perú. Define los criterios de acreditación obligatoria para consultorios amigables del I-3 y I-4.
+                        </p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400 font-mono">ID: REF-NTS-130-MINSA</span>
+                        <span class="text-pink-400 font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-hospital-user" aria-hidden="true"></i> Norma Técnica
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Source Card 5 -->
+                <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 theme-card flex flex-col justify-between space-y-3 hover:border-amber-500/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between gap-1 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-amber-500/15 text-amber-400 border border-amber-500/30">DEFENSORÍA DEL PUEBLO</span>
+                            <span class="text-[10px] text-slate-400 font-semibold">Informe N° 004-2023</span>
+                        </div>
+                        <h4 id="src5-title" class="text-sm font-bold text-white mb-1.5 font-heading">Supervisión a Centros CEM y Postas</h4>
+                        <p id="src5-desc" class="text-xs text-slate-300 leading-relaxed font-normal">
+                            Reporte de supervisión constitucional a la atención de víctimas de violencia sexual en zonas rurales y andinas, evaluando la brecha de intérpretes y procuración judicial.
+                        </p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400 font-mono">ID: REF-DP-INF-2023</span>
+                        <span class="text-amber-400 font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Reporte Institucional
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Source Card 6 -->
+                <div class="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 theme-card flex flex-col justify-between space-y-3 hover:border-brand-crimson/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between gap-1 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-crimson/15 text-brand-crimson border border-brand-crimson/30">PODER JUDICIAL / CONGRESO</span>
+                            <span class="text-[10px] text-slate-400 font-semibold">D.L. 635 / Ley 30364</span>
+                        </div>
+                        <h4 id="src6-title" class="text-sm font-bold text-white mb-1.5 font-heading">Código Penal del Perú (Art. 173)</h4>
+                        <p id="src6-desc" class="text-xs text-slate-300 leading-relaxed font-normal">
+                            Marco sustantivo del Código Penal (Art. 173 indemnidad sexual en &lt;15 años) y la Ley 30364 para prevenir y erradicar la violencia contra las mujeres y los integrantes del grupo familiar.
+                        </p>
+                    </div>
+                    <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
+                        <span class="text-slate-400 font-mono">ID: REF-COD-PENAL-173</span>
+                        <span class="text-brand-crimson font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-gavel" aria-hidden="true"></i> Base Legal
+                        </span>
+                    </div>
                 </div>
             </div>
         </section>
