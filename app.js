@@ -1719,16 +1719,9 @@ function bindAllInteractiveEvents() {
     openScientificEvidenceModal();
   });
 
-  // Bind Section 7 Priorities (Card and Button triggers)
+  // Bind Section 7 Priorities (Button triggers ONLY)
   for (let i = 1; i <= 5; i++) {
-    const card = document.getElementById(`p${i}-card`);
     const btn = document.getElementById(`p${i}-btn`);
-    
-    if (card) {
-      card.addEventListener('click', function() {
-        openDeepEvidenceModal(`p${i}`);
-      });
-    }
     if (btn) {
       btn.addEventListener('click', function(e) {
         e.stopPropagation();
@@ -1852,6 +1845,9 @@ function initSmartScrollHeader() {
 // Initial execution
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
+    closeDeepEvidenceModal();
+    closeScientificEvidenceModal();
+    closeExecutiveSummarySheetModal();
     initTheme();
     applyLanguage();
     updateRegionalExplorer();
@@ -1859,6 +1855,9 @@ if (document.readyState === 'loading') {
     initSmartScrollHeader();
   });
 } else {
+  closeDeepEvidenceModal();
+  closeScientificEvidenceModal();
+  closeExecutiveSummarySheetModal();
   initTheme();
   applyLanguage();
   updateRegionalExplorer();
