@@ -996,88 +996,196 @@ const deepEvidenceDatabase = {
   }
 };
 
-// Verified Regional Data Profiles
+// Verified Regional Data Profiles (Enriquecidas con métricas estadísticas y medidores visuales)
 const regionalData = {
   Loreto: {
-    fertility: "85.4 por 1,000 (Alta prevalencia regional)",
-    fertilityEn: "85.4 per 1,000 (High regional prevalence)",
-    fertilityQu: "85.4 sapa 1,000 (Ancha hatun tupa)",
-    coverage: "28% de centros I-3 / I-4 acreditados",
-    coverageEn: "28% of accredited I-3 / I-4 health centers",
-    coverageQu: "28% postakuna acreditado",
-    inactionCost: "S/ 140 Millones/año (gastos médicos y pérdida productiva)",
-    inactionCostEn: "S/ 140 Million/year (medical costs and productivity loss)",
-    inactionCostQu: "S/ 140 Millones sapa wata (chinkachisqa qullqi)",
+    fertilityVal: 85.4,
+    fertilityPct: 85.4,
+    fertilityRisk: "🔴 Riesgo Extremo",
+    fertilityRiskEn: "🔴 Extreme Risk",
+    fertilityRiskQu: "🔴 Sinchi Riesgo",
+    fertility: "85.4 por 1,000 (167% del promedio nacional)",
+    fertilityEn: "85.4 per 1,000 (167% of national avg)",
+    fertilityQu: "85.4 sapa 1,000 (167% promedio suyumanta)",
+
+    coverageVal: 28,
+    coverageGap: 72,
+    coverageStatus: "⚠️ Brecha Crítica (72%)",
+    coverageStatusEn: "⚠️ Critical Gap (72%)",
+    coverageStatusQu: "⚠️ Sinchi Pisi Kay (72%)",
+    coverage: "28% Acreditados (72% sin consultorio amigable)",
+    coverageEn: "28% Accredited (72% without youth clinic)",
+    coverageQu: "28% Acreditado (72% mana amigable)",
+
+    inactionVal: 140,
+    inactionScale: 88,
+    inactionTag: "📉 0.48% PBI Regional",
+    inactionTagEn: "📉 0.48% Regional GDP",
+    inactionTagQu: "📉 0.48% Suyu PBI",
+    inactionCost: "S/ 140 Millones/año (gastos médicos y deserción)",
+    inactionCostEn: "S/ 140 Million/year (medical costs & dropout)",
+    inactionCostQu: "S/ 140 Millones sapa wata (qullqi chinkachisqa)",
+
     priority: "Reducción de brechas en Amazonía rural, atención de violencia sexual en comunidades nativas con enfoque intercultural y transporte para emergencias obstétricas.",
     priorityEn: "Gap reduction in rural Amazonia, sexual violence care in native communities with intercultural focus, and fluvial transport for obstetric emergencies.",
     priorityQu: "Amazonía sach'a-sach'api amachay, yuquy maqanakuykunata intercultural nisqawan hampiy wan mayupi purinapaq barcokuna garantizay."
   },
   Huancavelica: {
-    fertility: "68.2 por 1,000 (Zona Altoandina)",
-    fertilityEn: "68.2 per 1,000 (High Andean zone)",
-    fertilityQu: "68.2 sapa 1,000 (Puna suyupi)",
-    coverage: "32% de centros I-3 / I-4 acreditados",
-    coverageEn: "32% of accredited I-3 / I-4 health centers",
-    coverageQu: "32% postakuna acreditado",
+    fertilityVal: 68.2,
+    fertilityPct: 68.2,
+    fertilityRisk: "🔴 Riesgo Muy Alto",
+    fertilityRiskEn: "🔴 Very High Risk",
+    fertilityRiskQu: "🔴 Hatun Riesgo",
+    fertility: "68.2 por 1,000 (133% del promedio nacional)",
+    fertilityEn: "68.2 per 1,000 (133% of national avg)",
+    fertilityQu: "68.2 sapa 1,000 (133% promedio suyumanta)",
+
+    coverageVal: 32,
+    coverageGap: 68,
+    coverageStatus: "⚠️ Brecha Alta (68%)",
+    coverageStatusEn: "⚠️ High Gap (68%)",
+    coverageStatusQu: "⚠️ Hatun Pisi Kay (68%)",
+    coverage: "32% Acreditados (68% sin consultorio amigable)",
+    coverageEn: "32% Accredited (68% without youth clinic)",
+    coverageQu: "32% Acreditado (68% mana amigable)",
+
+    inactionVal: 95,
+    inactionScale: 65,
+    inactionTag: "📉 0.44% PBI Regional",
+    inactionTagEn: "📉 0.44% Regional GDP",
+    inactionTagQu: "📉 0.44% Suyu PBI",
     inactionCost: "S/ 95 Millones/año (deserción escolar y subsidios)",
-    inactionCostEn: "S/ 95 Million/year (school dropout and welfare)",
-    inactionCostQu: "S/ 95 Millones sapa wata (chinkachisqa qullqi)",
+    inactionCostEn: "S/ 95 Million/year (school dropout & welfare)",
+    inactionCostQu: "S/ 95 Millones sapa wata (qullqi chinkachisqa)",
+
     priority: "Educación Sexual Integral (ESI) en Quechua, prevención de violencia intrafamiliar y fortalecimiento descentralizado de la Línea 100 y CEM en distritos rurales.",
     priorityEn: "Comprehensive Sexuality Education (CSE) in Quechua, intrafamily violence prevention, and decentralized strengthening of Line 100 and CEM in rural districts.",
     priorityQu: "Educación Sexual Integral (ESI) Runasimipi, ayllukuna ukhupi maqanakuy hark'ay wan Línea 100 / CEM kallpachay."
   },
   Cajamarca: {
-    fertility: "64.5 por 1,000 (Sierra Norte)",
-    fertilityEn: "64.5 per 1,000 (Northern Sierra)",
-    fertilityQu: "64.5 sapa 1,000 (Hanaq suyupi)",
-    coverage: "36% de centros I-3 / I-4 acreditados",
-    coverageEn: "36% of accredited I-3 / I-4 health centers",
-    coverageQu: "36% postakuna acreditado",
+    fertilityVal: 64.5,
+    fertilityPct: 64.5,
+    fertilityRisk: "🟠 Riesgo Alto",
+    fertilityRiskEn: "🟠 High Risk",
+    fertilityRiskQu: "🟠 Hatun Riesgo",
+    fertility: "64.5 por 1,000 (126% del promedio nacional)",
+    fertilityEn: "64.5 per 1,000 (126% of national avg)",
+    fertilityQu: "64.5 sapa 1,000 (126% promedio suyumanta)",
+
+    coverageVal: 36,
+    coverageGap: 64,
+    coverageStatus: "⚠️ Brecha Severa (64%)",
+    coverageStatusEn: "⚠️ Severe Gap (64%)",
+    coverageStatusQu: "⚠️ Pisi Kay (64%)",
+    coverage: "36% Acreditados (64% sin consultorio amigable)",
+    coverageEn: "36% Accredited (64% without youth clinic)",
+    coverageQu: "36% Acreditado (64% mana amigable)",
+
+    inactionVal: 110,
+    inactionScale: 72,
+    inactionTag: "📉 0.42% PBI Regional",
+    inactionTagEn: "📉 0.42% Regional GDP",
+    inactionTagQu: "📉 0.42% Suyu PBI",
     inactionCost: "S/ 110 Millones/año (emergencias y desprotección)",
-    inactionCostEn: "S/ 110 Million/year (emergencies and vulnerability)",
-    inactionCostQu: "S/ 110 Millones sapa wata (chinkachisqa qullqi)",
+    inactionCostEn: "S/ 110 Million/year (emergencies & vulnerability)",
+    inactionCostQu: "S/ 110 Millones sapa wata (qullqi chinkachisqa)",
+
     priority: "Garantía de anticoncepción moderna de larga duración (LARC) en postas rurales y articulación comunitaria para erradicar el abuso en niñas menores de 15 años.",
     priorityEn: "Guarantee of modern long-acting reversible contraceptives (LARC) in rural posts and community coordination to eliminate abuse in girls under 15.",
     priorityQu: "LARC anticoncepción unaypaq garantizay wan 15 watamanta uray sipaskunapaq maqanakuy tukuchiy."
   },
   Piura: {
-    fertility: "58.1 por 1,000 (Costa Norte)",
-    fertilityEn: "58.1 per 1,000 (Northern Coast)",
-    fertilityQu: "58.1 sapa 1,000 (Chala suyupi)",
-    coverage: "42% de centros I-3 / I-4 acreditados",
-    coverageEn: "42% of accredited I-3 / I-4 health centers",
-    coverageQu: "42% postakuna acreditado",
+    fertilityVal: 58.1,
+    fertilityPct: 58.1,
+    fertilityRisk: "🟠 Riesgo Moderado-Alto",
+    fertilityRiskEn: "🟠 Moderate-High Risk",
+    fertilityRiskQu: "🟠 Chawpi-Hatun Riesgo",
+    fertility: "58.1 por 1,000 (113% del promedio nacional)",
+    fertilityEn: "58.1 per 1,000 (113% of national avg)",
+    fertilityQu: "58.1 sapa 1,000 (113% promedio suyumanta)",
+
+    coverageVal: 42,
+    coverageGap: 58,
+    coverageStatus: "🟡 Cobertura Media (58% brecha)",
+    coverageStatusEn: "🟡 Medium Coverage (58% gap)",
+    coverageStatusQu: "🟡 Chawpi Cobertura (58% pisi)",
+    coverage: "42% Acreditados (58% sin consultorio amigable)",
+    coverageEn: "42% Accredited (58% without youth clinic)",
+    coverageQu: "42% Acreditado (58% mana amigable)",
+
+    inactionVal: 130,
+    inactionScale: 80,
+    inactionTag: "📉 0.40% PBI Regional",
+    inactionTagEn: "📉 0.40% Regional GDP",
+    inactionTagQu: "📉 0.40% Suyu PBI",
     inactionCost: "S/ 130 Millones/año (atención obstétrica y violencia)",
-    inactionCostEn: "S/ 130 Million/year (obstetric care and violence)",
-    inactionCostQu: "S/ 130 Millones sapa wata (chinkachisqa qullqi)",
+    inactionCostEn: "S/ 130 Million/year (obstetric care & violence)",
+    inactionCostQu: "S/ 130 Millones sapa wata (qullqi chinkachisqa)",
+
     priority: "Prevención de acoso y violencia digital en colegios secundarios, ampliación de horarios en consultorios amigables del MINSA y programas de retención educativa.",
     priorityEn: "Prevention of digital harassment and violence in high schools, extended hours in MINSA youth clinics, and educational retention programs.",
     priorityQu: "Yachay wasikunapi digital maqanakuy hark'ay wan MINSA consultorio amigable horariokuna mast'ariy."
   },
   Cusco: {
-    fertility: "52.8 por 1,000 (Sierra Sur)",
-    fertilityEn: "52.8 per 1,000 (Southern Sierra)",
-    fertilityQu: "52.8 sapa 1,000 (Qusqu suyupi)",
-    coverage: "45% de centros I-3 / I-4 acreditados",
-    coverageEn: "45% of accredited I-3 / I-4 health centers",
-    coverageQu: "45% postakuna acreditado",
+    fertilityVal: 52.8,
+    fertilityPct: 52.8,
+    fertilityRisk: "🟡 Riesgo Moderado",
+    fertilityRiskEn: "🟡 Moderate Risk",
+    fertilityRiskQu: "🟡 Chawpi Riesgo",
+    fertility: "52.8 por 1,000 (Promedio regional andino)",
+    fertilityEn: "52.8 per 1,000 (Andean regional average)",
+    fertilityQu: "52.8 sapa 1,000 (Andes promedio suyumanta)",
+
+    coverageVal: 45,
+    coverageGap: 55,
+    coverageStatus: "🟡 Cobertura En Progreso (55% brecha)",
+    coverageStatusEn: "🟡 Coverage In Progress (55% gap)",
+    coverageStatusQu: "🟡 Puririy Cobertura (55% pisi)",
+    coverage: "45% Acreditados (55% sin consultorio amigable)",
+    coverageEn: "45% Accredited (55% without youth clinic)",
+    coverageQu: "45% Acreditado (55% mana amigable)",
+
+    inactionVal: 105,
+    inactionScale: 68,
+    inactionTag: "📉 0.38% PBI Regional",
+    inactionTagEn: "📉 0.38% Regional GDP",
+    inactionTagQu: "📉 0.38% Suyu PBI",
     inactionCost: "S/ 105 Millones/año (brecha de empleabilidad)",
     inactionCostEn: "S/ 105 Million/year (employability gaps)",
-    inactionCostQu: "S/ 105 Millones sapa wata (chinkachisqa qullqi)",
+    inactionCostQu: "S/ 105 Millones sapa wata (qullqi chinkachisqa)",
+
     priority: "Prevención de violencia sexual en contextos urbanos y rurales turísticos, consejería amigable intercultural y red interinstitucional con la Defensoría del Pueblo.",
     priorityEn: "Prevention of sexual violence in urban and tourist rural contexts, intercultural friendly counseling, and inter-institutional network with the Ombudsman Office.",
     priorityQu: "Turismo wan pampa distritokunapi yuquy maqanakuy hark'ay wan Defensoría del Pueblowan huñunakuspa llank'ay."
   },
   Lima: {
+    fertilityVal: 41.2,
+    fertilityPct: 41.2,
+    fertilityRisk: "🟢 Menor Tasa (Hatun Volumen)",
+    fertilityRiskEn: "🟢 Lower Rate (Highest Volume)",
+    fertilityRiskQu: "🟢 Pisi Tupa (Hatun Volume)",
     fertility: "41.2 por 1,000 (Mayor volumen absoluto periurbano)",
     fertilityEn: "41.2 per 1,000 (Highest absolute volume in peri-urban areas)",
-    fertilityQu: "41.2 sapa 1,000 (Lima llaqtapi)",
-    coverage: "48% de centros I-3 / I-4 acreditados",
-    coverageEn: "48% of accredited I-3 / I-4 health centers",
-    coverageQu: "48% postakuna acreditado",
-    inactionCost: "S/ 420 Millones/año (el mayor costo absoluto)",
-    inactionCostEn: "S/ 420 Million/year (highest absolute cost)",
-    inactionCostQu: "S/ 420 Millones sapa wata (aswan hatun qullqi)",
+    fertilityQu: "41.2 sapa 1,000 (Lima llaqtapi hatun yupay)",
+
+    coverageVal: 48,
+    coverageGap: 52,
+    coverageStatus: "🟡 Cobertura Urbana (52% brecha)",
+    coverageStatusEn: "🟡 Urban Coverage (52% gap)",
+    coverageStatusQu: "🟡 Llaqta Cobertura (52% pisi)",
+    coverage: "48% Acreditados (52% sin consultorio amigable)",
+    coverageEn: "48% Accredited (52% without youth clinic)",
+    coverageQu: "48% Acreditado (52% mana amigable)",
+
+    inactionVal: 420,
+    inactionScale: 100,
+    inactionTag: "📉 S/ 420 M/año (Mayor volumen nacional)",
+    inactionTagEn: "📉 S/ 420 M/year (Highest national volume)",
+    inactionTagQu: "📉 S/ 420 M/wata (Hatun suyumanta qullqi)",
+    inactionCost: "S/ 420 Millones/año (el mayor costo absoluto nacional)",
+    inactionCostEn: "S/ 420 Million/year (highest national absolute cost)",
+    inactionCostQu: "S/ 420 Millones sapa wata (aswan hatun qullqi chinkachisqa)",
+
     priority: "Atención intensiva en distritos periurbanos de Lima Norte, Este y Sur; prevención de violencia digital, acoso escolar y fortalecimiento de salud mental adolescente.",
     priorityEn: "Intensive care in peri-urban districts of North, East, and South Lima; digital violence prevention, school bullying, and youth mental health support.",
     priorityQu: "Lima Norte, Este wan Sur distritokunapi allin llank'ay, digital maqanakuy wan yachay wasikunapi bullyng hark'ay."
@@ -1415,7 +1523,7 @@ window.closeExecutiveSummarySheetModal = closeExecutiveSummarySheetModal;
 window.toggleLanguage = toggleLanguage;
 window.toggleTheme = toggleTheme;
 
-// --- 7. REGIONAL DATA EXPLORER LOGIC ---
+// --- 7. REGIONAL DATA EXPLORER LOGIC (Dinamizada con Medidores y Gráficas) ---
 function updateRegionalExplorer() {
   const regionKey = document.getElementById('exp-region')?.value || 'Loreto';
   const info = regionalData[regionKey] || regionalData['Loreto'];
@@ -1424,23 +1532,54 @@ function updateRegionalExplorer() {
   let coverageStr = info.coverage;
   let inactionStr = info.inactionCost;
   let priorityStr = info.priority;
+  let riskStr = info.fertilityRisk;
+  let statusStr = info.coverageStatus;
+  let tagStr = info.inactionTag;
 
   if (currentLang === 'en') {
     fertilityStr = info.fertilityEn || info.fertility;
     coverageStr = info.coverageEn || info.coverage;
     inactionStr = info.inactionCostEn || info.inactionCost;
     priorityStr = info.priorityEn || info.priority;
+    riskStr = info.fertilityRiskEn || info.fertilityRisk;
+    statusStr = info.coverageStatusEn || info.coverageStatus;
+    tagStr = info.inactionTagEn || info.inactionTag;
   } else if (currentLang === 'qu') {
     fertilityStr = info.fertilityQu || info.fertility;
     coverageStr = info.coverageQu || info.coverage;
     inactionStr = info.inactionCostQu || info.inactionCost;
     priorityStr = info.priorityQu || info.priority;
+    riskStr = info.fertilityRiskQu || info.fertilityRisk;
+    statusStr = info.coverageStatusQu || info.coverageStatus;
+    tagStr = info.inactionTagQu || info.inactionTag;
   }
 
+  // Update text descriptions & badges
   setElemText('out-fertility', fertilityStr);
   setElemText('out-coverage', coverageStr);
   setElemText('out-inaction', inactionStr);
   setElemText('out-priority', priorityStr);
+  setElemText('out-fertility-risk', riskStr);
+  setElemText('out-coverage-status', statusStr);
+  setElemText('out-inaction-tag', tagStr);
+
+  // Update big numerical displays
+  setElemHTML('out-fertility-num', `${info.fertilityVal} <span class="text-xs font-normal text-slate-400">/ 1,000</span>`);
+  setElemHTML('out-coverage-num', `${info.coverageVal}% <span class="text-xs font-normal text-slate-400">Acreditados</span>`);
+  setElemHTML('out-inaction-num', `S/ ${info.inactionVal}M <span class="text-xs font-normal text-slate-400">/ año</span>`);
+
+  // Update dynamic visual progress bars with smooth animation
+  const barFertility = document.getElementById('out-fertility-bar');
+  if (barFertility) barFertility.style.width = `${info.fertilityPct}%`;
+
+  const barCoverageOk = document.getElementById('out-coverage-bar-ok');
+  if (barCoverageOk) barCoverageOk.style.width = `${info.coverageVal}%`;
+
+  const barCoverageGap = document.getElementById('out-coverage-bar-gap');
+  if (barCoverageGap) barCoverageGap.style.width = `${info.coverageGap}%`;
+
+  const barInaction = document.getElementById('out-inaction-bar');
+  if (barInaction) barInaction.style.width = `${info.inactionScale}%`;
 }
 
 // --- 8. AUTOMATIC EVENT BINDING ON DOM READY ---
