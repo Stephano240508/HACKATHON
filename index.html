@@ -604,7 +604,7 @@
 
             <div class="space-y-3">
                 <!-- Priority Item 1 -->
-                <div id="p1-card" onclick="openDeepEvidenceModal('p1')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-brand-teal/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                <div id="p1-card" class="p-4 rounded-xl bg-slate-950 border border-slate-800 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
                     <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
                         <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
                         <span id="m-item-1">1. Partida presupuestal específica en la Ley de Presupuesto Público para el Programa 0002 MINSA.</span>
@@ -615,7 +615,7 @@
                 </div>
 
                 <!-- Priority Item 2 -->
-                <div id="p2-card" onclick="openDeepEvidenceModal('p2')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-brand-crimson/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                <div id="p2-card" class="p-4 rounded-xl bg-slate-950 border border-slate-800 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
                     <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
                         <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
                         <span id="m-item-2">2. Protocolos de Cero Tolerancia y atención inmediata en el MIMP y comisarías.</span>
@@ -626,7 +626,7 @@
                 </div>
 
                 <!-- Priority Item 3 -->
-                <div id="p3-card" onclick="openDeepEvidenceModal('p3')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-brand-purple/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                <div id="p3-card" class="p-4 rounded-xl bg-slate-950 border border-slate-800 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
                     <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
                         <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
                         <span id="m-item-3">3. Implementación efectiva de Educación Sexual Integral (ESI) en el currículo escolar.</span>
@@ -637,7 +637,7 @@
                 </div>
 
                 <!-- Priority Item 4 -->
-                <div id="p4-card" onclick="openDeepEvidenceModal('p4')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-brand-accent/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                <div id="p4-card" class="p-4 rounded-xl bg-slate-950 border border-slate-800 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
                     <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
                         <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
                         <span id="m-item-4">4. Enfoque intercultural y bilingüe para la atención de adolescentes andinas y amazónicas.</span>
@@ -648,7 +648,7 @@
                 </div>
 
                 <!-- Priority Item 5 -->
-                <div id="p5-card" onclick="openDeepEvidenceModal('p5')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                <div id="p5-card" class="p-4 rounded-xl bg-slate-950 border border-slate-800 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
                     <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
                         <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
                         <span id="m-item-5">5. Mecanismo de seguimiento interinstitucional liderado por la Defensoría del Pueblo.</span>
@@ -796,7 +796,7 @@
     </main>
 
     <!-- MODAL 1: EVIDENCIA PROFUNDA DEL CEREBRO DE DATOS -->
-    <div id="deep-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+    <div id="deep-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
         <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[85vh] overflow-y-auto relative">
             <div>
                 <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
@@ -820,7 +820,7 @@
     </div>
 
     <!-- MODAL 2: COMPENDIO DE EVIDENCIA CIENTÍFICA PARA EL CONGRESO Y MEF -->
-    <div id="sci-modal" role="dialog" aria-modal="true" aria-labelledby="sci-modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+    <div id="sci-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="sci-modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
         <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[85vh] overflow-y-auto relative">
             <div>
                 <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
@@ -877,7 +877,7 @@
     </div>
 
     <!-- MODAL 3: FICHA TÉCNICA EJECUTIVA PARA POLÍTICOS Y ASESORES -->
-    <div id="summary-modal" role="dialog" aria-modal="true" aria-label="Ficha Técnica Ejecutiva" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+    <div id="summary-modal" style="display: none;" role="dialog" aria-modal="true" aria-label="Ficha Técnica Ejecutiva" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
         <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[85vh] overflow-y-auto relative">
             <div>
                 <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
