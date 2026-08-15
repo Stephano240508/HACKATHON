@@ -1512,39 +1512,92 @@ function bindAllInteractiveEvents() {
   });
 }
 
-// --- 9. SMART RETRACTING SCROLL HEADER LOGIC ---
+// --- 9. SMART RETRACTING SCROLL HEADER LOGIC (Con umbral de 0.3s al subir e inactividad de 1.5s) ---
 let lastScrollY = window.scrollY || 0;
 let isHeaderTicking = false;
+let scrollUpStartTime = null;
+let headerIdleTimer = null;
+let isMouseOverHeader = false;
+
+function resetHeaderIdleTimer() {
+  if (headerIdleTimer) {
+    clearTimeout(headerIdleTimer);
+    headerIdleTimer = null;
+  }
+
+  const currentScrollY = window.scrollY || document.documentElement.scrollTop;
+
+  // Only start 1.5s idle timer if user is not at top of page and not hovering over header
+  if (currentScrollY > 20 && !isMouseOverHeader) {
+    headerIdleTimer = setTimeout(function() {
+      const header = document.querySelector('header');
+      const latestScrollY = window.scrollY || document.documentElement.scrollTop;
+      if (header && latestScrollY > 20 && !isMouseOverHeader) {
+        header.classList.add('header-hidden');
+        header.classList.remove('header-visible');
+      }
+    }, 1500); // 1.5 seconds idle timeout
+  }
+}
 
 function handleSmartScrollHeader() {
   const header = document.querySelector('header');
   if (!header) return;
 
   const currentScrollY = window.scrollY || document.documentElement.scrollTop;
+  const now = performance.now();
 
-  // At top of page: always show header
+  // Reset 1.5s idle timer on every scroll movement
+  resetHeaderIdleTimer();
+
+  // At top of page: always show header immediately
   if (currentScrollY <= 20) {
     header.classList.remove('header-hidden');
     header.classList.add('header-visible');
+    scrollUpStartTime = null;
     lastScrollY = currentScrollY;
     return;
   }
 
-  // Scrolling DOWN (going down the webpage): retract header
+  // Scrolling DOWN (going down the webpage): retract header immediately & reset scroll-up timer
   if (currentScrollY > lastScrollY && currentScrollY > 60) {
     header.classList.add('header-hidden');
     header.classList.remove('header-visible');
+    scrollUpStartTime = null;
   }
-  // Scrolling UP (going up the webpage): reveal header
+  // Scrolling UP (going up the webpage): require at least 0.3s of continuous upward scrolling
   else if (currentScrollY < lastScrollY) {
-    header.classList.remove('header-hidden');
-    header.classList.add('header-visible');
+    if (scrollUpStartTime === null) {
+      scrollUpStartTime = now;
+    }
+
+    const elapsedTimeSeconds = (now - scrollUpStartTime) / 1000;
+
+    if (elapsedTimeSeconds >= 0.3) {
+      header.classList.remove('header-hidden');
+      header.classList.add('header-visible');
+    }
   }
 
   lastScrollY = currentScrollY;
 }
 
 function initSmartScrollHeader() {
+  const header = document.querySelector('header');
+  if (header) {
+    header.addEventListener('mouseenter', function() {
+      isMouseOverHeader = true;
+      if (headerIdleTimer) {
+        clearTimeout(headerIdleTimer);
+        headerIdleTimer = null;
+      }
+    });
+    header.addEventListener('mouseleave', function() {
+      isMouseOverHeader = false;
+      resetHeaderIdleTimer();
+    });
+  }
+
   window.addEventListener('scroll', function() {
     if (!isHeaderTicking) {
       window.requestAnimationFrame(function() {
