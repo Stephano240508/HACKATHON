@@ -6,6 +6,11 @@
     <meta name="description" content="Plataforma de Incidencia Política y Diagnóstico Ejecutivo sobre Prevención de Violencias, Género y Embarazo Infantil en el Perú (PLANEA 2025-2030, MINSA, ORAS-CONHU, UNFPA, OPS/OMS).">
     <title>Plataforma de Incidencia Política - Prevención de Violencias y Embarazo Infantil en el Perú (MINSA Perú / ORAS-CONHU / UNFPA / OPS)</title>
     
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -14,6 +19,12 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif']
+                    },
                     colors: {
                         brand: {
                             navy: '#0B192C',
