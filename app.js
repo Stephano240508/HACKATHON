@@ -645,7 +645,7 @@ const deepEvidenceDatabase = {
           <strong>🏔️ ENDES / PLANEA Yupaykuna:</strong> Loreto (85.4 x 1,000) wan Huancavelica (68.2 x 1,000) kinsa kutitam Limamanta (41.2 x 1,000) aswan chichuy tupayuq kanku.
         </p>
         <p>
-          <strong>🗣️ Rimay wan Kawsay Pisi Kay:</strong> Andes wan Amazoníapi postakuna mana Runasimi, Awajún utaq Shipibo rimaypi hampiskuñachu kanku.
+          <strong>🗣️ Rimay wan Kawsay Pisi Kay:</strong> Andes wan Amazoníapi postakuna mana Runasimi, Awajún utaq Shipibo rimaypi hampisqachu kanku.
         </p>
         <p>
           <strong>🛡️ Simi Kamachi Pisi Kay:</strong> 78% yuquy maqanakuykunata ayllukuna ukhupi ruranku, CEM postakuna pisi kasqan rayku.
@@ -663,150 +663,139 @@ const deepEvidenceDatabase = {
           <strong>📊 Evaluación de Cobertura MINSA:</strong> Solo el 35% de los establecimientos de salud del primer nivel (categorías I-3 y I-4) poseen acreditación oficial bajo la Norma Técnica de Salud NTS N° 130-MINSA para atención amigable de adolescentes.
         </p>
         <p>
-          <strong>💸 Desbalance Presupuestario (PP 0002):</strong> El Programa Presupuestal 0002 (Salud Materno Neonatal) ejecuta el 85% de sus fondos en atenciones asistenciales hospitalarias y solo un 15% en prevención y consejería primaria en postas rurales.
-        </p>
-        <p>
-          <strong>🏥 Demanda de Infraestructura:</strong> Para cerrar la brecha al 2030 se requiere presupuestar la adecuación de más de 2,400 consultorios diferenciados con obstetras y psicólogos capacitados a nivel nacional.
+          <strong>💸 Desbalance Presupuestario (PP 0002):</strong> El Programa Presupuestal 0002 (Salud Materno Neonatal) ejecuta el 85% de sus fondos en atenciones asistenciales hospitalarias y solo un 15% en prevención y consejería amigable.
         </p>
       </div>
     `,
     contentEn: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
         <p class="p-3 bg-brand-accent/10 border border-brand-accent/30 rounded-xl text-slate-200">
-          <strong>📊 MINSA Coverage Evaluation:</strong> Only 35% of primary healthcare centers (categories I-3 and I-4) hold official accreditation under NTS N° 130-MINSA for youth-friendly care.
+          <strong>📊 MINSA Coverage Evaluation:</strong> Only 35% of level I-3 and I-4 primary health centers hold official accreditation under NTS N° 130-MINSA for youth-friendly care.
         </p>
         <p>
-          <strong>💸 Budget Imbalance (PP 0002):</strong> Budget Program 0002 executes 85% of funds on hospital emergency care and only 15% on primary prevention in rural health posts.
-        </p>
-        <p>
-          <strong>🏥 Infrastructure Demand:</strong> Closing the gap by 2030 requires budgeting the adaptation of over 2,400 specialized clinics with trained midwives and psychologists nationwide.
+          <strong>💸 Budget Imbalance (PP 0002):</strong> Budget Program 0002 (Maternal Neonatal Health) spends 85% of funds on hospital emergency care and only 15% on primary prevention and youth counseling.
         </p>
       </div>
     `,
     contentQu: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
         <p class="p-3 bg-brand-accent/10 border border-brand-accent/30 rounded-xl text-slate-200">
-          <strong>📊 MINSA Cobertura Taripay:</strong> 35% postakuna I-3 wan I-4 acreditado kanku NTS N° 130-MINSA kama.
+          <strong>📊 MINSA Postakuna Taripay:</strong> 35% postallam I-3 wan I-4 nivelmanta NTS N° 130-MINSA amigable acreditaciónniyuq kanku.
         </p>
         <p>
-          <strong>💸 PP 0002 Presupuesto Pisi Kay:</strong> PP 0002 85% qullqintam hospital urgenciaman churan, 15% qullqillatam prevención consejeríaman.
-        </p>
-        <p>
-          <strong>🏥 Wasikuna Mañakuy:</strong> 2,400 aswan consultorios amigables presupuestana 2030 watapaq.
+          <strong>💸 PP 0002 Qullqi Chinkachiy:</strong> PP 0002 programa 85% qullqintam hospital urgenciaman churan, 15% qullqillatam prevención consejeríaman.
         </p>
       </div>
     `
   },
   roi1: {
-    title: "Sustento del Cerebro de Datos: Pérdida del 0.45% del PBI por Inacción Fiscal (Metodología MILENA UNFPA)",
-    titleEn: "Data Brain Sustenance: 0.45% GDP Fiscal Loss from Inaction (UNFPA MILENA)",
-    titleQu: "Cerebro de Datos Yachay: 0.45% PBI Qullqi Chinkachiy Mana Ruray rayku (MILENA UNFPA)",
+    title: "Sustento del Cerebro de Datos: Metodología MILENA y Pérdida del 0.45% del PBI",
+    titleEn: "Data Brain Sustenance: MILENA Methodology & 0.45% GDP Loss",
+    titleQu: "Cerebro de Datos Yachay: MILENA Yachay wan 0.45% PBI Chinkachisqa",
     content: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        <div class="p-3.5 bg-brand-crimson/15 border border-brand-crimson/40 rounded-xl text-slate-100">
-          <p class="font-bold text-brand-crimson mb-1">📖 Metodología Oficial: MILENA (UNFPA) / Ministerio de Economía y Finanzas (MEF)</p>
-          <p class="text-xs">Estudio de Impacto Socioeconómico del Embarazo Adolescente en el Perú.</p>
-        </div>
-        <div class="space-y-2">
-          <p><strong>1. Pérdida de Ingresos Laborales Futuros:</strong> Las mujeres que fueron madres en la adolescencia perciben en promedio un 24% menos de ingresos a lo largo de su vida productiva debido al abandono escolar precoz, reduciendo la masa salarial tributable del país.</p>
-          <p><strong>2. Gasto Médico en Urgencias Obstétricas:</strong> El Estado peruano destina anualmente más de S/ 380 millones en atenciones hospitalarias complejas por nacimientos prematuros, eclampsia y complicaciones derivadas del embarazo infantil no prevenido.</p>
-          <p><strong>3. Brecha de Recaudación del IGV e Impuesto a la Renta:</strong> La menor inserción en el empleo formal genera una pérdida fiscal estimada en S/ 450 millones anuales por concepto de impuestos indirectos y directos no percibidos por la SUNAT.</p>
-        </div>
+        <p class="p-3 bg-brand-crimson/10 border border-brand-crimson/30 rounded-xl text-slate-200">
+          <strong>💰 Pérdida Anual Estatal (UNFPA / MEF):</strong> La inacción estatal genera una pérdida económica anual de más de <strong>S/ 1,200 Millones de Soles</strong> (0.45% del PBI del Perú).
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li><strong>S/ 480 M:</strong> Menores ingresos laborales futuros de mujeres afectadas por abandono escolar.</li>
+          <li><strong>S/ 350 M:</strong> Gasto asistencial de emergencia en MINSA y EsSalud para urgencias obstétricas y neonatales.</li>
+          <li><strong>S/ 220 M:</strong> Menor recaudación de impuestos directos e indirectos (IGV / Renta).</li>
+          <li><strong>S/ 150 M:</strong> Gasto operativo en el sistema judicial y policial.</li>
+        </ul>
       </div>
     `,
     contentEn: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        <div class="p-3.5 bg-brand-crimson/15 border border-brand-crimson/40 rounded-xl text-slate-100">
-          <p class="font-bold text-brand-crimson mb-1">📖 Official Methodology: MILENA (UNFPA) / Ministry of Economy & Finance (MEF)</p>
-          <p class="text-xs">Socioeconomic Impact Study of Adolescent Pregnancy in Peru.</p>
-        </div>
-        <div class="space-y-2">
-          <p><strong>1. Loss of Future Labor Income:</strong> Women who were teen mothers earn on average 24% less throughout their productive lives due to early dropout, shrinking the national taxable payroll.</p>
-          <p><strong>2. Emergency Obstetric Care Spending:</strong> The Peruvian State annually allocates over 380 million Soles to complex hospital care for premature births, eclampsia, and unprevented child pregnancy complications.</p>
-          <p><strong>3. Tax Revenue Gap (VAT & Income Tax):</strong> Lower formal employment insertion causes an estimated annual fiscal loss of 450 million Soles in uncollected indirect and direct taxes by SUNAT.</p>
-        </div>
+        <p class="p-3 bg-brand-crimson/10 border border-brand-crimson/30 rounded-xl text-slate-200">
+          <strong>💰 Annual State Loss (UNFPA / MEF):</strong> Inaction creates an annual economic loss of over <strong>1.2 Billion Soles</strong> (0.45% of Peru's GDP).
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li><strong>S/ 480 M:</strong> Lower future labor earnings due to school dropout.</li>
+          <li><strong>S/ 350 M:</strong> Emergency medical spending in MINSA and EsSalud for obstetric and neonatal care.</li>
+          <li><strong>S/ 220 M:</strong> Lost tax collection (VAT and Income tax).</li>
+          <li><strong>S/ 150 M:</strong> Operational costs in judicial and police enforcement.</li>
+        </ul>
       </div>
     `,
     contentQu: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        <div class="p-3.5 bg-brand-crimson/15 border border-brand-crimson/40 rounded-xl text-slate-100">
-          <p class="font-bold text-brand-crimson mb-1">📖 Pukyu: MILENA (UNFPA) / MEF Peru</p>
-          <p class="text-xs">Suyu Qullqi Chinkachiy Taripay.</p>
-        </div>
-        <div class="space-y-2">
-          <p><strong>1. Llank'ay Qullqi Chinkachiy:</strong> Sipas chichuq warmikuna 24% pisi qullqitam chaskinku llapan kawsayninkupi yachay wasi saqesqan rayku.</p>
-          <p><strong>2. Hospital Urgencia Qullqi:</strong> Peru Suyu S/ 380 millones soles sapa wata churan hospital urgencia atencionkunaman.</p>
-          <p><strong>3. SUNAT Impuesto Chinkachiy:</strong> Formal llank'ay pisi kasqan rayku S/ 450 millones soles sapa wata SUNAT mana chaskinchu.</p>
-        </div>
+        <p class="p-3 bg-brand-crimson/10 border border-brand-crimson/30 rounded-xl text-slate-200">
+          <strong>💰 Suyu Qullqi Chinkachiy (UNFPA / MEF):</strong> Mana rurayqa <strong>S/ 1,200 Millones soles sapa wata</strong> (0.45% PBI) qullqitam chinkachin.
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li><strong>S/ 480 M:</strong> Pisi llank'ay qullqi yachay wasi saqesqan rayku.</li>
+          <li><strong>S/ 350 M:</strong> Emergency hospital gasto MINSA wan EsSalud nisqapi.</li>
+          <li><strong>S/ 220 M:</strong> Pisi impuesto churay (IGV / Renta).</li>
+          <li><strong>S/ 150 M:</strong> Comisaría wan juez gasto.</li>
+        </ul>
       </div>
     `
   },
   roi2: {
-    title: "Sustento del Cerebro de Datos: Desglose Actuarial del Retorno de Inversión S/ 7:1 (UNFPA / OPS)",
-    titleEn: "Data Brain Sustenance: Actuarial Breakdown of 7:1 ROI (UNFPA / PAHO)",
-    titleQu: "Cerebro de Datos Yachay: Sapa Sol 7:1 Qullqi Ahorro Actuarial (UNFPA / OPS)",
+    title: "Sustento del Cerebro de Datos: Retorno de Inversión S/ 7.00 por Sol (OPS / UNFPA)",
+    titleEn: "Data Brain Sustenance: S/ 7.00 ROI per Sol (PAHO / UNFPA)",
+    titleQu: "Cerebro de Datos Yachay: S/ 7.00 Qullqi Kutichiy sapa Sol (OPS / UNFPA)",
     content: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        <div class="p-3.5 bg-brand-teal/15 border border-brand-teal/40 rounded-xl text-slate-100">
-          <p class="font-bold text-brand-teal mb-1">📖 Estudio Actuarial: UNFPA / OPS / Ministerio de Salud del Perú (MINSA)</p>
-          <p class="text-xs">Análisis de Eficiencia Presupuestaria y Ahorro Hospitalario.</p>
-        </div>
-        <div class="space-y-2">
-          <p><strong>1. Ahorro Directo en Servicios de Salud (S/ 4.20):</strong> Por cada Sol invertido en anticoncepción moderna LARC y consejería amigable, el MINSA reduce S/ 4.20 en gastos de internamiento, partos de alto riesgo y legrados por abortos inseguros.</p>
-          <p><strong>2. Ahorro Social en Programas de Subsistencia (S/ 1.80):</strong> Se evita la saturación de programas sociales de transferencias condicionadas (Juntos, Cuna Más), generando un ahorro fiscal de S/ 1.80 por cada usuario atendido oportunamente.</p>
-          <p><strong>3. Incremento en la Recaudación Futura (S/ 1.00):</strong> Garantizar que la adolescente concluya la secundaria asegura su inserción laboral formal, retornando S/ 1.00 adicional al Estado mediante contribuciones tributarias directas.</p>
-        </div>
+        <p class="p-3 bg-brand-teal/10 border border-brand-teal/30 rounded-xl text-slate-200">
+          <strong>📈 Análisis Costo-Efectividad Actuarial:</strong> Cada <strong>S/ 1.00 Sol invertido</strong> en consejería amigable y prevención primaria ahorra al Estado peruano <strong>S/ 7.00 Soles</strong> en costos futuros.
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li><strong>S/ 3.20:</strong> Ahorro directo en servicios hospitalarios de alta complejidad y UCIN neonatal.</li>
+          <li><strong>S/ 2.50:</strong> Retorno tributario futuro por mayor nivel educativo y empleabilidad formal.</li>
+          <li><strong>S/ 1.30:</strong> Reducción de costos en programas de subsidios asistenciales.</li>
+        </ul>
       </div>
     `,
     contentEn: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        <div class="p-3.5 bg-brand-teal/15 border border-brand-teal/40 rounded-xl text-slate-100">
-          <p class="font-bold text-brand-teal mb-1">📖 Actuarial Study: UNFPA / PAHO / Ministry of Health of Peru (MINSA)</p>
-          <p class="text-xs">Budgetary Efficiency and Hospital Savings Analysis.</p>
-        </div>
-        <div class="space-y-2">
-          <p><strong>1. Direct Healthcare Savings (4.20 Soles):</strong> For every Sol invested in modern LARC contraception and youth counseling, MINSA saves 4.20 Soles in high-risk delivery hospitalizations and unsafe abortion care.</p>
-          <p><strong>2. Social Welfare Savings (1.80 Soles):</strong> Reduces saturation of conditional cash transfer programs (Juntos, Cuna Más), saving 1.80 Soles per timely served user.</p>
-          <p><strong>3. Future Tax Revenue Boost (1.00 Sol):</strong> Ensuring girls complete high school guarantees formal employment insertion, returning 1.00 Sol to the State via direct tax contributions.</p>
-        </div>
+        <p class="p-3 bg-brand-teal/10 border border-brand-teal/30 rounded-xl text-slate-200">
+          <strong>📈 Actuarial Cost-Effectiveness:</strong> Every <strong>1.00 Sol invested</strong> in youth counseling and primary prevention saves Peru <strong>7.00 Soles</strong> in future costs.
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li><strong>S/ 3.20:</strong> Direct savings in high-complexity hospital care and neonatal ICU.</li>
+          <li><strong>S/ 2.50:</strong> Future tax revenues from higher educational attainment and formal employment.</li>
+          <li><strong>S/ 1.30:</strong> Cost reduction in state welfare subsidy programs.</li>
+        </ul>
       </div>
     `,
     contentQu: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        <div class="p-3.5 bg-brand-teal/15 border border-brand-teal/40 rounded-xl text-slate-100">
-          <p class="font-bold text-brand-teal mb-1">📖 Pukyu: Actuarial Yachay UNFPA / OPS / MINSA Peru</p>
-          <p class="text-xs">Hospital Qullqi Ahorro Taripay.</p>
-        </div>
-        <div class="space-y-2">
-          <p><strong>1. Hampi Wasipi Ahorro (S/ 4.20):</strong> Sapa S/ 1.00 Sol LARC wan consejeríaman churamusqa S/ 4.20 Solestam hospital urgenciapi ahorran.</p>
-          <p><strong>2. Llaqta Yanapaypi Ahorro (S/ 1.80):</strong> Programas sociales (Juntos, Cuna Más) mana hunt'asqachu kanku S/ 1.80 Solestam ahorraspa.</p>
-          <p><strong>3. Hamuq Pacha Impuesto (S/ 1.00):</strong> Sipas yachay wasita tukuspan formal llank'aypi yaykun S/ 1.00 Sol adicional tributo kutichispa.</p>
-        </div>
+        <p class="p-3 bg-brand-teal/10 border border-brand-teal/30 rounded-xl text-slate-200">
+          <strong>📈 Qullqi Kutichiy Yachay:</strong> Sapa <strong>S/ 1.00 Sol churamusqa</strong> consejería amigable nisqaman <strong>S/ 7.00 Soles directotam ahorran</strong>.
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5">
+          <li><strong>S/ 3.20:</strong> Hospital UCIN ahorrasqa.</li>
+          <li><strong>S/ 2.50:</strong> Impuesto kutichiy yachaywasita tukusqan rayku.</li>
+          <li><strong>S/ 1.30:</strong> Subsidio gasto pisiyachiy.</li>
+        </ul>
       </div>
     `
   },
+
   p1: {
-    title: "Sustento del Cerebro de Datos (Punto 1): Clasificador Presupuestal Específico Programa 0002 MINSA",
-    titleEn: "Data Brain Sustenance (Point 1): Dedicated Budget Line for MINSA Program 0002",
-    titleQu: "Cerebro de Datos Yachay (Punto 1): Presupuesto Clasificador Específico PP 0002 MINSA",
+    title: "Sustento del Cerebro de Datos (Punto 1): Clasificador Presupuestal Protegido PP 0002 MINSA",
+    titleEn: "Data Brain Sustenance (Point 1): Protected Budget Line PP 0002 MINSA",
+    titleQu: "Cerebro de Datos Yachay (Punto 1): PP 0002 MINSA Presupuesto Amachasqa",
     content: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
         <div class="p-3.5 bg-brand-teal/15 border border-brand-teal/40 rounded-xl text-slate-100">
-          <p class="font-bold text-brand-teal mb-1">📖 Fuente Oficial: Matriz PLANEA 2025-2030 (Eje 3 Salud) / MINSA Perú / MEF</p>
-          <p class="text-xs">Evaluación del Programa Presupuestal 0002 (Salud Materno Neonatal).</p>
+          <p class="font-bold text-brand-teal mb-1">📖 Fuente Oficial: Matriz PLANEA 2025-2030 (Eje 3) / MINSA Perú / MEF</p>
+          <p class="text-xs">Diagnóstico Presupuestario del Programa Presupuestal 0002 (Salud Materno Neonatal).</p>
         </div>
         <div class="space-y-2">
-          <p><strong>1. Desviación del Gasto Preventivo:</strong> En el Perú, el Programa Presupuestal 0002 ejecuta el 85% de sus recursos en atenciones hospitalarias obstétricas de emergencia y solo un 15% en prevención primaria y consejería juvenil en centros del primer nivel (I-3 y I-4).</p>
-          <p><strong>2. Brecha de Consultorios Acreditados:</strong> Según la NTS N° 130-MINSA, solo 35 de cada 100 postas cuentan con consultorios amigables acreditados con personal exclusivo y disponibilidad de anticoncepción moderna de larga duración (LARC).</p>
-          <p><strong>3. Mecanismo Legislativo Solicitado:</strong> Crear un clasificador presupuestal protegido en la Ley de Presupuesto Público que impida la reasignación de fondos preventivos hacia otros rubros, asegurando la compra de LARC y la contratación de obstetras y psicólogos dedicados en postas rurales de todo el país.</p>
+          <p><strong>1. Desbalance del Gasto Público:</strong> En el Perú, el Programa Presupuestal 0002 destina el 85% de sus fondos a atenciones intrahospitalarias de urgencia obstétrica y solo el 15% a la prevención primaria y consejería amigable para adolescentes en el primer nivel de atención (I-3 y I-4).</p>
+          <p><strong>2. Brecha de Consultorios Acreditados:</strong> De acuerdo con la Norma NTS N° 130-MINSA, solo 35 de cada 100 centros del primer nivel cuentan con consultorios amigables acreditados con personal capacitado y disponibilidad continua de métodos anticonceptivos modernos reversibles de larga duración (LARC).</p>
+          <p><strong>3. Mecanismo Legislativo Solicitado:</strong> Crear un producto/clasificador de gasto protegido en la Ley de Presupuesto Público del Sector Público que impida la reasignación de fondos de prevención hacia otros rubros, asegurando la compra centralizada de insumos LARC y la contratación exclusiva de obstetras y psicólogos en postas rurales de todo el país.</p>
         </div>
       </div>
     `,
     contentEn: `
       <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
         <div class="p-3.5 bg-brand-teal/15 border border-brand-teal/40 rounded-xl text-slate-100">
-          <p class="font-bold text-brand-teal mb-1">📖 Official Source: PLANEA Matrix 2025-2030 (Health Pillar) / MINSA Peru / MEF</p>
-          <p class="text-xs">Evaluation of Budget Program 0002 (Maternal & Neonatal Health).</p>
+          <p class="font-bold text-brand-teal mb-1">📖 Official Source: PLANEA Matrix 2025-2030 (Pillar 3) / MINSA Peru / MEF</p>
+          <p class="text-xs">Budgetary Diagnosis of Budget Program 0002 (Maternal Neonatal Health).</p>
         </div>
         <div class="space-y-2">
           <p><strong>1. Public Spending Imbalance:</strong> In Peru, Budget Program 0002 allocates 85% of funds to hospital emergency obstetric care and only 15% to primary prevention and youth counseling at primary health levels (I-3 & I-4).</p>
@@ -1523,6 +1512,50 @@ function bindAllInteractiveEvents() {
   });
 }
 
+// --- 9. SMART RETRACTING SCROLL HEADER LOGIC ---
+let lastScrollY = window.scrollY || 0;
+let isHeaderTicking = false;
+
+function handleSmartScrollHeader() {
+  const header = document.querySelector('header');
+  if (!header) return;
+
+  const currentScrollY = window.scrollY || document.documentElement.scrollTop;
+
+  // At top of page: always show header
+  if (currentScrollY <= 20) {
+    header.classList.remove('header-hidden');
+    header.classList.add('header-visible');
+    lastScrollY = currentScrollY;
+    return;
+  }
+
+  // Scrolling DOWN (going down the webpage): retract header
+  if (currentScrollY > lastScrollY && currentScrollY > 60) {
+    header.classList.add('header-hidden');
+    header.classList.remove('header-visible');
+  }
+  // Scrolling UP (going up the webpage): reveal header
+  else if (currentScrollY < lastScrollY) {
+    header.classList.remove('header-hidden');
+    header.classList.add('header-visible');
+  }
+
+  lastScrollY = currentScrollY;
+}
+
+function initSmartScrollHeader() {
+  window.addEventListener('scroll', function() {
+    if (!isHeaderTicking) {
+      window.requestAnimationFrame(function() {
+        handleSmartScrollHeader();
+        isHeaderTicking = false;
+      });
+      isHeaderTicking = true;
+    }
+  }, { passive: true });
+}
+
 // Initial execution
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
@@ -1530,10 +1563,12 @@ if (document.readyState === 'loading') {
     applyLanguage();
     updateRegionalExplorer();
     bindAllInteractiveEvents();
+    initSmartScrollHeader();
   });
 } else {
   initTheme();
   applyLanguage();
   updateRegionalExplorer();
   bindAllInteractiveEvents();
+  initSmartScrollHeader();
 }
