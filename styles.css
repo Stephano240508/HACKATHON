@@ -4,6 +4,15 @@
    y Sistema Dinámico de Temas (Claro ☀️ / Oscuro 🌙)
    ========================================================================== */
 
+/* PREVENCIÓN DEFINITIVA DE FOUC Y MODALES FANTASMA (ZERO RENDER GLITCH) */
+.hidden,
+[hidden],
+#deep-modal.hidden,
+#sci-modal.hidden,
+#summary-modal.hidden {
+  display: none !important;
+}
+
 /* 1. FUENTES TIPOGRÁFICAS MODERNAS Y ACCESIBLES */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap');
 
