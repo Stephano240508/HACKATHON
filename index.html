@@ -528,21 +528,58 @@
 
                 <!-- Verified Data Display Panel -->
                 <div class="lg:col-span-8 space-y-4">
-                    <!-- Cards Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-                            <p id="exp-fertility-lbl" class="text-xs text-slate-400 font-bold uppercase tracking-wider">Fecundidad Adolescente:</p>
-                            <p id="out-fertility" class="text-sm font-black text-brand-accent font-heading mt-1">85.4 por 1,000 (Alta prevalencia)</p>
+                    <!-- Cards Grid (Dinamizadas con Gráficas y Medidores Estadísticos) -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Card 1: Fecundidad Adolescente -->
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 theme-card flex flex-col justify-between space-y-3">
+                            <div>
+                                <div class="flex items-center justify-between gap-1 mb-2">
+                                    <p id="exp-fertility-lbl" class="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Fecundidad Adolescente:</p>
+                                    <span id="out-fertility-risk" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-crimson/15 text-brand-crimson border border-brand-crimson/30">🔴 Riesgo Extremo</span>
+                                </div>
+                                <p id="out-fertility-num" class="text-2xl sm:text-3xl font-black text-brand-accent font-heading">85.4 <span class="text-xs font-normal text-slate-400">/ 1,000</span></p>
+                                
+                                <!-- Dynamic Progress Bar Meter -->
+                                <div class="w-full bg-slate-950 dark:bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800 my-2.5">
+                                    <div id="out-fertility-bar" class="bg-gradient-to-r from-amber-500 via-brand-accent to-brand-crimson h-full rounded-full transition-all duration-700" style="width: 85.4%;"></div>
+                                </div>
+                            </div>
+                            <p id="out-fertility" class="text-xs text-slate-300 font-medium leading-snug">85.4 por 1,000 (167% del promedio nacional)</p>
                         </div>
 
-                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-                            <p id="exp-coverage-lbl" class="text-xs text-slate-400 font-bold uppercase tracking-wider">Cobertura MINSA (I-3 / I-4):</p>
-                            <p id="out-coverage" class="text-sm font-black text-brand-teal font-heading mt-1">28% de centros acreditados</p>
+                        <!-- Card 2: Cobertura MINSA I-3 / I-4 -->
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 theme-card flex flex-col justify-between space-y-3">
+                            <div>
+                                <div class="flex items-center justify-between gap-1 mb-2">
+                                    <p id="exp-coverage-lbl" class="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Cobertura MINSA (I-3 / I-4):</p>
+                                    <span id="out-coverage-status" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-teal/15 text-brand-teal border border-brand-teal/30">⚠️ Brecha Crítica (72%)</span>
+                                </div>
+                                <p id="out-coverage-num" class="text-2xl sm:text-3xl font-black text-brand-teal font-heading">28% <span class="text-xs font-normal text-slate-400">Acreditados</span></p>
+                                
+                                <!-- Dynamic Dual Progress Bar Meter (Acreditado vs Brecha) -->
+                                <div class="w-full bg-slate-950 dark:bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800 my-2.5 flex">
+                                    <div id="out-coverage-bar-ok" class="bg-brand-teal h-full transition-all duration-700" style="width: 28%;" title="Centros Acreditados"></div>
+                                    <div id="out-coverage-bar-gap" class="bg-brand-crimson/80 h-full transition-all duration-700" style="width: 72%;" title="Brecha Sin Acreditar"></div>
+                                </div>
+                            </div>
+                            <p id="out-coverage" class="text-xs text-slate-300 font-medium leading-snug">28% Acreditados (72% sin consultorio amigable)</p>
                         </div>
 
-                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
-                            <p id="exp-inaction-lbl" class="text-xs text-slate-400 font-bold uppercase tracking-wider">Costo Estimado de Inacción:</p>
-                            <p id="out-inaction" class="text-sm font-black text-brand-crimson font-heading mt-1">S/ 140 Millones/año</p>
+                        <!-- Card 3: Costo Estimado de Inacción -->
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 theme-card flex flex-col justify-between space-y-3">
+                            <div>
+                                <div class="flex items-center justify-between gap-1 mb-2">
+                                    <p id="exp-inaction-lbl" class="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Costo Estimado Inacción:</p>
+                                    <span id="out-inaction-tag" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-crimson/15 text-brand-crimson border border-brand-crimson/30">📉 0.48% PBI Regional</span>
+                                </div>
+                                <p id="out-inaction-num" class="text-2xl sm:text-3xl font-black text-brand-crimson font-heading">S/ 140M <span class="text-xs font-normal text-slate-400">/ año</span></p>
+                                
+                                <!-- Dynamic Impact Gauge Bar -->
+                                <div class="w-full bg-slate-950 dark:bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800 my-2.5">
+                                    <div id="out-inaction-bar" class="bg-gradient-to-r from-red-500 to-brand-crimson h-full rounded-full transition-all duration-700" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                            <p id="out-inaction" class="text-xs text-slate-300 font-medium leading-snug">S/ 140 Millones/año (gastos médicos y deserción)</p>
                         </div>
                     </div>
 
