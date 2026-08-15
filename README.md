@@ -1,58 +1,49 @@
-# ⚡ Hackathon Hub - Global AI Innovation Platform 2026
+# 🇵🇪 Plataforma de Incidencia Política y Diagnóstico Ejecutivo - Prevención de Violencias y Embarazo Infantil en el Perú (PLANEA 2025-2030)
 
-Welcome to **Hackathon Hub**, a state-of-the-art web application and developer dashboard designed for hosting, competing in, and judging 48-hour AI and next-gen technology hackathons.
+[![Hackatón Creativa Regional](assets/hackathon_logo_official.png)](https://github.com/Stephano240508/HACKATHON)
 
-![Hackathon Hub](assets/ai_copilot.png)
-
----
-
-## 🌟 Key Features
-
-1. **Live 48-Hour Sprint Countdown & Hero Metrics**: Real-time ticking submission countdown clock, prize pool highlights, and live hacker activity counter.
-2. **Interactive Project Showcase**:
-   - Filter projects by track category (*AI & Agents*, *Web3 & Cyber*, *Developer Tools*, *Climate & Eco Tech*).
-   - Instant search by title, description, or tech stack.
-   - Interactive community upvoting system with local storage state persistence.
-   - Modal submission interface for participants to publish new hackathon entries.
-3. **Team Matchmaker Directory**:
-   - Browse squads looking for specific roles (*Frontend*, *Rust*, *AI Engineer*, *Pitch Presenter*).
-   - Post team recruitment listings and send 1-click join requests.
-4. **AI Hackathon Pitch & README Copilot**:
-   - Built-in generator tool producing formatted Markdown `README.md` files, executive summaries, architecture diagrams, and slide deck outlines.
-   - 1-click clipboard copy feature.
-5. **Real-Time Judging Matrix & Leaderboard**:
-   - Interactive multi-criteria scoring sliders (*Innovation 30%*, *Tech Complexity 30%*, *Design 20%*, *Real-World Impact 20%*).
-   - Live weighted total score calculator updating the global competition leaderboard standings.
-6. **Sprint Kanban Task Board**:
-   - Agile task management for teams (*To Do*, *In Progress*, *Completed*).
-   - 1-click status transitions and custom task addition.
+Documento ejecutivo y herramienta interactiva de incidencia política para **Congresistas, Ministros, MEF, MINSA y Gobernadores Regionales**, desarrollada en el marco de la **Hackatón Creativa Regional PLANEA 2025-2030**, avalada institucionalmente por:
+- **MINSA Perú** (Ministerio de Salud)
+- **ORAS-CONHU** (Organismo Andino de Salud - Convenio Hipólito Unanue)
+- **UNFPA** (Fondo de Población de las Naciones Unidas)
+- **OPS/OMS** (Organización Panamericana de la Salud / Organización Mundial de la Salud)
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## 🌟 Características Principales
 
-- **Structure**: Semantic HTML5 with modern dialog overlays.
-- **Styling**: Custom CSS3 design system with CSS custom properties, glassmorphism (`backdrop-filter: blur()`), custom glowing effects, and Google Fonts (*Outfit* & *Plus Jakarta Sans*).
-- **Logic**: Vanilla ES6+ JavaScript (`app.js`) with structured `AppState` class management and `localStorage` persistence.
-- **Icons**: FontAwesome 6.4 CDN.
+1. **Diagnóstico Técnico y Evidencia Científica**: Datos clínicos, epidemiológicos y de infraestructura sobre embarazo infantil (<15 años) e indemnidad sexual.
+2. **Análisis Costo-Beneficio & Retorno Social de Inversión (ROI 7:1)**: Sustento económico para el MEF demostrando un retorno de S/ 7.00 por cada Sol invertido en prevención, y estimación del costo de inacción (S/ 1,200 millones/año, 0.45% del PBI).
+3. **Explorador Interactivo de Indicadores Regionales**: Filtro dinámico por departamento (Loreto, Huancavelica, Cajamarca, Piura, Cusco, Lima) con tasas de fecundidad, cobertura de consultorios amigables NTS N° 130 y costo estimado de inacción.
+4. **Mitos vs. Evidencia Oficial (Fact-Checking)**: Módulo interactivo de contraargumentación con respaldo científico y jurídico (Código Penal Art. 173, Ley 30364).
+5. **Soporte Trilingüe Completo (i18n)**: Español 🇪🇸, English 🇺🇸 y Quechua 🇵🇪.
+6. **Sistema de Temas Accesibles (WCAG 2.1 AAA)**: Modo Oscuro 🌙 y Modo Claro ☀️ con alto contraste visual.
+7. **Ficha Técnica Ejecutiva y Compendio Científico**: Ventanas modales ejecutivas con sustento listo para comisiones presupuestales.
 
 ---
 
-## 🚀 How to Run Locally
+## 🛠️ Arquitectura Técnica
 
-1. Open `index.html` in any modern web browser directly, or serve it using a local development server:
+- **Estructura**: HTML5 Semántico accesible con atajos ARIA (`sr-only-focusable`).
+- **Diseño & Estilos**: Tailwind CSS + `styles.css` con sistema de variables CSS customizadas (`--brand-navy`, `--brand-teal`, `--brand-purple`, etc.) y reglas completas para Dark/Light mode.
+- **Lógica Frontend**: JavaScript ES6+ modular (`app.js`) con diccionario trilingüe completo, motor i18n, manejador de temas y base de datos de evidencia profunda (`deepEvidenceDatabase`).
+
+---
+
+## 🚀 Cómo Ejecutar Localmente
+
+1. Abrir `index.html` en cualquier navegador web moderno, o iniciar un servidor local:
    ```bash
    npx serve .
    ```
-2. Or use Python's built-in HTTP server:
+2. O usar el servidor HTTP integrado en Python:
    ```bash
    python -m http.server 8000
    ```
-3. Access the dashboard at `http://localhost:8000`.
+3. Acceder en `http://localhost:8000`.
 
 ---
 
-## 📁 Workspace Recommended Setting
+## 📁 Repositorio Oficial en GitHub
 
-Set this directory as your active workspace folder in Antigravity IDE:
-`C:\Users\LENOVO\.gemini\antigravity-ide\scratch\Hackathon`
+- **URL del Repositorio:** [https://github.com/Stephano240508/HACKATHON](https://github.com/Stephano240508/HACKATHON)

@@ -1,456 +1,826 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackathon Hub | AI Innovation Sprint 2026</title>
-  <meta name="description" content="State-of-the-art hackathon platform for discovering projects, team matchmaking, AI pitch copilot, and live judging leaderboard.">
-  <link rel="stylesheet" href="styles.css">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma de Incidencia Política y Diagnóstico Ejecutivo sobre Prevención de Violencias, Género y Embarazo Infantil en el Perú (PLANEA 2025-2030, MINSA, ORAS-CONHU, UNFPA, OPS/OMS).">
+    <title>Plataforma de Incidencia Política - Prevención de Violencias y Embarazo Infantil en el Perú (MINSA Perú / ORAS-CONHU / UNFPA / OPS)</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0B192C',
+                            dark: '#030712',
+                            teal: '#00B4D8',
+                            purple: '#6C4AB6',
+                            accent: '#FFB703',
+                            crimson: '#FF4D6D',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles (Con Guía de Marca Hackatón y Temas Claro/Oscuro) -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Preload Application Script -->
+    <script src="app.js"></script>
 </head>
-<body>
+<body class="bg-brand-navy text-slate-100 min-h-screen flex flex-col justify-between selection:bg-brand-teal selection:text-slate-950 relative">
 
-  <!-- Application Header -->
-  <header class="app-header">
-    <div class="header-container">
-      <a href="#" class="brand-logo">
-        <div class="brand-icon">
-          <i class="fa-solid fa-bolt"></i>
-        </div>
-        <span>Hackathon<span class="brand-highlight">Hub</span></span>
-      </a>
+    <!-- Enlace de Accesibilidad: Salto al Contenido Principal -->
+    <a href="#main-content" class="sr-only-focusable bg-brand-accent text-slate-950 px-4 py-2 font-bold rounded-b-xl z-50 fixed top-0 left-4">
+        Saltar al contenido principal
+    </a>
 
-      <div class="header-actions">
-        <div class="event-status-badge">
-          <span class="pulse-dot"></span>
-          <span>LIVE HACKATHON SPRINT</span>
+    <!-- Header Executive Navigation (Con Marca Hackatón y Conmutadores de Tema e Idioma) -->
+    <header class="sticky top-0 z-40 bg-brand-navy/95 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                
+                <!-- Branding Header con Logotipo Oficial de la Hackatón Creativa Regional -->
+                <div class="flex items-center space-x-3.5">
+                    
+                    <!-- Logotipo Oficial Sin Fondo y Sin Enmarcar -->
+                    <a href="#" aria-label="Logotipo Oficial Hackatón Creativa Regional" class="flex-shrink-0 hover:opacity-90 transition-opacity block">
+                        <img src="assets/hackathon_logo_official.png" alt="Logotipo Oficial Hackatón Creativa Regional - Prevención del Embarazo Adolescente en la Región Andina" class="h-10 sm:h-12 w-auto object-contain">
+                    </a>
+
+                    <div class="border-l border-slate-800 pl-3.5">
+                        <div class="flex items-center gap-2 mb-0.5">
+                            <span id="site-badge" class="text-[10px] font-extrabold uppercase tracking-wider text-brand-accent bg-brand-accent/10 px-2.5 py-0.5 rounded border border-brand-accent/20">
+                                Hackatón Creativa Regional • PLANEA 2025-2030 🇵🇪
+                            </span>
+                        </div>
+                        <h1 id="site-title" class="text-base sm:text-lg font-extrabold tracking-tight text-white font-heading">
+                            Plataforma de Incidencia Política: Prevención de Violencias y Embarazo Infantil
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- Nav Badges, Conmutador de Tema (Claro/Oscuro) y Switcher de Idiomas -->
+                <nav aria-label="Navegación Principal" class="flex flex-wrap items-center gap-2 text-xs">
+                    <div class="hidden xl:flex items-center gap-1.5 text-[11px] text-slate-400 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800">
+                        <span id="endorsed-label" class="font-medium text-slate-400">Con el aval de:</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 font-bold border border-slate-700">MINSA</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-bold border border-slate-700">ORAS-CONHU</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-purple-400 font-bold border border-slate-700">UNFPA</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-amber-400 font-bold border border-slate-700">OPS/OMS</span>
+                    </div>
+
+                    <!-- Botón Conmutador de Tema Claro / Oscuro (Dark / Light Theme Toggle) -->
+                    <button onclick="toggleTheme()" id="btn-theme-toggle" aria-label="Cambiar Tema Claro u Oscuro" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 transition-all shadow-sm cursor-pointer">
+                        ☀️ Modo Claro
+                    </button>
+
+                    <!-- Language Toggle Button -->
+                    <button onclick="toggleLanguage()" id="btn-lang-toggle" aria-label="Cambiar Idioma de la Página" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 transition-all shadow-sm cursor-pointer">
+                        English 🇺🇸
+                    </button>
+
+                    <a href="#diagnostico" id="nav-diagnosis" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium transition-all">Evidencia Técnica</a>
+                    <a href="#roi" id="nav-roi" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium transition-all">Retorno de Inversión</a>
+                    <a href="#graficas" id="nav-charts" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium transition-all">Gráficas</a>
+                    <a href="#mitos" id="nav-factcheck" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-brand-accent font-medium transition-all">Mitos vs Evidencia</a>
+                    <a href="#legal" id="nav-legal" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium transition-all">Marco Normativo</a>
+                    <a href="#explorador" id="nav-explorer" class="px-2.5 py-1.5 rounded-xl bg-brand-teal/20 hover:bg-brand-teal/30 text-brand-teal font-bold border border-brand-teal/30 transition-all">Indicadores Regionales</a>
+                    <a href="#manifiesto" id="nav-manifesto" class="px-2.5 py-1.5 rounded-xl bg-brand-purple hover:bg-opacity-90 text-white font-bold transition-all shadow-neon-purple">Manifiesto</a>
+                </nav>
+            </div>
         </div>
-        <button class="btn btn-primary" id="btn-open-submit">
-          <i class="fa-solid fa-plus"></i> Submit Project
-        </button>
-      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- Hero Executive Banner -->
+        <section aria-labelledby="hero-title" class="mb-12 relative rounded-3xl p-6 sm:p-10 overflow-hidden bg-gradient-to-br from-slate-900 via-brand-navy to-slate-950 border border-slate-800 shadow-2xl">
+            <div class="absolute -right-20 -top-20 w-96 h-96 bg-brand-teal/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+            <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-brand-purple/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-7">
+                    <span id="hero-badge" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-brand-teal/10 text-brand-teal border border-brand-teal/20 mb-4">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-teal animate-pulse" aria-hidden="true"></span> Hackatón Creativa Regional 2025-2030 • PLANEA / MINSA / ORAS-CONHU
+                    </span>
+                    
+                    <h2 id="hero-title" class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 leading-tight font-heading">
+                        El Costo de la Inacción: <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal via-brand-accent to-brand-purple">Prevención de Violencias y Embarazo Infantil en el Perú</span>
+                    </h2>
+                    
+                    <p id="hero-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                        Documento ejecutivo de política pública para <strong>Congresistas, Ministros, MEF y Gobernadores Regionales</strong>. Integra la evidencia oficial del Plan Andino para fundamentar la asignación presupuestal y alcanzar la meta de <strong>Cero Tolerancia en menores de 15 años</strong>.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#explorador" id="btn-hero-sim" class="px-5 py-3 rounded-xl bg-brand-teal text-slate-950 font-bold text-xs sm:text-sm hover:bg-brand-teal/90 hover:shadow-neon-teal transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass-chart text-slate-950" aria-hidden="true"></i> Ver Indicadores Regionales
+                        </a>
+                        <a href="#manifiesto" id="btn-hero-manifesto" class="px-5 py-3 rounded-xl bg-brand-purple text-white font-bold text-xs sm:text-sm hover:bg-opacity-90 hover:shadow-neon-purple transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-scroll" aria-hidden="true"></i> Ver Manifiesto Legislativo
+                        </a>
+                        <button onclick="openExecutiveSummarySheetModal()" id="btn-hero-summary" aria-label="Abrir Ficha Técnica Ejecutiva" class="px-5 py-3 rounded-xl bg-slate-800 text-brand-accent border border-brand-accent/40 font-bold text-xs sm:text-sm hover:bg-slate-700 transition-all flex items-center gap-2 shadow-neon-accent cursor-pointer">
+                            <i class="fa-solid fa-file-invoice" aria-hidden="true"></i> Ficha Técnica Ejecutiva
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Graphic Artwork Interactivo Sin Borde -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <button id="hero-card-trigger" onclick="openScientificEvidenceModal()" aria-label="Abrir Compendio de Evidencia Científica" class="relative w-full max-w-lg group text-left focus:outline-none cursor-pointer">
+                        <img src="assets/hero_graphic.png" alt="Ilustración oficial sobre tecnología, participación juvenil, igualdad de género y derechos en la Región Andina" class="w-full h-auto object-contain transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="mt-2 p-3.5 bg-slate-950/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-brand-accent/40 group-hover:border-brand-accent transition-all shadow-neon-accent">
+                            <div class="flex items-center justify-between mb-1">
+                                <p id="hero-card-title" class="text-xs font-bold text-brand-accent flex items-center gap-1.5">
+                                    <i class="fa-solid fa-book-bookmark animate-bounce" aria-hidden="true"></i> Incidencia Política en el Perú
+                                </p>
+                                <span id="hero-card-badge" class="px-2 py-0.5 rounded bg-brand-accent/20 text-brand-accent text-[9px] font-black uppercase">¡HAZ CLIC AQUÍ!</span>
+                            </div>
+                            <p id="hero-card-desc" class="text-[11px] text-slate-200 font-semibold leading-snug">
+                                👆 Haz clic aquí para abrir el Compendio de Evidencia Científica para el Congreso y el MEF
+                            </p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quantitative Metrics Counter Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-800/80">
+                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                    <p id="m1-val" class="text-xl sm:text-2xl font-black text-brand-teal font-heading">Cero Tolerancia</p>
+                    <p id="m1-lbl" class="text-[11px] text-slate-400 mt-1">Meta Nacional al 2030 en gestaciones de niñas &lt;15 años</p>
+                </div>
+                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                    <p id="m2-val" class="text-xl sm:text-2xl font-black text-brand-accent font-heading">S/ 7.00</p>
+                    <p id="m2-lbl" class="text-[11px] text-slate-400 mt-1">Retorno económico estimado por cada Sol asignado</p>
+                </div>
+                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                    <p id="m3-val" class="text-xl sm:text-2xl font-black text-brand-purple font-heading">51.2 x 1,000</p>
+                    <p id="m3-lbl" class="text-[11px] text-slate-400 mt-1">Tasa promedio de fecundidad en la región andina</p>
+                </div>
+                <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80">
+                    <p id="m4-val" class="text-xl sm:text-2xl font-black text-pink-400 font-heading">Ley 30364</p>
+                    <p id="m4-lbl" class="text-[11px] text-slate-400 mt-1">Marco legal para erradicar violencias de género</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 1: DIAGNÓSTICO TÉCNICO Y EVIDENCIA CIENTÍFICA EN EL PERÚ -->
+        <section id="diagnostico" aria-labelledby="s1-title" class="mb-16 scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/10 text-brand-teal text-lg border border-brand-teal/20 font-bold" aria-hidden="true">📊</span>
+                <div>
+                    <h3 id="s1-title" class="text-xl sm:text-2xl font-bold font-heading">1. Diagnóstico Técnico y Evidencia Científica en el Perú</h3>
+                    <p id="s1-subtitle" class="text-xs sm:text-sm text-slate-400">Evidencia clínica, social e infraestructura sobre la problemática nacional (PLANEA / MINSA / UNFPA).</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card glass-card-hover theme-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span id="c1-tag" class="px-2.5 py-1 rounded bg-brand-crimson/10 text-brand-crimson text-[10px] font-bold border border-brand-crimson/20 uppercase tracking-wider">EMERGENCIA DE SALUD PÚBLICA</span>
+                        <h4 id="c1-title" class="text-lg font-bold text-white mt-3 mb-2 font-heading">Embarazo Infantil (&lt;15 años) e Indemnidad Sexual</h4>
+                        <p id="c1-desc" class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Todo embarazo en niñas menores de 15 años deriva legal y médicamente de abuso sexual. Eleva quintuplicadamente la mortalidad materna y perpetúa la deserción escolar en el 80% de los casos.
+                        </p>
+                    </div>
+                    <button onclick="openDeepEvidenceModal('c1')" id="c1-btn" aria-label="Abrir evidencia profunda sobre embarazo infantil" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-brand-crimson hover:text-white text-brand-crimson text-xs font-bold transition-all border border-brand-crimson/30 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> ¿Por qué se afirma esto? Ver Evidencia Profunda
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card glass-card-hover theme-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span id="c2-tag" class="px-2.5 py-1 rounded bg-brand-purple/10 text-brand-purple text-[10px] font-bold border border-brand-purple/20 uppercase tracking-wider">BRECHAS DE EQUIDAD TERRITORIAL</span>
+                        <h4 id="c2-title" class="text-lg font-bold text-white mt-3 mb-2 font-heading">Violencia de Género y Disparidades Geográficas</h4>
+                        <p id="c2-desc" class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Las adolescentes rurales, andinas y amazónicas enfrentan un riesgo hasta tres veces superior de gestación no planificada por la ausencia de servicios de protección descentralizados.
+                        </p>
+                    </div>
+                    <button onclick="openDeepEvidenceModal('c2')" id="c2-btn" aria-label="Abrir análisis causal sobre disparidades territoriales" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-brand-purple hover:text-white text-brand-purple text-xs font-bold transition-all border border-brand-purple/30 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> ¿Por qué ocurre esto? Ver Análisis Causal
+                    </button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card glass-card-hover theme-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span id="c3-tag" class="px-2.5 py-1 rounded bg-brand-accent/10 text-brand-accent text-[10px] font-bold border border-brand-accent/20 uppercase tracking-wider">DÉFICIT DE INFRAESTRUCTURA</span>
+                        <h4 id="c3-title" class="text-lg font-bold text-white mt-3 mb-2 font-heading">Capacidad Operativa de Consultorios MINSA</h4>
+                        <p id="c3-desc" class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Solo 35 de cada 100 establecimientos de primer nivel (I-3 y I-4) poseen consultorios amigables acreditados bajo la Norma NTS N° 130 con personal capacitado y consejería confidencial.
+                        </p>
+                    </div>
+                    <button onclick="openDeepEvidenceModal('c3')" id="c3-btn" aria-label="Abrir evaluación sobre déficit en consultorios MINSA" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-brand-accent hover:text-slate-950 text-brand-accent text-xs font-bold transition-all border border-brand-accent/30 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> ¿Por qué existe este déficit? Ver Evaluación MINSA
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: RETORNO SOCIAL DE INVERSIÓN Y ANÁLISIS DE COSTO-BENEFICIO (ROI) -->
+        <section id="roi" aria-labelledby="s2-title" class="mb-16 scroll-mt-24 border border-slate-800 rounded-3xl bg-slate-950/80 p-6 sm:p-10 shadow-2xl">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-accent/10 text-brand-accent text-lg border border-brand-accent/20 font-bold" aria-hidden="true">📈</span>
+                <div>
+                    <h3 id="s2-title" class="text-xl sm:text-2xl font-bold font-heading">2. Análisis de Costo-Beneficio y Retorno de Inversión (ROI)</h3>
+                    <p id="s2-subtitle" class="text-xs sm:text-sm text-slate-400">Argumentario económico para la Comisión de Presupuesto del Congreso y el Ministerio de Economía y Finanzas (MEF).</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between theme-card">
+                    <div>
+                        <div id="roi1-badge" class="flex items-center gap-2 mb-3 text-brand-crimson text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> IMPACTO FISCAL NEGATIVO
+                        </div>
+                        <h4 id="roi1-title" class="text-lg font-bold text-white mb-2 font-heading">Costo de la Inacción Fiscal</h4>
+                        <p id="roi1-desc" class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Postergar la prevención le genera al Estado un costo superior a <strong>S/ 1,200 millones al año</strong> (0.45% del PBI) por atenciones médicas de urgencia, menor recaudación tributaria y gasto judicial.
+                        </p>
+                    </div>
+                    <button onclick="openDeepEvidenceModal('roi1')" id="roi1-btn" aria-label="Abrir desglose de costo de inacción fiscal" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-brand-crimson hover:text-white text-brand-crimson text-xs font-bold transition-all border border-brand-crimson/30 flex items-center justify-center gap-1.5 cursor-pointer">
+                        📊 Ver Desglose de Pérdida del 0.45% del PBI
+                    </button>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between theme-card">
+                    <div>
+                        <div id="roi2-badge" class="flex items-center gap-2 mb-3 text-brand-teal text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-piggy-bank" aria-hidden="true"></i> EFICIENCIA DEL GASTO PÚBLICO
+                        </div>
+                        <h4 id="roi2-title" class="text-lg font-bold text-white mb-2 font-heading">Retorno Social de Inversión (S/ 7:1)</h4>
+                        <p id="roi2-desc" class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Estudios del UNFPA y OPS certifican que cada Sol destinado a consejería juvenil y ESI genera un <strong>ahorro directo de S/ 7.00</strong> en servicios hospitalarios y programas de subsistencia.
+                        </p>
+                    </div>
+                    <button onclick="openDeepEvidenceModal('roi2')" id="roi2-btn" aria-label="Abrir desglose actuarial del ROI de inversión" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-brand-teal hover:text-slate-950 text-brand-teal text-xs font-bold transition-all border border-brand-teal/30 flex items-center justify-center gap-1.5 cursor-pointer">
+                        📊 Ver Desglose Actuarial del Ahorro por Sol
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: GRÁFICAS INFORMATIVAS DE IMPACTO Y DISPARIDADES DEL PERÚ -->
+        <section id="graficas" aria-labelledby="sc-title" class="mb-16 scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple text-lg border border-brand-purple/20 font-bold" aria-hidden="true">📊</span>
+                <div>
+                    <h3 id="sc-title" class="text-xl sm:text-2xl font-bold font-heading">3. Gráficas Informativas de Impacto y Disparidades del Perú</h3>
+                    <p id="sc-subtitle" class="text-xs sm:text-sm text-slate-400">Indicadores visuales cuantitativos derivados de la Encuesta ENDES y la Matriz PLANEA 2025-2030.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Gráfica 1 -->
+                <div class="lg:col-span-7 bg-slate-900/90 p-6 rounded-3xl border border-slate-800 shadow-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <h4 id="chart1-title" class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-chart-column text-brand-accent" aria-hidden="true"></i> Fecundidad Adolescente por Departamentos (por 1,000)
+                        </h4>
+                        <span id="chart1-sub" class="text-[10px] font-bold text-slate-400 uppercase">ENDES / PLANEA</span>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <div class="flex justify-between text-slate-300 font-bold mb-1">
+                                <span id="g1-lbl-1">Loreto (Amazonía)</span>
+                                <span class="text-brand-crimson font-mono">85.4 x 1,000</span>
+                            </div>
+                            <div class="w-full bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                <div class="bg-gradient-to-r from-brand-crimson to-red-500 h-full rounded-full" style="width: 85.4%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-slate-300 font-bold mb-1">
+                                <span id="g1-lbl-2">Huancavelica (Sierra Central)</span>
+                                <span class="text-brand-accent font-mono">68.2 x 1,000</span>
+                            </div>
+                            <div class="w-full bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
+                                <div class="bg-gradient-to-r from-brand-accent to-amber-500 h-full rounded-full" style="width: 68.2%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-slate-300 font-bold mb-1">
+                                <span id="g1-lbl-3">Cajamarca (Sierra Norte)</span>
+                                <span class="text-brand-accent font-mono">64.5 x 1,000</span>
+                            </div>
+                            <div class="w-full bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100">
+                                <div class="bg-gradient-to-r from-amber-500 to-yellow-500 h-full rounded-full" style="width: 64.5%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-slate-300 font-bold mb-1">
+                                <span id="g1-lbl-4">Promedio Región Andina (PLANEA)</span>
+                                <span class="text-brand-purple font-mono">51.2 x 1,000</span>
+                            </div>
+                            <div class="w-full bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800" role="progressbar" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100">
+                                <div class="bg-brand-purple h-full rounded-full" style="width: 51.2%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-slate-300 font-bold mb-1">
+                                <span id="g1-lbl-5">Lima Metropolitana y Callao</span>
+                                <span class="text-brand-teal font-mono">41.2 x 1,000</span>
+                            </div>
+                            <div class="w-full bg-slate-950 h-3 rounded-full overflow-hidden border border-slate-800" role="progressbar" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100">
+                                <div class="bg-brand-teal h-full rounded-full" style="width: 41.2%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráfica 2 -->
+                <div class="lg:col-span-5 bg-slate-900/90 p-6 rounded-3xl border border-slate-800 shadow-xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                            <h4 id="chart2-title" class="text-sm font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-chart-pie text-brand-teal" aria-hidden="true"></i> Cobertura de Servicios Amigables MINSA
+                            </h4>
+                            <span id="chart2-sub" class="text-[10px] font-bold text-slate-400 uppercase">Nivel I-3 / I-4</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <p id="g2-lbl-1" class="text-xs text-slate-400 font-bold uppercase">Establecimientos Acreditados</p>
+                                    <p class="text-2xl font-black text-brand-teal font-heading mt-0.5">35%</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-xl bg-brand-teal/10 text-brand-teal flex items-center justify-center font-bold text-lg" aria-hidden="true">
+                                    ✓
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <p id="g2-lbl-2" class="text-xs text-slate-400 font-bold uppercase">Déficit por Falta de Presupuesto</p>
+                                    <p class="text-2xl font-black text-brand-crimson font-heading mt-0.5">65%</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-xl bg-brand-crimson/10 text-brand-crimson flex items-center justify-center font-bold text-lg" aria-hidden="true">
+                                    !
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p id="chart2-note" class="text-[11px] text-slate-400 italic">
+                        *La brecha presupuestal del 65% impide la acreditación de consultorios amigables con atención confidencial en postas rurales del Perú.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: MITOS VS. EVIDENCIA CIENTÍFICA OFICIAL -->
+        <section id="mitos" aria-labelledby="sfc-title" class="mb-16 scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-accent/10 text-brand-accent text-lg border border-brand-accent/20 font-bold" aria-hidden="true">💡</span>
+                <div>
+                    <h3 id="sfc-title" class="text-xl sm:text-2xl font-bold font-heading">4. Mitos vs. Evidencia Científica Oficial (Fact-Checking para el Debate)</h3>
+                    <p id="sfc-subtitle" class="text-xs sm:text-sm text-slate-400">Argumentos respaldados por el MINSA, UNFPA y el Código Penal para responder cuestionamientos frecuentes.</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Fact Check 1 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-accent/30 transition-all">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-3 mb-3">
+                        <span id="fc-badge-myth-1" class="text-xs font-bold text-brand-crimson flex items-center gap-2">
+                            <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> MITO COMÚN DE DEBATE
+                        </span>
+                        <span id="fc-badge-ev-1" class="text-xs font-bold text-brand-teal flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check" aria-hidden="true"></i> EVIDENCIA CIENTÍFICA (MINSA / UNFPA)
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                        <div class="bg-slate-950 p-4 rounded-xl border border-brand-crimson/20 text-slate-300">
+                            <p id="fc1-myth-title" class="font-bold text-brand-crimson mb-1">❌ "La educación preventiva en colegios adelanta el inicio sexual."</p>
+                            <p id="fc1-myth-desc">Argumento frecuente usado para oponerse a programas de consejería e información en salud reproductiva.</p>
+                        </div>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-brand-teal/20 text-slate-200">
+                            <p id="fc1-ev-title" class="font-bold text-brand-teal mb-1">✓ Evidencia Demostrada:</p>
+                            <p id="fc1-ev-desc">Estudios del MINSA y UNFPA señalan que la consejería oportuna y la ESI <strong>retrasan el inicio de la vida sexual hasta en 1.5 años</strong> y reducen las infecciones de transmisión sexual y embarazos no planificados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fact Check 2 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-accent/30 transition-all">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-3 mb-3">
+                        <span id="fc-badge-myth-2" class="text-xs font-bold text-brand-crimson flex items-center gap-2">
+                            <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> MITO COMÚN DE DEBATE
+                        </span>
+                        <span id="fc-badge-ev-2" class="text-xs font-bold text-brand-teal flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check" aria-hidden="true"></i> EVIDENCIA CIENTÍFICA (MINSA / UNFPA)
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                        <div class="bg-slate-950 p-4 rounded-xl border border-brand-crimson/20 text-slate-300">
+                            <p id="fc2-myth-title" class="font-bold text-brand-crimson mb-1">❌ "Presupuestar en salud adolescente es un gasto sin retorno."</p>
+                            <p id="fc2-myth-desc">Cuestionamiento habitual en comisiones de presupuesto que consideran la prevención como un costo perdido.</p>
+                        </div>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-brand-teal/20 text-slate-200">
+                            <p id="fc2-ev-title" class="font-bold text-brand-teal mb-1">✓ Evidencia Demostrada:</p>
+                            <p id="fc2-ev-desc">Metodologías actuariales del MEF y UNFPA confirman un <strong>Retorno de Inversión (ROI) de S/ 7.00 por cada Sol invertido</strong> en prevención, ahorrando gasto directo en urgencias obstétricas y atenciones de alto riesgo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fact Check 3 -->
+                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand-accent/30 transition-all">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-3 mb-3">
+                        <span id="fc-badge-myth-3" class="text-xs font-bold text-brand-crimson flex items-center gap-2">
+                            <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> MITO COMÚN DE DEBATE
+                        </span>
+                        <span id="fc-badge-ev-3" class="text-xs font-bold text-brand-teal flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check" aria-hidden="true"></i> EVIDENCIA CIENTÍFICA (MINSA / UNFPA)
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                        <div class="bg-slate-950 p-4 rounded-xl border border-brand-crimson/20 text-slate-300">
+                            <p id="fc3-myth-title" class="font-bold text-brand-crimson mb-1">❌ "El embarazo en niñas menores de 15 años es solo un asunto familiar."</p>
+                            <p id="fc3-myth-desc">Postura que invisibiliza el abuso y trata la maternidad infantil como un hecho privado o biológico natural.</p>
+                        </div>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-brand-teal/20 text-slate-200">
+                            <p id="fc3-ev-title" class="font-bold text-brand-teal mb-1">✓ Evidencia Demostrada:</p>
+                            <p id="fc3-ev-desc">El Artículo 173 del Código Penal peruano establece la presunción legal absoluta de violencia sexual. Todo embarazo en una niña &lt;15 años es delito de violación y requiere persecución penal y protección estatal obligatoria.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: MARCO NORMATIVO PERUANO Y COMPROMISOS INTERNACIONALES -->
+        <section id="legal" aria-labelledby="s3-title" class="mb-16 scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple text-lg border border-brand-purple/20 font-bold" aria-hidden="true">⚖️</span>
+                <div>
+                    <h3 id="s3-title" class="text-xl sm:text-2xl font-bold font-heading">5. Marco Normativo Peruano y Compromisos Internacionales</h3>
+                    <p id="s3-subtitle" class="text-xs sm:text-sm text-slate-400">Bases jurídicas vigentes que sustentan las decisiones de política pública.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-brand-purple/40 transition-all theme-card">
+                    <span id="l1-tag" class="px-2.5 py-0.5 rounded bg-brand-purple/10 text-brand-purple text-[10px] font-bold uppercase tracking-wider">LEY NACIONAL</span>
+                    <h4 id="l1-title" class="text-base font-bold text-white mt-3 mb-2 font-heading">Ley 30364 del Perú</h4>
+                    <p id="l1-desc" class="text-xs text-slate-300 leading-relaxed">
+                        Garantiza partidas presupuestarias obligatorias para la protección frente a la violencia contra la mujer e integrantes del grupo familiar.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-brand-teal/40 transition-all theme-card">
+                    <span id="l2-tag" class="px-2.5 py-0.5 rounded bg-brand-teal/10 text-brand-teal text-[10px] font-bold uppercase tracking-wider">PROTECCIÓN DE LA NIÑEZ</span>
+                    <h4 id="l2-title" class="text-base font-bold text-white mt-3 mb-2 font-heading">Código de los Niños y Adolescentes</h4>
+                    <p id="l2-desc" class="text-xs text-slate-300 leading-relaxed">
+                        Protege el derecho inviolable a la salud integral, educación y resguardo ante cualquier forma de explotación o agresión sexual.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-brand-accent/40 transition-all theme-card">
+                    <span id="l3-tag" class="px-2.5 py-0.5 rounded bg-brand-accent/10 text-brand-accent text-[10px] font-bold uppercase tracking-wider">COMPROMISO REGIONAL</span>
+                    <h4 id="l3-title" class="text-base font-bold text-white mt-3 mb-2 font-heading">Plan Andino (PLANEA 2025-2030)</h4>
+                    <p id="l3-desc" class="text-xs text-slate-300 leading-relaxed">
+                        Compromiso gubernamental asumido ante ORAS-CONHU, UNFPA y OPS para erradicar la maternidad infantil al año 2030.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: EXPLORADOR INFORMATIVO DE INDICADORES REGIONALES -->
+        <section id="explorador" aria-labelledby="s4-title" class="scroll-mt-24 border border-slate-800 rounded-3xl bg-slate-950/90 backdrop-blur-md p-6 sm:p-10 mb-16 shadow-2xl">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/10 text-brand-teal text-lg border border-brand-teal/20 font-bold" aria-hidden="true">🗺️</span>
+                <div>
+                    <h3 id="s4-title" class="text-xl sm:text-2xl font-bold font-heading">6. Explorador Informativo de Indicadores Regionales del Perú</h3>
+                    <p id="s4-subtitle" class="text-xs sm:text-sm text-slate-400">Diagnóstico territorializado de tasas de fecundidad, acreditación de postas y costo de inacción.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Selector Panel -->
+                <div class="lg:col-span-4 space-y-4 bg-slate-900 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <label id="exp-lbl-region" for="exp-region" class="block text-xs font-bold text-brand-teal uppercase tracking-wider mb-2">Seleccionar Región del Perú</label>
+                        <select id="exp-region" onchange="updateRegionalExplorer()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-brand-teal">
+                            <option id="opt-loreto" value="Loreto" selected>Loreto (Amazonía)</option>
+                            <option id="opt-huancavelica" value="Huancavelica">Huancavelica (Sierra Central)</option>
+                            <option id="opt-cajamarca" value="Cajamarca">Cajamarca (Sierra Norte)</option>
+                            <option id="opt-piura" value="Piura">Piura (Costa Norte)</option>
+                            <option id="opt-cusco" value="Cusco">Cusco (Sierra Sur)</option>
+                            <option id="opt-lima" value="Lima">Lima Metropolitana y Callao</option>
+                        </select>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] text-slate-400 leading-relaxed">
+                        <p id="exp-disclaimer">ℹ️ <strong>Fuente de datos:</strong> PLANEA 2025-2030, MINSA Perú y Encuesta Demográfica y de Salud Familiar (ENDES).</p>
+                    </div>
+                </div>
+
+                <!-- Verified Data Display Panel -->
+                <div class="lg:col-span-8 space-y-4">
+                    <!-- Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+                            <p id="exp-fertility-lbl" class="text-xs text-slate-400 font-bold uppercase tracking-wider">Fecundidad Adolescente:</p>
+                            <p id="out-fertility" class="text-sm font-black text-brand-accent font-heading mt-1">85.4 por 1,000 (Alta prevalencia)</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+                            <p id="exp-coverage-lbl" class="text-xs text-slate-400 font-bold uppercase tracking-wider">Cobertura MINSA (I-3 / I-4):</p>
+                            <p id="out-coverage" class="text-sm font-black text-brand-teal font-heading mt-1">28% de centros acreditados</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+                            <p id="exp-inaction-lbl" class="text-xs text-slate-400 font-bold uppercase tracking-wider">Costo Estimado de Inacción:</p>
+                            <p id="out-inaction" class="text-sm font-black text-brand-crimson font-heading mt-1">S/ 140 Millones/año</p>
+                        </div>
+                    </div>
+
+                    <!-- Priority Description Card -->
+                    <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800">
+                        <p id="exp-priority-lbl" class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Prioridad Estratégica de Política Pública:</p>
+                        <p id="out-priority" class="text-xs text-slate-200 leading-relaxed font-medium">Reducción de brechas en Amazonía rural, atención de violencia sexual en comunidades nativas con enfoque intercultural y transporte para emergencias obstétricas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: MANIFIESTO LEGISLATIVO Y AGENDA DE POLÍTICA PÚBLICA (5 PUNTOS SUSTENTADOS) -->
+        <section id="manifiesto" aria-labelledby="s5-title" class="scroll-mt-24 border border-slate-800 rounded-3xl bg-slate-900/60 backdrop-blur-lg p-6 sm:p-10 mb-16 shadow-2xl">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/20 text-brand-purple text-lg border border-brand-purple/30 font-bold" aria-hidden="true">📜</span>
+                <div>
+                    <h3 id="s5-title" class="text-xl sm:text-2xl font-bold font-heading">7. Manifiesto Legislativo y Agenda de Política Pública (5 Puntos)</h3>
+                    <p id="s5-subtitle" class="text-xs sm:text-sm text-slate-400">Prioridades legislativas sustentadas con evidencia del Cerebro de Datos. Haz clic en cualquiera para ver el análisis técnico.</p>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Priority Item 1 -->
+                <div id="p1-card" onclick="openDeepEvidenceModal('p1')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-brand-teal/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
+                        <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
+                        <span id="m-item-1">1. Partida presupuestal específica en la Ley de Presupuesto Público para el Programa 0002 MINSA.</span>
+                    </div>
+                    <button id="p1-btn" onclick="openDeepEvidenceModal('p1')" aria-label="Ver sustento técnico del Cerebro de Datos para la prioridad 1" class="self-start sm:self-auto px-3.5 py-1.5 rounded-lg bg-brand-teal/15 hover:bg-brand-teal text-brand-teal hover:text-slate-950 text-[11px] font-bold border border-brand-teal/30 transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Ver Sustento Técnico
+                    </button>
+                </div>
+
+                <!-- Priority Item 2 -->
+                <div id="p2-card" onclick="openDeepEvidenceModal('p2')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-brand-crimson/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
+                        <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
+                        <span id="m-item-2">2. Protocolos de Cero Tolerancia y atención inmediata en el MIMP y comisarías.</span>
+                    </div>
+                    <button id="p2-btn" onclick="openDeepEvidenceModal('p2')" aria-label="Ver sustento técnico del Cerebro de Datos para la prioridad 2" class="self-start sm:self-auto px-3.5 py-1.5 rounded-lg bg-brand-crimson/15 hover:bg-brand-crimson text-brand-crimson hover:text-white text-[11px] font-bold border border-brand-crimson/30 transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Ver Sustento Técnico
+                    </button>
+                </div>
+
+                <!-- Priority Item 3 -->
+                <div id="p3-card" onclick="openDeepEvidenceModal('p3')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-brand-purple/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
+                        <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
+                        <span id="m-item-3">3. Implementación efectiva de Educación Sexual Integral (ESI) en el currículo escolar.</span>
+                    </div>
+                    <button id="p3-btn" onclick="openDeepEvidenceModal('p3')" aria-label="Ver sustento técnico del Cerebro de Datos para la prioridad 3" class="self-start sm:self-auto px-3.5 py-1.5 rounded-lg bg-brand-purple/15 hover:bg-brand-purple text-brand-purple hover:text-white text-[11px] font-bold border border-brand-purple/30 transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Ver Sustento Técnico
+                    </button>
+                </div>
+
+                <!-- Priority Item 4 -->
+                <div id="p4-card" onclick="openDeepEvidenceModal('p4')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-brand-accent/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
+                        <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
+                        <span id="m-item-4">4. Enfoque intercultural y bilingüe para la atención de adolescentes andinas y amazónicas.</span>
+                    </div>
+                    <button id="p4-btn" onclick="openDeepEvidenceModal('p4')" aria-label="Ver sustento técnico del Cerebro de Datos para la prioridad 4" class="self-start sm:self-auto px-3.5 py-1.5 rounded-lg bg-brand-accent/15 hover:bg-brand-accent text-brand-accent hover:text-slate-950 text-[11px] font-bold border border-brand-accent/30 transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Ver Sustento Técnico
+                    </button>
+                </div>
+
+                <!-- Priority Item 5 -->
+                <div id="p5-card" onclick="openDeepEvidenceModal('p5')" class="p-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 group shadow-sm cursor-pointer">
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200 font-semibold">
+                        <i class="fa-solid fa-check text-brand-teal text-base" aria-hidden="true"></i>
+                        <span id="m-item-5">5. Mecanismo de seguimiento interinstitucional liderado por la Defensoría del Pueblo.</span>
+                    </div>
+                    <button id="p5-btn" onclick="openDeepEvidenceModal('p5')" aria-label="Ver sustento técnico del Cerebro de Datos para la prioridad 5" class="self-start sm:self-auto px-3.5 py-1.5 rounded-lg bg-indigo-500/15 hover:bg-indigo-600 text-indigo-400 hover:text-white text-[11px] font-bold border border-indigo-500/30 transition-all flex items-center gap-1.5 shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Ver Sustento Técnico
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL 1: EVIDENCIA PROFUNDA DEL CEREBRO DE DATOS -->
+    <div id="deep-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[85vh] overflow-y-auto relative">
+            <div>
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                    <h4 id="modal-title" class="text-base sm:text-lg font-bold text-white font-heading pr-6">Sustento del Cerebro de Datos</h4>
+                    <button onclick="closeDeepEvidenceModal()" aria-label="Cerrar Modal de Evidencia" class="text-slate-400 hover:text-white text-lg font-bold p-1 cursor-pointer">
+                        ✕
+                    </button>
+                </div>
+
+                <div id="modal-body" class="py-2">
+                    <!-- Body injected by JS -->
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeDeepEvidenceModal()" id="modal-close-btn" class="px-5 py-2.5 rounded-xl bg-brand-teal text-slate-950 font-bold text-xs hover:bg-brand-teal/90 transition-all cursor-pointer">
+                    Entendido / Cerrar Sustento
+                </button>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- Main Container -->
-  <main class="main-wrapper">
-
-    <!-- Hero Section -->
-    <section class="hero-banner">
-      <div class="hero-grid">
-        <div>
-          <span class="hero-tag"><i class="fa-solid fa-microchip"></i> Global AI Hackathon 2026</span>
-          <h1 class="hero-title">Build the Future with AI & Next-Gen Tech</h1>
-          <p class="hero-description">
-            Join developers, designers, and AI engineers in a 48-hour sprint. Showcase your innovation, match with stellar teammates, generate pitch decks, and compete for $50,000 in prizes.
-          </p>
-          <div class="hero-metrics">
-            <div class="metric-item">
-              <span class="metric-value" id="stat-projects">124</span>
-              <span class="metric-label">Projects Submitted</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-value" id="stat-hacks">480+</span>
-              <span class="metric-label">Hackers Joined</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-value">$50,000</span>
-              <span class="metric-label">Prize Pool</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Live Countdown Card -->
-        <div class="countdown-card">
-          <div class="countdown-title">
-            <i class="fa-solid fa-stopwatch"></i> Submission Deadline Countdown
-          </div>
-          <div class="timer-digits">
-            <div class="timer-box">
-              <div class="timer-num" id="cd-hours">36</div>
-              <div class="timer-unit">Hours</div>
-            </div>
-            <div class="timer-box">
-              <div class="timer-num" id="cd-mins">42</div>
-              <div class="timer-unit">Mins</div>
-            </div>
-            <div class="timer-box">
-              <div class="timer-num" id="cd-secs">15</div>
-              <div class="timer-unit">Secs</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Navigation Tabs -->
-    <nav class="nav-tabs-wrapper">
-      <ul class="nav-tabs">
-        <li>
-          <button class="tab-btn active" data-tab="showcase">
-            <i class="fa-solid fa-grip"></i> Project Showcase
-          </button>
-        </li>
-        <li>
-          <button class="tab-btn" data-tab="teams">
-            <i class="fa-solid fa-users"></i> Team Matchmaker
-          </button>
-        </li>
-        <li>
-          <button class="tab-btn" data-tab="schedule">
-            <i class="fa-solid fa-calendar-days"></i> Schedule & Timeline
-          </button>
-        </li>
-        <li>
-          <button class="tab-btn" data-tab="ai-copilot">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> AI Pitch Copilot
-          </button>
-        </li>
-        <li>
-          <button class="tab-btn" data-tab="judging">
-            <i class="fa-solid fa-trophy"></i> Judging Leaderboard
-          </button>
-        </li>
-        <li>
-          <button class="tab-btn" data-tab="kanban">
-            <i class="fa-solid fa-list-check"></i> Sprint Kanban
-          </button>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- TAB 1: PROJECT SHOWCASE -->
-    <section class="tab-pane active" id="tab-showcase">
-      <div class="section-header">
-        <h2 class="section-title">Submitted Hackathon Projects</h2>
-        <div class="filter-bar">
-          <div class="search-input-wrap">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="project-search" class="search-input" placeholder="Search projects by tech, title...">
-          </div>
-          <button class="chip-filter active" data-category="all">All</button>
-          <button class="chip-filter" data-category="AI/ML">AI & Agents</button>
-          <button class="chip-filter" data-category="Web3">Web3 & Cyber</button>
-          <button class="chip-filter" data-category="DevTools">Developer Tools</button>
-          <button class="chip-filter" data-category="Eco">Climate & Eco</button>
-        </div>
-      </div>
-
-      <div class="cards-grid" id="projects-container">
-        <!-- Rendered dynamically by app.js -->
-      </div>
-    </section>
-
-    <!-- TAB 2: TEAM MATCHMAKER -->
-    <section class="tab-pane" id="tab-teams">
-      <div class="section-header">
-        <h2 class="section-title">Find Teammates & Join Squads</h2>
-        <button class="btn btn-secondary" id="btn-create-team">
-          <i class="fa-solid fa-user-plus"></i> Post Team Listing
-        </button>
-      </div>
-      <div class="cards-grid" id="teams-container">
-        <!-- Rendered dynamically -->
-      </div>
-    </section>
-
-    <!-- TAB 3: SCHEDULE -->
-    <section class="tab-pane" id="tab-schedule">
-      <div class="section-header">
-        <h2 class="section-title">48-Hour Sprint Schedule</h2>
-      </div>
-      <div class="hero-banner" style="padding:2rem;">
-        <div class="task-list">
-          <div class="kanban-task" style="display:flex; justify-content:space-between; align-items:center;">
+    <!-- MODAL 2: COMPENDIO DE EVIDENCIA CIENTÍFICA PARA EL CONGRESO Y MEF -->
+    <div id="sci-modal" role="dialog" aria-modal="true" aria-labelledby="sci-modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[85vh] overflow-y-auto relative">
             <div>
-              <span class="hero-tag" style="margin-bottom:0.4rem; padding:0.2rem 0.6rem; font-size:0.75rem;">DAY 1 - 09:00 AM</span>
-              <h3 style="font-family:var(--font-heading); margin-top:0.3rem;">Opening Keynote & Theme Reveal</h3>
-              <p style="color:var(--text-muted); font-size:0.9rem;">Kickoff ceremony with challenge tracks announcements and mentor introduction.</p>
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="p-2 rounded-lg bg-brand-accent/10 text-brand-accent" aria-hidden="true">
+                            <i class="fa-solid fa-book-bookmark text-lg"></i>
+                        </span>
+                        <h4 id="sci-modal-title" class="text-base sm:text-lg font-bold text-white font-heading">
+                            Compendio de Evidencia Científica para el Congreso y el MEF
+                        </h4>
+                    </div>
+                    <button onclick="closeScientificEvidenceModal()" aria-label="Cerrar Compendio Científico" class="text-slate-400 hover:text-white text-lg font-bold p-1 cursor-pointer">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="py-2 space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="sci-sec1-title" class="text-brand-accent font-bold text-sm mb-1">🏛️ 1. Evidencia Sanitaria y Obstétrica (MINSA / OPS / OMS)</h5>
+                        <p id="sci-sec1-desc" class="text-slate-300">
+                            Estudios epidemiológicos del MINSA demuestran que las niñas menores de 15 años que gestan presentan <strong>5 veces mayor riesgo de muerte materna</strong> y 3 veces mayor riesgo de partos prematuros con bajo peso al nacer. Toda gestación en este grupo etario deriva de abuso sexual de acuerdo al Art. 173 del Código Penal.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="sci-sec2-title" class="text-brand-teal font-bold text-sm mb-1">💰 2. Evidencia de Impacto Fiscal y Metodología MILENA (UNFPA)</h5>
+                        <p id="sci-sec2-desc" class="text-slate-300">
+                            La inacción estatal le cuesta al Perú <strong>S/ 1,200 Millones de Soles anuales</strong> (0.45% del PBI). El 40% de esta pérdida responde al menor nivel educativo alcanzado por las madres adolescentes, reduciendo su inserción en el mercado laboral formal e impactando la recaudación del IGV y Renta.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="sci-sec3-title" class="text-brand-purple font-bold text-sm mb-1">📈 3. Retorno Social de Inversión (ROI S/ 7:1)</h5>
+                        <p id="sci-sec3-desc" class="text-slate-300">
+                            Por cada S/ 1.00 Sol presupuestado en Educación Sexual Integral (ESI) y en Servicios Amigables del MINSA (Programa Presupuestal 0002), el Estado peruano ahorra S/ 7.00 en atención médica de emergencia y programas de subsistencia.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="sci-sec4-title" class="text-pink-400 font-bold text-sm mb-1">⚖️ 4. Cumplimiento de la Ley 30364 y Código de NNA</h5>
+                        <p id="sci-sec4-desc" class="text-slate-300">
+                            El Estado tiene la obligación constitucional de asignar partidas descentralizadas para Centros Emergencia Mujer (CEM) y postas de primer nivel (I-3 y I-4) para garantizar la protección inmediata de víctimas de violencias basadas en género.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <span class="event-status-badge"><i class="fa-solid fa-check"></i> Completed</span>
-          </div>
 
-          <div class="kanban-task" style="display:flex; justify-content:space-between; align-items:center;">
-            <div>
-              <span class="hero-tag" style="margin-bottom:0.4rem; padding:0.2rem 0.6rem; font-size:0.75rem; background:rgba(0,242,254,0.15); color:var(--accent-cyan);">DAY 1 - 02:00 PM</span>
-              <h3 style="font-family:var(--font-heading); margin-top:0.3rem;">AI Agent Architecture Workshop</h3>
-              <p style="color:var(--text-muted); font-size:0.9rem;">Hands-on session on building autonomous multi-agent workflows and API tools.</p>
+            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeScientificEvidenceModal()" id="sci-close-btn" class="px-5 py-2.5 rounded-xl bg-brand-accent text-slate-950 font-bold text-xs hover:bg-brand-accent/90 transition-all cursor-pointer">
+                    Cerrar Compendio Científico
+                </button>
             </div>
-            <span class="event-status-badge"><i class="fa-solid fa-circle-play"></i> Happening Now</span>
-          </div>
-
-          <div class="kanban-task" style="display:flex; justify-content:space-between; align-items:center;">
-            <div>
-              <span class="hero-tag" style="margin-bottom:0.4rem; padding:0.2rem 0.6rem; font-size:0.75rem; background:rgba(245,158,11,0.15); color:var(--accent-amber);">DAY 2 - 12:00 PM</span>
-              <h3 style="font-family:var(--font-heading); margin-top:0.3rem;">Mid-Way Mentor Check-in & Pitch Reviews</h3>
-              <p style="color:var(--text-muted); font-size:0.9rem;">Get 1-on-1 feedback from senior tech leads and VC judges.</p>
-            </div>
-            <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fa-solid fa-clock"></i> Upcoming</span>
-          </div>
-
-          <div class="kanban-task" style="display:flex; justify-content:space-between; align-items:center;">
-            <div>
-              <span class="hero-tag" style="margin-bottom:0.4rem; padding:0.2rem 0.6rem; font-size:0.75rem; background:rgba(236,72,153,0.15); color:var(--accent-magenta);">DAY 2 - 06:00 PM</span>
-              <h3 style="font-family:var(--font-heading); margin-top:0.3rem;">Final Code Freeze & Demo Submissions</h3>
-              <p style="color:var(--text-muted); font-size:0.9rem;">Project submission deadline. Repositories must be public and include video demo link.</p>
-            </div>
-            <span style="color:var(--text-muted); font-size:0.85rem;"><i class="fa-solid fa-flag-checkered"></i> Deadline</span>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- TAB 4: AI PITCH COPILOT -->
-    <section class="tab-pane" id="tab-ai-copilot">
-      <div class="section-header">
-        <h2 class="section-title">AI Hackathon Pitch & README Generator</h2>
-      </div>
-
-      <div class="ai-workspace">
-        <div class="ai-card">
-          <h3 style="font-family:var(--font-heading); margin-bottom:1rem;"><i class="fa-solid fa-wand-sparkles" style="color:var(--accent-purple);"></i> Generate Pitch Deck & README</h3>
-          
-          <div class="form-group">
-            <label class="form-label">Project Name</label>
-            <input type="text" id="ai-project-name" class="form-control" placeholder="e.g. NeuroFlow AI">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Category Track</label>
-            <select id="ai-project-category" class="form-control">
-              <option value="AI Multi-Agent Systems">AI Multi-Agent Systems</option>
-              <option value="Web3 & Decentralized Cyber">Web3 & Decentralized Cyber</option>
-              <option value="Developer Productivity Tools">Developer Productivity Tools</option>
-              <option value="Climate Tech & Sustainability">Climate Tech & Sustainability</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">What problem does your hack solve?</label>
-            <textarea id="ai-problem-statement" class="form-control" placeholder="Describe the core problem and how your technology solves it..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Key Features / Tech Stack</label>
-            <input type="text" id="ai-tech-stack" class="form-control" placeholder="e.g. React, Python, Gemini 1.5, Vector DB">
-          </div>
-
-          <button class="btn btn-accent" id="btn-generate-ai" style="width:100%;">
-            <i class="fa-solid fa-sparkles"></i> Generate Pitch Deck & Markdown README
-          </button>
-        </div>
-
-        <div class="ai-card" style="display:flex; flex-direction:column;">
-          <div class="output-header">
-            <h4 style="font-family:var(--font-heading);"><i class="fa-solid fa-code"></i> AI Generated README & Pitch Deck</h4>
-            <button class="btn btn-secondary" id="btn-copy-ai" style="padding:0.35rem 0.8rem; font-size:0.8rem;">
-              <i class="fa-solid fa-copy"></i> Copy Markdown
-            </button>
-          </div>
-          <div class="ai-output-box" id="ai-output-result">
-            // Click "Generate Pitch Deck" to create formatted markdown README, problem solution narrative, architecture overview, and slide deck outline!
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 5: JUDGING LEADERBOARD -->
-    <section class="tab-pane" id="tab-judging">
-      <div class="section-header">
-        <h2 class="section-title">Live Judging Matrix & Leaderboard</h2>
-      </div>
-
-      <div class="leaderboard-grid">
-        <div>
-          <table class="leaderboard-table">
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Project</th>
-                <th>Category</th>
-                <th>Score</th>
-                <th>Community Upvotes</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboard-body">
-              <!-- Rendered dynamically -->
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Judging Simulator Widget -->
-        <div class="judging-panel">
-          <h3 style="font-family:var(--font-heading); margin-bottom:1.2rem; font-size:1.2rem;">
-            <i class="fa-solid fa-gavel" style="color:var(--accent-cyan);"></i> Judge Scoring Calculator
-          </h3>
-
-          <div class="form-group">
-            <label class="form-label">Select Project to Grade</label>
-            <select id="judge-select-project" class="form-control">
-              <!-- Filled dynamically -->
-            </select>
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-label-val">
-              <span>Innovation & Originality (30%)</span>
-              <span id="val-innovation">8/10</span>
-            </div>
-            <input type="range" min="1" max="10" value="8" class="range-slider" id="score-innovation">
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-label-val">
-              <span>Technical Complexity (30%)</span>
-              <span id="val-tech">9/10</span>
-            </div>
-            <input type="range" min="1" max="10" value="9" class="range-slider" id="score-tech">
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-label-val">
-              <span>UI/UX & Design Polish (20%)</span>
-              <span id="val-design">9/10</span>
-            </div>
-            <input type="range" min="1" max="10" value="9" class="range-slider" id="score-design">
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-label-val">
-              <span>Real-World Impact (20%)</span>
-              <span id="val-impact">8/10</span>
-            </div>
-            <input type="range" min="1" max="10" value="8" class="range-slider" id="score-impact">
-          </div>
-
-          <div style="background:var(--bg-surface-elevated); padding:1rem; border-radius:var(--radius-md); text-align:center; margin-top:1rem; margin-bottom:1rem;">
-            <div style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">Calculated Weighted Score</div>
-            <div style="font-family:var(--font-heading); font-size:2.2rem; font-weight:800; color:var(--accent-cyan);" id="judge-total-calculated">8.6 / 10</div>
-          </div>
-
-          <button class="btn btn-primary" id="btn-submit-grade" style="width:100%;">
-            <i class="fa-solid fa-paper-plane"></i> Submit Judge Score
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 6: SPRINT KANBAN -->
-    <section class="tab-pane" id="tab-kanban">
-      <div class="section-header">
-        <h2 class="section-title">Sprint Task Board</h2>
-        <button class="btn btn-secondary" id="btn-add-kanban-task">
-          <i class="fa-solid fa-plus"></i> Add Sprint Task
-        </button>
-      </div>
-
-      <div class="kanban-board">
-        <div class="kanban-col">
-          <div class="col-header">
-            <div class="col-title"><i class="fa-solid fa-circle-dot" style="color:var(--text-dim);"></i> To Do</div>
-            <span class="event-status-badge" id="count-todo" style="padding:0.1rem 0.5rem; font-size:0.75rem;">2</span>
-          </div>
-          <div class="task-list" id="col-todo">
-            <!-- Kanban tasks -->
-          </div>
-        </div>
-
-        <div class="kanban-col">
-          <div class="col-header">
-            <div class="col-title"><i class="fa-solid fa-spinner" style="color:var(--accent-cyan);"></i> In Progress</div>
-            <span class="event-status-badge" id="count-in-progress" style="padding:0.1rem 0.5rem; font-size:0.75rem; color:var(--accent-cyan); border-color:var(--accent-cyan);">2</span>
-          </div>
-          <div class="task-list" id="col-in-progress">
-            <!-- Kanban tasks -->
-          </div>
-        </div>
-
-        <div class="kanban-col">
-          <div class="col-header">
-            <div class="col-title"><i class="fa-solid fa-circle-check" style="color:var(--accent-green);"></i> Completed</div>
-            <span class="event-status-badge" id="count-done" style="padding:0.1rem 0.5rem; font-size:0.75rem;">2</span>
-          </div>
-          <div class="task-list" id="col-done">
-            <!-- Kanban tasks -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- SUBMIT PROJECT MODAL -->
-  <div class="modal-overlay" id="modal-submit-project">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title"><i class="fa-solid fa-rocket" style="color:var(--accent-cyan);"></i> Submit Hackathon Project</h3>
-        <button class="modal-close" class="close-modal">&times;</button>
-      </div>
-      <form id="form-submit-project">
-        <div class="form-group">
-          <label class="form-label">Project Title</label>
-          <input type="text" id="sub-title" class="form-control" placeholder="e.g. Agentic Vision AI" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Category Track</label>
-          <select id="sub-category" class="form-control">
-            <option value="AI/ML">AI & Agents</option>
-            <option value="Web3">Web3 & Cyber</option>
-            <option value="DevTools">Developer Tools</option>
-            <option value="Eco">Climate & Eco Tech</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Short Tagline</label>
-          <input type="text" id="sub-description" class="form-control" placeholder="1-line summary of what your project does..." required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Tech Stack (comma separated)</label>
-          <input type="text" id="sub-tech" class="form-control" placeholder="React, Python, Gemini API, PyTorch">
-        </div>
-        <div class="form-group">
-          <label class="form-label">GitHub Repo / Demo URL</label>
-          <input type="url" id="sub-link" class="form-control" placeholder="https://github.com/user/hackathon-repo">
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">
-          <i class="fa-solid fa-paper-plane"></i> Submit to Hackathon Showcase
-        </button>
-      </form>
     </div>
-  </div>
 
-  <!-- ADD KANBAN TASK MODAL -->
-  <div class="modal-overlay" id="modal-add-task">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title"><i class="fa-solid fa-plus-circle" style="color:var(--accent-purple);"></i> Add Sprint Task</h3>
-        <button class="modal-close" class="close-modal">&times;</button>
-      </div>
-      <form id="form-add-task">
-        <div class="form-group">
-          <label class="form-label">Task Title</label>
-          <input type="text" id="task-title" class="form-control" placeholder="e.g. Connect Gemini API Endpoint" required>
+    <!-- MODAL 3: FICHA TÉCNICA EJECUTIVA PARA POLÍTICOS Y ASESORES -->
+    <div id="summary-modal" role="dialog" aria-modal="true" aria-label="Ficha Técnica Ejecutiva" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[85vh] overflow-y-auto relative">
+            <div>
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="p-2 rounded-lg bg-brand-teal/10 text-brand-teal" aria-hidden="true">
+                            <i class="fa-solid fa-file-invoice text-lg"></i>
+                        </span>
+                        <h4 id="sum-modal-title" class="text-base sm:text-lg font-bold text-white font-heading">
+                            Ficha Técnica Ejecutiva para Decisores Políticos
+                        </h4>
+                    </div>
+                    <button onclick="closeExecutiveSummarySheetModal()" aria-label="Cerrar Ficha Técnica Ejecutiva" class="text-slate-400 hover:text-white text-lg font-bold p-1 cursor-pointer">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="py-2 space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                    <div class="border-b border-slate-800 pb-3">
+                        <p id="sum-header-badge" class="text-brand-accent font-extrabold uppercase text-[11px] tracking-wider">RESUMEN EJECUTIVO PARA COMISIONES DEL CONGRESO Y EL MEF</p>
+                        <h5 id="sum-header-title" class="text-white font-bold text-base mt-1">Prevención de Violencias y Embarazo Infantil en el Perú (PLANEA 2025-2030)</h5>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                            <span id="sum-grid-1-lbl" class="font-bold text-brand-teal block">🎯 Meta Estratégica:</span>
+                            <span id="sum-grid-1-val">Cero gestaciones en niñas menores de 15 años al 2030 (Plan Andino PLANEA).</span>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                            <span id="sum-grid-2-lbl" class="font-bold text-brand-accent block">💰 Retorno Social (ROI):</span>
+                            <span id="sum-grid-2-val">S/ 7.00 ahorrados por cada Sol invertido en ESI y Servicios Amigables MINSA.</span>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                            <span id="sum-grid-3-lbl" class="font-bold text-brand-crimson block">⚠️ Costo de Inacción:</span>
+                            <span id="sum-grid-3-val">Más de S/ 1,200 Millones/año (0.45% del PBI nacional).</span>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                            <span id="sum-grid-4-lbl" class="font-bold text-brand-purple block">⚖️ Respaldo Legal:</span>
+                            <span id="sum-grid-4-val">Ley 30364, Código Penal Art. 173 y Código de NNA del Perú.</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p id="sum-demands-title" class="font-bold text-slate-200 mb-1">📌 Demandas Clave de Política Pública:</p>
+                        <ol class="list-decimal pl-5 space-y-1 text-slate-300">
+                            <li id="sum-dem-1">Línea presupuestal descentralizada en la Ley de Presupuesto Público para el Programa 0002 MINSA.</li>
+                            <li id="sum-dem-2">Acreditación del 100% de centros I-3 y I-4 en servicios amigables con consejería confidencial.</li>
+                            <li id="sum-dem-3">Garantía de Educación Sexual Integral (ESI) con enfoque intercultural en el Currículo Escolar.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeExecutiveSummarySheetModal()" id="sum-close-btn" class="px-5 py-2.5 rounded-xl bg-brand-teal text-slate-950 font-bold text-xs hover:bg-brand-teal/90 transition-all cursor-pointer">
+                    Entendido / Cerrar Ficha
+                </button>
+            </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Assignee / Owner</label>
-          <input type="text" id="task-assignee" class="form-control" placeholder="e.g. Alex (Backend)">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Status</label>
-          <select id="task-status" class="form-control">
-            <option value="todo">To Do</option>
-            <option value="in-progress">In Progress</option>
-            <option value="done">Completed</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1rem;">
-          Add Task
-        </button>
-      </form>
     </div>
-  </div>
 
-  <script src="app.js"></script>
+    <!-- Footer Institucional con Guía de Marca Hackatón Creativa Regional -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-10 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2.5 mb-3">
+                        <span class="w-3 h-3 rounded-full bg-brand-teal animate-ping" aria-hidden="true"></span>
+                        <h6 id="f-title" class="font-bold text-sm text-slate-200 font-heading">Incidencia Política Perú 🇵🇪 • PLANEA 2025-2030</h6>
+                    </div>
+                    <p id="f-text" class="text-slate-400 leading-relaxed mb-3">
+                        Observatorio de Incidencia Política sobre la Temática T2 del PLANEA 2025-2030. Desarrollado con la Guía de Marca Oficial de la Hackatón Creativa Regional y el aval institucional de MINSA Perú, ORAS-CONHU, UNFPA y OPS/OMS.
+                    </p>
+                </div>
+                <div>
+                    <h6 id="f-col2-title" class="font-bold text-sm text-slate-200 mb-3 uppercase tracking-wider text-xs font-heading">Marcos Éticos y Legales</h6>
+                    <ul class="space-y-2 text-slate-400">
+                        <li id="f-lic">• Licencia Atribución-No Comercial 4.0 (CC BY-NC 4.0)</li>
+                        <li id="f-safeguard">• Cumplimiento estricto de salvaguardas de NNA del Perú.</li>
+                        <li id="f-law-framework">• Marco Ley 30364 y Código de los Niños y Adolescentes del Perú.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 id="f-col3-title" class="font-bold text-sm text-slate-200 mb-3 uppercase tracking-wider text-xs font-heading">Entidades Avaladoras</h6>
+                    <div class="flex flex-wrap gap-2 text-slate-300 font-bold">
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-200">MINSA Perú</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-emerald-400">ORAS-CONHU</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-purple-400">UNFPA</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-amber-400">OPS / OMS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-900 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+                <p id="f-copy-rights">© 2026 Plataforma Regional del Plan Andino (PLANEA 2025-2030). Documento de Incidencia Política para el Perú.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 border border-brand-teal px-5 py-3 rounded-2xl shadow-neon-teal flex items-center gap-3 max-w-sm">
+        <i class="fa-solid fa-circle-check text-brand-teal text-lg" aria-hidden="true"></i>
+        <p class="text-xs text-white font-medium" id="toast-message">Copiado al portapapeles con éxito</p>
+    </div>
+
+    <!-- Application Script Footer Backup -->
+    <script src="app.js"></script>
 </body>
 </html>
