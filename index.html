@@ -52,13 +52,13 @@
 <body class="bg-brand-navy text-slate-100 min-h-screen flex flex-col justify-between selection:bg-brand-teal selection:text-slate-950 relative">
 
     <!-- Enlace de Accesibilidad: Salto al Contenido Principal -->
-    <a href="#main-content" class="sr-only-focusable bg-brand-accent text-slate-950 px-4 py-2 font-bold rounded-b-xl z-50 fixed top-0 left-4">
+    <a id="skip-to-main" href="#main-content" class="sr-only-focusable bg-brand-accent text-slate-950 px-4 py-2 font-bold rounded-b-xl z-50 fixed top-0 left-4">
         Saltar al contenido principal
     </a>
 
     <!-- Header Executive Navigation (Con Marca Hackatón y Conmutadores de Tema e Idioma) -->
     <header class="sticky top-0 z-40 bg-brand-navy/95 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 transform -translate-x-3 sm:-translate-x-6 lg:-translate-x-8">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 
                 <!-- Branding Header con Logotipo Oficial de la Hackatón Creativa Regional -->
@@ -81,25 +81,53 @@
                     </div>
                 </div>
 
-                <!-- Nav Badges, Conmutador de Tema (Claro/Oscuro) y Switcher de Idiomas (Sin Desplazamiento Ni Slider) -->
+                <!-- Nav Badges, Conmutador de Tema (Claro/Oscuro), Switcher de Idiomas y Selector de País -->
                 <nav aria-label="Navegación Principal" class="flex flex-nowrap items-center gap-2 text-xs flex-shrink-0">
-                    <div class="flex items-center gap-1 text-[11px] text-slate-400 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800 flex-shrink-0">
-                        <span id="endorsed-label" class="font-medium text-slate-400 whitespace-nowrap">Con el aval de:</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 font-bold border border-slate-700">MINSA</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-bold border border-slate-700">ORAS-CONHU</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-purple-400 font-bold border border-slate-700">UNFPA</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-amber-400 font-bold border border-slate-700">OPS/OMS</span>
+                    <div id="endorsed-container" class="flex items-center gap-2 text-[10px] sm:text-[11px] text-slate-400 bg-slate-900/90 px-2.5 py-1.5 rounded-xl border border-slate-800 flex-shrink-0">
+                        <span id="endorsed-label" class="font-medium text-slate-400 whitespace-nowrap text-[10px] leading-tight">Con el aval de:</span>
+                        <div class="flex flex-col gap-1">
+                            <div class="flex items-center gap-1">
+                                <span id="endorsed-badge-1" class="px-2 py-0.5 rounded bg-slate-800 text-slate-200 font-bold border border-slate-700 text-[10px] whitespace-nowrap leading-none">MINSA</span>
+                                <span id="endorsed-badge-2" class="px-2 py-0.5 rounded bg-slate-800 text-emerald-400 font-bold border border-slate-700 text-[10px] whitespace-nowrap leading-none">ORAS-CONHU</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span id="endorsed-badge-3" class="px-2 py-0.5 rounded bg-slate-800 text-purple-400 font-bold border border-slate-700 text-[10px] whitespace-nowrap leading-none">UNFPA</span>
+                                <span id="endorsed-badge-4" class="px-2 py-0.5 rounded bg-slate-800 text-amber-400 font-bold border border-slate-700 text-[10px] whitespace-nowrap leading-none">OPS/OMS</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Botón Conmutador de Tema Claro / Oscuro (Dark / Light Theme Toggle) -->
-                    <button onclick="toggleTheme()" id="btn-theme-toggle" aria-label="Cambiar Tema Claro u Oscuro" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap flex-shrink-0">
-                        ☀️ Modo Claro
+                    <!-- Botón Selector de País Andino -->
+                    <button onclick="openCountrySelectorModal()" id="btn-country-toggle" aria-label="Cambiar País de la Región Andina" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-brand-teal/40 font-bold text-slate-200 text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap flex items-center gap-1.5 flex-shrink-0">
+                        <span id="current-country-flag" class="text-sm">🇵🇪</span>
+                        <span id="current-country-name">Perú</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-brand-teal"></i>
                     </button>
 
-                    <!-- Language Toggle Button -->
-                    <button onclick="toggleLanguage()" id="btn-lang-toggle" aria-label="Cambiar Idioma de la Página" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap flex-shrink-0">
-                        English 🇺🇸
+                    <!-- Botón Conmutador de Tema Claro / Oscuro (Dark / Light Theme Toggle) -->
+                    <button onclick="toggleTheme()" id="btn-theme-toggle" aria-label="Cambiar Tema Claro u Oscuro" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-slate-200 text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap flex items-center gap-1.5 flex-shrink-0">
+                        <i class="fa-solid fa-sun text-amber-400" aria-hidden="true"></i> Modo Claro
                     </button>
+
+                    <!-- Selector Desplegable de Idiomas (Accesibilidad Lingüística Regional) -->
+                    <div id="lang-dropdown-container" class="relative flex items-center flex-shrink-0">
+                        <button type="button" onclick="toggleLanguageDropdown(event)" id="btn-lang-dropdown" aria-haspopup="listbox" aria-expanded="false" aria-label="Seleccionar Idioma de la Plataforma" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-brand-teal/40 font-bold text-slate-200 text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap flex items-center gap-2 flex-shrink-0 outline-none focus:outline-none focus:ring-0 select-none">
+                            <i class="fa-solid fa-language text-brand-teal text-sm flex-shrink-0" aria-hidden="true"></i>
+                            <span id="current-lang-name">Español</span>
+                            <i id="lang-chevron" class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200" aria-hidden="true"></i>
+                        </button>
+
+                        <!-- Hidden select element for DOM fallback & test compatibility -->
+                        <select id="lang-select" onchange="changeLanguage(this.value)" aria-label="Seleccionar Idioma" class="sr-only hidden" tabindex="-1">
+                            <option value="en">English</option>
+                            <option value="es" selected>Español</option>
+                        </select>
+
+                        <!-- Fluid Custom Dropdown Menu with Glassmorphic Aesthetic & Rounded Corners -->
+                        <div id="lang-custom-menu" role="listbox" aria-label="Lista de Idiomas Disponibles" class="hidden absolute right-0 top-full mt-2 w-64 max-h-[380px] overflow-y-auto rounded-2xl bg-slate-900/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 shadow-2xl p-2 z-50 transition-all duration-200 transform opacity-0 scale-95 -translate-y-2 origin-top-right custom-scrollbar">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -107,6 +135,55 @@
 
     <!-- Main Content Area -->
     <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- MARCOS REGIONALES ANDINOS TRANSVERSALES (SIEMPRE PRESENTES) -->
+        <section aria-label="Marcos Regionales Andinos Transversales" id="sec-frameworks" class="mb-10 bg-transparent border-0 shadow-none">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <!-- A. Marco Matriz PLANEA 2025-2030 (ORAS-CONHU) -->
+                <div id="card-planea-framework" class="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-slate-900/90 to-brand-navy/90 border border-brand-teal/40 hover:border-brand-teal transition-all shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span id="planea-badge-txt" class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-brand-teal/20 text-brand-teal border border-brand-teal/40 flex items-center gap-1.5">
+                                <i class="fa-solid fa-earth-americas animate-spin-slow"></i> A. MARCO MATRIZ PLANEA 2025-2030
+                            </span>
+                            <span id="planea-tag" class="text-[10px] text-slate-400 font-mono">ORAS-CONHU</span>
+                        </div>
+                        <h3 id="planea-card-title" class="text-base sm:text-lg font-black text-white font-heading mb-2">
+                            Plan Andino de Prevención y Reducción del Embarazo en Adolescentes
+                        </h3>
+                        <p id="planea-card-desc" class="text-xs text-slate-300 leading-relaxed mb-4">
+                            Matriz multisectorial de metas andinas aprobada por los Ministerios de Salud de Bolivia, Chile, Colombia, Ecuador, Perú y Venezuela. Establece el compromiso de <strong>Cero Tolerancia en menores de 15 años</strong> y metas de reducción de la fecundidad al 2030.
+                        </p>
+                    </div>
+                    <button onclick="openPlaneaModal()" id="btn-planea-framework" class="w-full py-2.5 px-4 rounded-xl bg-brand-teal/20 hover:bg-brand-teal text-brand-teal hover:text-slate-950 font-bold text-xs border border-brand-teal/40 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm">
+                        <i class="fa-solid fa-book-open"></i> Ver Metas del Marco Matriz PLANEA (6 Países)
+                    </button>
+                </div>
+
+                <!-- B. Marco Regional (ORAS, UNFPA, OPS, UNICEF) -->
+                <div id="card-regional-framework" class="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-slate-900/90 to-purple-950/40 border border-brand-purple/40 hover:border-brand-purple transition-all shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span id="regional-badge-txt" class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-brand-purple/20 text-purple-300 border border-brand-purple/40 flex items-center gap-1.5">
+                                <i class="fa-solid fa-hands-holding-child"></i> B. MARCO REGIONAL (ORAS, UNFPA, OPS, UNICEF)
+                            </span>
+                            <span id="regional-tag" class="text-[10px] text-slate-400 font-mono">COOPERACIÓN INTERNACIONAL</span>
+                        </div>
+                        <h3 id="regional-card-title" class="text-base sm:text-lg font-black text-white font-heading mb-2">
+                            Evidencia Actuarial y Estándares Globales AA-HA!
+                        </h3>
+                        <p id="regional-card-desc" class="text-xs text-slate-300 leading-relaxed mb-4">
+                            Consolidado de los 15 estudios MILENA del UNFPA (pérdida agregada de <strong>USD 13,538 Millones</strong> en América Latina), Guía Global de Acción Acelerada (AA-HA!) y herramientas para atención de víctimas de violencia sexual.
+                        </p>
+                    </div>
+                    <button onclick="openRegionalFrameworkModal()" id="btn-regional-framework" class="w-full py-2.5 px-4 rounded-xl bg-brand-purple/20 hover:bg-brand-purple text-purple-300 hover:text-white font-bold text-xs border border-brand-purple/40 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm">
+                        <i class="fa-solid fa-chart-line"></i> Ver Evidencia y Estándares Regionales
+                    </button>
+                </div>
+
+            </div>
+        </section>
 
         <!-- Hero Executive Banner -->
         <section aria-labelledby="hero-title" class="mb-12 relative rounded-3xl p-6 sm:p-10 overflow-hidden bg-gradient-to-br from-slate-900 via-brand-navy to-slate-950 border border-slate-800 shadow-2xl">
@@ -151,8 +228,8 @@
                                 </p>
                                 <span id="hero-card-badge" class="px-2 py-0.5 rounded bg-brand-accent/20 text-brand-accent text-[9px] font-black uppercase">¡HAZ CLIC AQUÍ!</span>
                             </div>
-                            <p id="hero-card-desc" class="text-[11px] text-slate-200 font-semibold leading-snug">
-                                👆 Haz clic aquí para abrir el Compendio de Evidencia Científica para el Congreso y el MEF
+                            <p id="hero-card-desc" class="text-[11px] text-slate-200 font-semibold leading-snug flex items-center gap-1.5">
+                                <i class="fa-solid fa-hand-pointer text-brand-accent animate-pulse" aria-hidden="true"></i> Haz clic aquí para abrir el Compendio de Evidencia Científica para el Congreso y el MEF
                             </p>
                         </div>
                     </button>
@@ -183,7 +260,9 @@
         <!-- SECCIÓN 1: DIAGNÓSTICO TÉCNICO Y EVIDENCIA CIENTÍFICA EN EL PERÚ -->
         <section id="diagnostico" aria-labelledby="s1-title" class="mb-16 scroll-mt-24">
             <div class="flex items-center gap-3 mb-6">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/10 text-brand-teal text-lg border border-brand-teal/20 font-bold" aria-hidden="true">📊</span>
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/10 text-brand-teal text-lg border border-brand-teal/20 font-bold" aria-hidden="true">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </span>
                 <div>
                     <h3 id="s1-title" class="text-xl sm:text-2xl font-bold font-heading">1. Diagnóstico Técnico y Evidencia Científica en el Perú</h3>
                     <p id="s1-subtitle" class="text-xs sm:text-sm text-slate-400">Evidencia clínica, social e infraestructura sobre la problemática nacional (PLANEA / MINSA / UNFPA).</p>
@@ -238,7 +317,9 @@
         <!-- SECCIÓN 2: RETORNO SOCIAL DE INVERSIÓN Y ANÁLISIS DE COSTO-BENEFICIO (ROI) -->
         <section id="roi" aria-labelledby="s2-title" class="mb-16 scroll-mt-24 border border-slate-800 rounded-3xl bg-slate-950/80 p-6 sm:p-10 shadow-2xl">
             <div class="flex items-center gap-3 mb-6">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-accent/10 text-brand-accent text-lg border border-brand-accent/20 font-bold" aria-hidden="true">📈</span>
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-accent/10 text-brand-accent text-lg border border-brand-accent/20 font-bold" aria-hidden="true">
+                    <i class="fa-solid fa-chart-line"></i>
+                </span>
                 <div>
                     <h3 id="s2-title" class="text-xl sm:text-2xl font-bold font-heading">2. Análisis de Costo-Beneficio y Retorno de Inversión (ROI)</h3>
                     <p id="s2-subtitle" class="text-xs sm:text-sm text-slate-400">Argumentario económico para la Comisión de Presupuesto del Congreso y el Ministerio de Economía y Finanzas (MEF).</p>
@@ -257,7 +338,7 @@
                         </p>
                     </div>
                     <button onclick="openDeepEvidenceModal('roi1')" id="roi1-btn" aria-label="Abrir desglose de costo de inacción fiscal" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-brand-crimson hover:text-white text-brand-crimson text-xs font-bold transition-all border border-brand-crimson/30 flex items-center justify-center gap-1.5 cursor-pointer">
-                        📊 Ver Desglose de Pérdida del 0.45% del PBI
+                        <i class="fa-solid fa-chart-column mr-1" aria-hidden="true"></i> Ver Desglose de Pérdida del 0.45% del PBI
                     </button>
                 </div>
 
@@ -272,7 +353,7 @@
                         </p>
                     </div>
                     <button onclick="openDeepEvidenceModal('roi2')" id="roi2-btn" aria-label="Abrir desglose actuarial del ROI de inversión" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-brand-teal hover:text-slate-950 text-brand-teal text-xs font-bold transition-all border border-brand-teal/30 flex items-center justify-center gap-1.5 cursor-pointer">
-                        📊 Ver Desglose Actuarial del Ahorro por Sol
+                        <i class="fa-solid fa-calculator mr-1" aria-hidden="true"></i> Ver Desglose Actuarial del Ahorro por Sol
                     </button>
                 </div>
             </div>
@@ -281,7 +362,9 @@
         <!-- SECCIÓN 3: GRÁFICAS INFORMATIVAS DE IMPACTO Y DISPARIDADES DEL PERÚ -->
         <section id="graficas" aria-labelledby="sc-title" class="mb-16 scroll-mt-24">
             <div class="flex items-center gap-3 mb-6">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple text-lg border border-brand-purple/20 font-bold" aria-hidden="true">📊</span>
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple text-lg border border-brand-purple/20 font-bold" aria-hidden="true">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </span>
                 <div>
                     <h3 id="sc-title" class="text-xl sm:text-2xl font-bold font-heading">3. Gráficas Informativas de Impacto y Disparidades del Perú</h3>
                     <p id="sc-subtitle" class="text-xs sm:text-sm text-slate-400">Indicadores visuales cuantitativos derivados de la Encuesta ENDES y la Matriz PLANEA 2025-2030.</p>
@@ -394,7 +477,9 @@
         <!-- SECCIÓN 4: MITOS VS. EVIDENCIA CIENTÍFICA OFICIAL -->
         <section id="mitos" aria-labelledby="sfc-title" class="mb-16 scroll-mt-24">
             <div class="flex items-center gap-3 mb-6">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-accent/10 text-brand-accent text-lg border border-brand-accent/20 font-bold" aria-hidden="true">💡</span>
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-accent/10 text-brand-accent text-lg border border-brand-accent/20 font-bold" aria-hidden="true">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </span>
                 <div>
                     <h3 id="sfc-title" class="text-xl sm:text-2xl font-bold font-heading">4. Mitos vs. Evidencia Científica Oficial (Fact-Checking para el Debate)</h3>
                     <p id="sfc-subtitle" class="text-xs sm:text-sm text-slate-400">Argumentos respaldados por el MINSA, UNFPA y el Código Penal para responder cuestionamientos frecuentes.</p>
@@ -414,11 +499,11 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
                         <div class="bg-slate-950 p-4 rounded-xl border border-brand-crimson/20 text-slate-300">
-                            <p id="fc1-myth-title" class="font-bold text-brand-crimson mb-1">❌ "La educación preventiva en colegios adelanta el inicio sexual."</p>
+                            <p id="fc1-myth-title" class="font-bold text-brand-crimson mb-1 flex items-center gap-1.5"><i class="fa-solid fa-circle-xmark text-brand-crimson" aria-hidden="true"></i> "La educación preventiva en colegios adelanta el inicio sexual."</p>
                             <p id="fc1-myth-desc">Argumento frecuente usado para oponerse a programas de consejería e información en salud reproductiva.</p>
                         </div>
                         <div class="bg-slate-950 p-4 rounded-xl border border-brand-teal/20 text-slate-200">
-                            <p id="fc1-ev-title" class="font-bold text-brand-teal mb-1">✓ Evidencia Demostrada:</p>
+                            <p id="fc1-ev-title" class="font-bold text-brand-teal mb-1 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-brand-teal" aria-hidden="true"></i> Evidencia Demostrada:</p>
                             <p id="fc1-ev-desc">Estudios del MINSA y UNFPA señalan que la consejería oportuna y la ESI <strong>retrasan el inicio de la vida sexual hasta en 1.5 años</strong> y reducen las infecciones de transmisión sexual y embarazos no planificados.</p>
                         </div>
                     </div>
@@ -436,11 +521,11 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
                         <div class="bg-slate-950 p-4 rounded-xl border border-brand-crimson/20 text-slate-300">
-                            <p id="fc2-myth-title" class="font-bold text-brand-crimson mb-1">❌ "Presupuestar en salud adolescente es un gasto sin retorno."</p>
+                            <p id="fc2-myth-title" class="font-bold text-brand-crimson mb-1 flex items-center gap-1.5"><i class="fa-solid fa-circle-xmark text-brand-crimson" aria-hidden="true"></i> "Presupuestar en salud adolescente es un gasto sin retorno."</p>
                             <p id="fc2-myth-desc">Cuestionamiento habitual en comisiones de presupuesto que consideran la prevención como un costo perdido.</p>
                         </div>
                         <div class="bg-slate-950 p-4 rounded-xl border border-brand-teal/20 text-slate-200">
-                            <p id="fc2-ev-title" class="font-bold text-brand-teal mb-1">✓ Evidencia Demostrada:</p>
+                            <p id="fc2-ev-title" class="font-bold text-brand-teal mb-1 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-brand-teal" aria-hidden="true"></i> Evidencia Demostrada:</p>
                             <p id="fc2-ev-desc">Metodologías actuariales del MEF y UNFPA confirman un <strong>Retorno de Inversión (ROI) de S/ 7.00 por cada Sol invertido</strong> en prevención, ahorrando gasto directo en urgencias obstétricas y atenciones de alto riesgo.</p>
                         </div>
                     </div>
@@ -458,11 +543,11 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
                         <div class="bg-slate-950 p-4 rounded-xl border border-brand-crimson/20 text-slate-300">
-                            <p id="fc3-myth-title" class="font-bold text-brand-crimson mb-1">❌ "El embarazo en niñas menores de 15 años es solo un asunto familiar."</p>
+                            <p id="fc3-myth-title" class="font-bold text-brand-crimson mb-1 flex items-center gap-1.5"><i class="fa-solid fa-circle-xmark text-brand-crimson" aria-hidden="true"></i> "El embarazo en niñas menores de 15 años es solo un asunto familiar."</p>
                             <p id="fc3-myth-desc">Postura que invisibiliza el abuso y trata la maternidad infantil como un hecho privado o biológico natural.</p>
                         </div>
                         <div class="bg-slate-950 p-4 rounded-xl border border-brand-teal/20 text-slate-200">
-                            <p id="fc3-ev-title" class="font-bold text-brand-teal mb-1">✓ Evidencia Demostrada:</p>
+                            <p id="fc3-ev-title" class="font-bold text-brand-teal mb-1 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-brand-teal" aria-hidden="true"></i> Evidencia Demostrada:</p>
                             <p id="fc3-ev-desc">El Artículo 173 del Código Penal peruano establece la presunción legal absoluta de violencia sexual. Todo embarazo en una niña &lt;15 años es delito de violación y requiere persecución penal y protección estatal obligatoria.</p>
                         </div>
                     </div>
@@ -473,7 +558,9 @@
         <!-- SECCIÓN 5: MARCO NORMATIVO PERUANO Y COMPROMISOS INTERNACIONALES -->
         <section id="legal" aria-labelledby="s3-title" class="mb-16 scroll-mt-24">
             <div class="flex items-center gap-3 mb-6">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple text-lg border border-brand-purple/20 font-bold" aria-hidden="true">⚖️</span>
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple text-lg border border-brand-purple/20 font-bold" aria-hidden="true">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </span>
                 <div>
                     <h3 id="s3-title" class="text-xl sm:text-2xl font-bold font-heading">5. Marco Normativo Peruano y Compromisos Internacionales</h3>
                     <p id="s3-subtitle" class="text-xs sm:text-sm text-slate-400">Bases jurídicas vigentes que sustentan las decisiones de política pública.</p>
@@ -510,7 +597,9 @@
         <!-- SECCIÓN 6: EXPLORADOR INFORMATIVO DE INDICADORES REGIONALES -->
         <section id="explorador" aria-labelledby="s4-title" class="scroll-mt-24 border border-slate-800 rounded-3xl bg-slate-950/90 backdrop-blur-md p-6 sm:p-10 mb-16 shadow-2xl">
             <div class="flex items-center gap-3 mb-6">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/10 text-brand-teal text-lg border border-brand-teal/20 font-bold" aria-hidden="true">🗺️</span>
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/10 text-brand-teal text-lg border border-brand-teal/20 font-bold" aria-hidden="true">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </span>
                 <div>
                     <h3 id="s4-title" class="text-xl sm:text-2xl font-bold font-heading">6. Explorador Informativo de Indicadores Regionales del Perú</h3>
                     <p id="s4-subtitle" class="text-xs sm:text-sm text-slate-400">Diagnóstico territorializado de tasas de fecundidad, acreditación de postas y costo de inacción.</p>
@@ -533,7 +622,7 @@
                     </div>
 
                     <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] text-slate-400 leading-relaxed">
-                        <p id="exp-disclaimer">ℹ️ <strong>Fuente de datos:</strong> PLANEA 2025-2030, MINSA Perú y Encuesta Demográfica y de Salud Familiar (ENDES).</p>
+                        <p id="exp-disclaimer"><i class="fa-solid fa-circle-info text-brand-teal mr-1.5" aria-hidden="true"></i> <strong>Fuente de datos:</strong> PLANEA 2025-2030, MINSA Perú y Encuesta Demográfica y de Salud Familiar (ENDES).</p>
                     </div>
                 </div>
 
@@ -546,7 +635,9 @@
                             <div>
                                 <div class="flex items-center justify-between gap-1 mb-2">
                                     <p id="exp-fertility-lbl" class="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Fecundidad Adolescente:</p>
-                                    <span id="out-fertility-risk" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-crimson/15 text-brand-crimson border border-brand-crimson/30">🔴 Riesgo Extremo</span>
+                                    <span id="out-fertility-risk" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-crimson/15 text-brand-crimson border border-brand-crimson/30 flex items-center">
+                                        <i class="fa-solid fa-circle text-rose-500 text-[8px] mr-1" aria-hidden="true"></i> Riesgo Extremo
+                                    </span>
                                 </div>
                                 <p id="out-fertility-num" class="text-2xl sm:text-3xl font-black text-brand-accent font-heading">85.4 <span class="text-xs font-normal text-slate-400">/ 1,000</span></p>
                                 
@@ -563,7 +654,9 @@
                             <div>
                                 <div class="flex items-center justify-between gap-1 mb-2">
                                     <p id="exp-coverage-lbl" class="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Cobertura MINSA (I-3 / I-4):</p>
-                                    <span id="out-coverage-status" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-teal/15 text-brand-teal border border-brand-teal/30">⚠️ Brecha Crítica (72%)</span>
+                                    <span id="out-coverage-status" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-teal/15 text-brand-teal border border-brand-teal/30 flex items-center">
+                                        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-[9px] mr-1" aria-hidden="true"></i> Brecha Crítica (72%)
+                                    </span>
                                 </div>
                                 <p id="out-coverage-num" class="text-2xl sm:text-3xl font-black text-brand-teal font-heading">28% <span class="text-xs font-normal text-slate-400">Acreditados</span></p>
                                 
@@ -581,7 +674,9 @@
                             <div>
                                 <div class="flex items-center justify-between gap-1 mb-2">
                                     <p id="exp-inaction-lbl" class="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Costo Estimado Inacción:</p>
-                                    <span id="out-inaction-tag" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-crimson/15 text-brand-crimson border border-brand-crimson/30">📉 0.48% PBI Regional</span>
+                                    <span id="out-inaction-tag" class="px-2 py-0.5 rounded text-[9px] font-black uppercase bg-brand-crimson/15 text-brand-crimson border border-brand-crimson/30 flex items-center">
+                                        <i class="fa-solid fa-arrow-trend-down text-rose-400 text-[9px] mr-1" aria-hidden="true"></i> 0.48% PBI Regional
+                                    </span>
                                 </div>
                                 <p id="out-inaction-num" class="text-2xl sm:text-3xl font-black text-brand-crimson font-heading">S/ 140M <span class="text-xs font-normal text-slate-400">/ año</span></p>
                                 
@@ -606,7 +701,9 @@
         <!-- SECCIÓN 7: MANIFIESTO LEGISLATIVO Y AGENDA DE POLÍTICA PÚBLICA (5 PUNTOS SUSTENTADOS) -->
         <section id="manifiesto" aria-labelledby="s5-title" class="scroll-mt-24 border border-slate-800 rounded-3xl bg-slate-900/60 backdrop-blur-lg p-6 sm:p-10 mb-16 shadow-2xl">
             <div class="flex items-center gap-3 mb-6">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/20 text-brand-purple text-lg border border-brand-purple/30 font-bold" aria-hidden="true">📜</span>
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-purple/20 text-brand-purple text-lg border border-brand-purple/30 font-bold" aria-hidden="true">
+                    <i class="fa-solid fa-scroll"></i>
+                </span>
                 <div>
                     <h3 id="s5-title" class="text-xl sm:text-2xl font-bold font-heading">7. Manifiesto Legislativo y Agenda de Política Pública (5 Puntos)</h3>
                     <p id="s5-subtitle" class="text-xs sm:text-sm text-slate-400">Prioridades legislativas sustentadas con evidencia del Cerebro de Datos. Haz clic en cualquiera para ver el análisis técnico.</p>
@@ -674,7 +771,9 @@
         <!-- SECCIÓN 8: COMPENDIO DE FUENTES OFICIALES, PUBLICACIONES INSTITUCIONALES Y REFERENCIAS CTI -->
         <section id="fuentes" aria-labelledby="s8-title" class="scroll-mt-24 border border-slate-800 rounded-3xl bg-slate-900/60 backdrop-blur-lg p-6 sm:p-10 mb-16 shadow-2xl">
             <div class="flex items-center gap-3 mb-6">
-                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/20 text-brand-teal text-lg border border-brand-teal/30 font-bold" aria-hidden="true">📚</span>
+                <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-teal/20 text-brand-teal text-lg border border-brand-teal/30 font-bold" aria-hidden="true">
+                    <i class="fa-solid fa-book"></i>
+                </span>
                 <div>
                     <h3 id="s8-title" class="text-xl sm:text-2xl font-bold font-heading">8. Respaldos Oficiales y Referencias Bibliográficas (Fuentes Originales)</h3>
                     <p id="s8-subtitle" class="text-xs sm:text-sm text-slate-400">Compendio documental, normativo y técnico de las fuentes primarias del Estado Peruano y organismos de cooperación que respaldan los datos de la plataforma.</p>
@@ -850,28 +949,28 @@
 
                 <div class="py-2 space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
                     <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                        <h5 id="sci-sec1-title" class="text-brand-accent font-bold text-sm mb-1">🏛️ 1. Evidencia Sanitaria y Obstétrica (MINSA / OPS / OMS)</h5>
+                        <h5 id="sci-sec1-title" class="text-brand-accent font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-hospital-user text-brand-accent" aria-hidden="true"></i> 1. Evidencia Sanitaria y Obstétrica (MINSA / OPS / OMS)</h5>
                         <p id="sci-sec1-desc" class="text-slate-300">
                             Estudios epidemiológicos del MINSA demuestran que las niñas menores de 15 años que gestan presentan <strong>5 veces mayor riesgo de muerte materna</strong> y 3 veces mayor riesgo de partos prematuros con bajo peso al nacer. Toda gestación en este grupo etario deriva de abuso sexual de acuerdo al Art. 173 del Código Penal.
                         </p>
                     </div>
 
                     <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                        <h5 id="sci-sec2-title" class="text-brand-teal font-bold text-sm mb-1">💰 2. Evidencia de Impacto Fiscal y Metodología MILENA (UNFPA)</h5>
+                        <h5 id="sci-sec2-title" class="text-brand-teal font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-coins text-brand-teal" aria-hidden="true"></i> 2. Evidencia de Impacto Fiscal y Metodología MILENA (UNFPA)</h5>
                         <p id="sci-sec2-desc" class="text-slate-300">
                             La inacción estatal le cuesta al Perú <strong>S/ 1,200 Millones de Soles anuales</strong> (0.45% del PBI). El 40% de esta pérdida responde al menor nivel educativo alcanzado por las madres adolescentes, reduciendo su inserción en el mercado laboral formal e impactando la recaudación del IGV y Renta.
                         </p>
                     </div>
 
                     <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                        <h5 id="sci-sec3-title" class="text-brand-purple font-bold text-sm mb-1">📈 3. Retorno Social de Inversión (ROI S/ 7:1)</h5>
+                        <h5 id="sci-sec3-title" class="text-brand-purple font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-chart-line text-brand-purple" aria-hidden="true"></i> 3. Retorno Social de Inversión (ROI S/ 7:1)</h5>
                         <p id="sci-sec3-desc" class="text-slate-300">
                             Por cada S/ 1.00 Sol presupuestado en Educación Sexual Integral (ESI) y en Servicios Amigables del MINSA (Programa Presupuestal 0002), el Estado peruano ahorra S/ 7.00 en atención médica de emergencia y programas de subsistencia.
                         </p>
                     </div>
 
                     <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                        <h5 id="sci-sec4-title" class="text-pink-400 font-bold text-sm mb-1">⚖️ 4. Cumplimiento de la Ley 30364 y Código de NNA</h5>
+                        <h5 id="sci-sec4-title" class="text-pink-400 font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-scale-balanced text-pink-400" aria-hidden="true"></i> 4. Cumplimiento de la Ley 30364 y Código de NNA</h5>
                         <p id="sci-sec4-desc" class="text-slate-300">
                             El Estado tiene la obligación constitucional de asignar partidas descentralizadas para Centros Emergencia Mujer (CEM) y postas de primer nivel (I-3 y I-4) para garantizar la protección inmediata de víctimas de violencias basadas en género.
                         </p>
@@ -912,31 +1011,37 @@
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
-                            <span id="sum-grid-1-lbl" class="font-bold text-brand-teal block">🎯 Meta Estratégica:</span>
-                            <span id="sum-grid-1-val">Cero gestaciones en niñas menores de 15 años al 2030 (Plan Andino PLANEA).</span>
+                        <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-brand-teal flex items-center gap-1.5 mb-1"><i class="fa-solid fa-bullseye text-brand-teal" aria-hidden="true"></i> <span id="sum-grid-1-lbl">Meta Estratégica 2030:</span></span>
+                            <span id="sum-grid-1-val" class="text-slate-300 block">Cero gestaciones en niñas menores de 15 años al 2030 (Plan Andino PLANEA).</span>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
-                            <span id="sum-grid-2-lbl" class="font-bold text-brand-accent block">💰 Retorno Social (ROI):</span>
-                            <span id="sum-grid-2-val">S/ 7.00 ahorrados por cada Sol invertido en ESI y Servicios Amigables MINSA.</span>
+                        <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-brand-accent flex items-center gap-1.5 mb-1"><i class="fa-solid fa-coins text-brand-accent" aria-hidden="true"></i> <span id="sum-grid-2-lbl">Retorno Social (ROI):</span></span>
+                            <span id="sum-grid-2-val" class="text-slate-300 block">S/ 7.00 ahorrados por cada Sol invertido en ESI y Servicios Amigables MINSA.</span>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
-                            <span id="sum-grid-3-lbl" class="font-bold text-brand-crimson block">⚠️ Costo de Inacción:</span>
-                            <span id="sum-grid-3-val">Más de S/ 1,200 Millones/año (0.45% del PBI nacional).</span>
+                        <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-brand-crimson flex items-center gap-1.5 mb-1"><i class="fa-solid fa-triangle-exclamation text-brand-crimson" aria-hidden="true"></i> <span id="sum-grid-3-lbl">Costo de Inacción:</span></span>
+                            <span id="sum-grid-3-val" class="text-slate-300 block">Más de S/ 1,200 Millones/año (0.45% del PBI nacional).</span>
                         </div>
-                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
-                            <span id="sum-grid-4-lbl" class="font-bold text-brand-purple block">⚖️ Respaldo Legal:</span>
-                            <span id="sum-grid-4-val">Ley 30364, Código Penal Art. 173 y Código de NNA del Perú.</span>
+                        <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-brand-purple flex items-center gap-1.5 mb-1"><i class="fa-solid fa-scale-balanced text-brand-purple" aria-hidden="true"></i> <span id="sum-grid-4-lbl">Respaldo Legal y Normativo:</span></span>
+                            <span id="sum-grid-4-val" class="text-slate-300 block">Ley 30364, Código Penal Art. 173 y Código de NNA del Perú.</span>
                         </div>
                     </div>
 
                     <div>
-                        <p id="sum-demands-title" class="font-bold text-slate-200 mb-1">📌 Demandas Clave de Política Pública:</p>
-                        <ol class="list-decimal pl-5 space-y-1 text-slate-300">
-                            <li id="sum-dem-1">Línea presupuestal descentralizada en la Ley de Presupuesto Público para el Programa 0002 MINSA.</li>
-                            <li id="sum-dem-2">Acreditación del 100% de centros I-3 y I-4 en servicios amigables con consejería confidencial.</li>
-                            <li id="sum-dem-3">Garantía de Educación Sexual Integral (ESI) con enfoque intercultural en el Currículo Escolar.</li>
-                        </ol>
+                        <p class="font-bold text-slate-200 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-list-check text-brand-teal" aria-hidden="true"></i> <span id="sum-demands-title">Demandas Clave de Política Pública:</span></p>
+                        <div class="space-y-2 text-slate-300 text-xs">
+                            <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-start gap-2">
+                                <span id="sum-dem-1" class="leading-relaxed">1. Partida presupuestal específica en la Ley de Presupuesto Público para el Programa 0002 MINSA.</span>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-start gap-2">
+                                <span id="sum-dem-2" class="leading-relaxed">2. Protocolos de Cero Tolerancia y atención inmediata en el MIMP y comisarías.</span>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 flex items-start gap-2">
+                                <span id="sum-dem-3" class="leading-relaxed">3. Implementación efectiva de Educación Sexual Integral (ESI) en el currículo escolar.</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -944,6 +1049,403 @@
             <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
                 <button onclick="closeExecutiveSummarySheetModal()" id="sum-close-btn" class="px-5 py-2.5 rounded-xl bg-brand-teal text-slate-950 font-bold text-xs hover:bg-brand-teal/90 transition-all cursor-pointer">
                     Entendido / Cerrar Ficha
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: INTERFAZ INTERACTIVA DE SELECCIÓN DE PAÍS / COUNTRY HUB -->
+    <div id="country-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="country-modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[90vh] overflow-y-auto relative">
+            <div>
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="p-2 rounded-lg bg-brand-teal/10 text-brand-teal text-xl" aria-hidden="true">
+                            <i class="fa-solid fa-earth-americas"></i>
+                        </span>
+                        <div>
+                            <h4 id="country-modal-title" class="text-base sm:text-xl font-black text-white font-heading">
+                                Selecciona la Versión de País / Región Andina
+                            </h4>
+                            <p id="country-modal-desc" class="text-xs text-slate-400">Plataforma de Incidencia Política • PLANEA 2025-2030</p>
+                        </div>
+                    </div>
+                    <button onclick="closeCountrySelectorModal()" aria-label="Cerrar Selector de País" class="text-slate-400 hover:text-white text-lg font-bold p-1 cursor-pointer">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 my-4">
+                    
+                    <!-- Tarjeta Perú -->
+                    <div onclick="switchCountry('peru'); closeCountrySelectorModal();" class="p-4 rounded-2xl bg-slate-950 hover:bg-slate-800/80 border border-slate-800 hover:border-brand-teal transition-all cursor-pointer group flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <svg class="w-8 h-5 rounded-md inline-block object-cover flex-shrink-0" viewBox="0 0 640 480" aria-label="Bandera de Perú">
+                                    <defs>
+                                        <clipPath id="pe-modal-clip">
+                                            <path d="M280 180 H360 V260 C360 290 320 310 320 310 C320 310 280 290 280 260 Z"/>
+                                        </clipPath>
+                                    </defs>
+                                    <path fill="#D91023" d="M0 0h213.3v480H0z"/>
+                                    <path fill="#ffffff" d="M213.3 0h213.4v480H213.3z"/>
+                                    <path fill="#D91023" d="M426.7 0H640v480H426.7z"/>
+                                    <g id="pe-coat-of-arms">
+                                        <ellipse cx="320" cy="170" rx="18" ry="8" fill="none" stroke="#15803D" stroke-width="4"/>
+                                        <circle cx="320" cy="170" r="3" fill="#DC2626"/>
+                                        <path d="M272 195 C255 240 260 280 285 315" fill="none" stroke="#16A34A" stroke-width="5" stroke-linecap="round"/>
+                                        <path d="M368 195 C385 240 380 280 355 315" fill="none" stroke="#15803D" stroke-width="5" stroke-linecap="round"/>
+                                        <circle cx="376" cy="225" r="2.5" fill="#DC2626"/>
+                                        <circle cx="378" cy="255" r="2.5" fill="#DC2626"/>
+                                        <circle cx="368" cy="285" r="2.5" fill="#DC2626"/>
+                                        <path d="M308 312 L320 325 L332 312 Z" fill="#D91023"/>
+                                        <circle cx="320" cy="314" r="3" fill="#FFFFFF"/>
+                                        <g clip-path="url(#pe-modal-clip)">
+                                            <rect x="280" y="180" width="40" height="50" fill="#0284C7"/>
+                                            <ellipse cx="300" cy="210" rx="7" ry="5" fill="#F59E0B"/>
+                                            <circle cx="305" cy="202" r="3.2" fill="#F59E0B"/>
+                                            <line x1="296" y1="214" x2="296" y2="224" stroke="#F59E0B" stroke-width="2"/>
+                                            <line x1="304" y1="214" x2="304" y2="224" stroke="#F59E0B" stroke-width="2"/>
+                                            <polygon points="305,200 308,196 306,200" fill="#B45309"/>
+                                            <rect x="320" y="180" width="40" height="50" fill="#FFFFFF"/>
+                                            <line x1="340" y1="210" x2="340" y2="224" stroke="#78350F" stroke-width="2.5"/>
+                                            <circle cx="340" cy="202" r="9" fill="#15803D"/>
+                                            <circle cx="335" cy="198" r="6" fill="#16A34A"/>
+                                            <circle cx="345" cy="198" r="6" fill="#22C55E"/>
+                                            <rect x="280" y="230" width="80" height="80" fill="#DC2626"/>
+                                            <path d="M300 245 C305 240 335 245 340 260 C335 270 315 265 310 268 Z" fill="#F59E0B"/>
+                                            <ellipse cx="308" cy="265" rx="5" ry="7" fill="#FBBF24"/>
+                                            <circle cx="298" cy="272" r="3" fill="#FDE047" stroke="#D97706" stroke-width="0.8"/>
+                                            <circle cx="306" cy="274" r="3" fill="#FDE047" stroke="#D97706" stroke-width="0.8"/>
+                                            <circle cx="314" cy="273" r="3" fill="#FDE047" stroke="#D97706" stroke-width="0.8"/>
+                                            <circle cx="302" cy="280" r="3" fill="#FDE047" stroke="#D97706" stroke-width="0.8"/>
+                                            <circle cx="310" cy="281" r="3" fill="#FDE047" stroke="#D97706" stroke-width="0.8"/>
+                                            <circle cx="318" cy="282" r="2.5" fill="#FDE047" stroke="#D97706" stroke-width="0.8"/>
+                                            <line x1="320" y1="180" x2="320" y2="230" stroke="#FBBF24" stroke-width="2"/>
+                                            <line x1="280" y1="230" x2="360" y2="230" stroke="#FBBF24" stroke-width="2"/>
+                                        </g>
+                                        <path d="M280 180 H360 V260 C360 290 320 310 320 310 C320 310 280 290 280 260 Z" fill="none" stroke="#D97706" stroke-width="4"/>
+                                        <path d="M282 182 H358 V258 C358 286 320 306 320 306 C320 306 282 286 282 258 Z" fill="none" stroke="#FEF08A" stroke-width="1.5"/>
+                                    </g>
+                                </svg>
+                                <span id="cm-pe-tag" class="px-2 py-0.5 rounded bg-brand-teal/20 text-brand-teal font-black text-[9px] uppercase">MINSA • LEY 30364</span>
+                            </div>
+                            <h5 id="cm-pe-title" class="text-base font-bold text-white group-hover:text-brand-teal transition-colors">Perú</h5>
+                            <p id="cm-pe-desc" class="text-xs text-slate-300 mt-1">Costo de Inacción: S/ 1,200M (0.45% PBI). Cero tolerancia en &lt;15 años.</p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-brand-teal font-bold">
+                            <span id="cm-pe-fert">Fecundidad: 55.3/1k</span>
+                            <span id="cm-pe-btn" class="flex items-center gap-1">Ver Versión <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Bolivia -->
+                    <div onclick="switchCountry('bolivia'); closeCountrySelectorModal();" class="p-4 rounded-2xl bg-slate-950 hover:bg-slate-800/80 border border-slate-800 hover:border-emerald-400 transition-all cursor-pointer group flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <svg class="w-8 h-5 rounded-md inline-block object-cover flex-shrink-0" viewBox="0 0 640 480" aria-label="Bandera de Bolivia">
+                                    <defs>
+                                        <clipPath id="bo-modal-clip">
+                                            <ellipse cx="320" cy="240" rx="46" ry="58"/>
+                                        </clipPath>
+                                    </defs>
+                                    <path fill="#D52B1E" d="M0 0h640v160H0z"/>
+                                    <path fill="#FCD116" d="M0 160h640v160H0z"/>
+                                    <path fill="#007934" d="M0 320h640v160H0z"/>
+                                    <g id="bo-coat-of-arms">
+                                        <line x1="235" y1="165" x2="405" y2="315" stroke="#475569" stroke-width="4"/>
+                                        <line x1="405" y1="165" x2="235" y2="315" stroke="#475569" stroke-width="4"/>
+                                        <line x1="230" y1="240" x2="410" y2="240" stroke="#718096" stroke-width="3"/>
+                                        <path d="M230 180 C215 210 215 260 230 290 L260 290 C245 260 245 210 260 180 Z" fill="#D52B1E"/>
+                                        <path d="M225 215 C215 240 215 265 225 290 L245 290 C235 265 235 240 245 215 Z" fill="#FCD116"/>
+                                        <path d="M220 245 C215 265 215 280 220 290 L235 290 C230 280 230 265 235 245 Z" fill="#007934"/>
+                                        <path d="M410 180 C425 210 425 260 410 290 L380 290 C395 260 395 210 380 180 Z" fill="#D52B1E"/>
+                                        <path d="M415 215 C425 240 425 265 415 290 L395 290 C405 265 405 240 395 215 Z" fill="#FCD116"/>
+                                        <path d="M420 245 C425 265 425 280 420 290 L405 290 C410 280 410 265 405 245 Z" fill="#007934"/>
+                                        <path d="M265 190 Q252 240 268 280" stroke="#15803D" stroke-width="4" stroke-linecap="round" fill="none"/>
+                                        <path d="M375 190 Q388 240 372 280" stroke="#16A34A" stroke-width="4" stroke-linecap="round" fill="none"/>
+                                        <path d="M320 182 C285 155 250 152 230 162 C248 180 285 186 312 192 Z" fill="#292524"/>
+                                        <path d="M320 182 C355 155 390 152 410 162 C392 180 355 186 328 192 Z" fill="#292524"/>
+                                        <ellipse cx="320" cy="172" rx="7" ry="9" fill="#44403C"/>
+                                        <polygon points="324,168 333,172 324,175" fill="#F59E0B"/>
+                                        <circle cx="320" cy="180" r="4" fill="#FFFFFF"/>
+                                        <ellipse cx="320" cy="190" rx="5" ry="4" fill="#DC2626"/>
+                                        <g clip-path="url(#bo-modal-clip)">
+                                            <rect x="250" y="170" width="140" height="140" fill="#1E3A8A"/>
+                                            <ellipse cx="320" cy="240" rx="36" ry="46" fill="#60A5FA"/>
+                                            <circle cx="308" cy="214" r="8" fill="#FBBF24"/>
+                                            <polygon points="280,265 320,208 360,265" fill="#B45309"/>
+                                            <polygon points="325,265 348,228 365,265" fill="#92400E"/>
+                                            <polygon points="320,208 312,220 320,223 328,220" fill="#FFFFFF"/>
+                                            <rect x="330" y="250" width="8" height="8" fill="#FFFFFF"/>
+                                            <polygon points="330,250 334,244 338,250" fill="#DC2626"/>
+                                            <rect x="280" y="258" width="80" height="30" fill="#22C55E"/>
+                                            <ellipse cx="306" cy="268" rx="4" ry="3" fill="#FFFFFF"/>
+                                            <circle cx="309" cy="264" r="2" fill="#FFFFFF"/>
+                                            <line x1="304" y1="270" x2="304" y2="275" stroke="#FFFFFF" stroke-width="1"/>
+                                            <line x1="308" y1="270" x2="308" y2="275" stroke="#FFFFFF" stroke-width="1"/>
+                                            <line x1="336" y1="258" x2="336" y2="274" stroke="#78350F" stroke-width="1.5"/>
+                                            <circle cx="336" cy="258" r="4" fill="#15803D"/>
+                                            <circle cx="328" cy="270" r="3" fill="#FBBF24"/>
+                                            <circle cx="320" cy="282" r="2" fill="#FBBF24"/>
+                                            <circle cx="305" cy="280" r="2" fill="#FBBF24"/>
+                                            <circle cx="335" cy="280" r="2" fill="#FBBF24"/>
+                                            <circle cx="292" cy="272" r="2" fill="#FBBF24"/>
+                                            <circle cx="348" cy="272" r="2" fill="#FBBF24"/>
+                                        </g>
+                                        <ellipse cx="320" cy="240" rx="46" ry="58" stroke="#D97706" stroke-width="4.5" fill="none"/>
+                                        <ellipse cx="320" cy="240" rx="43" ry="55" stroke="#FDE68A" stroke-width="1.5" fill="none"/>
+                                        <ellipse cx="320" cy="240" rx="36" ry="46" stroke="#D97706" stroke-width="2" fill="none"/>
+                                    </g>
+                                </svg>
+                                <span id="cm-bo-tag" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-black text-[9px] uppercase">AIDA • LEY 548</span>
+                            </div>
+                            <h5 id="cm-bo-title" class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">Bolivia</h5>
+                            <p id="cm-bo-desc" class="text-xs text-slate-300 mt-1">Costo Inacción: USD 373.3M (0.91% PIB). Brecha rural 109/1k vs urbana 58/1k.</p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-emerald-400 font-bold">
+                            <span id="cm-bo-fert">Fecundidad: 48.0/1k</span>
+                            <span id="cm-bo-btn" class="flex items-center gap-1">Ver Versión <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Chile -->
+                    <div onclick="switchCountry('chile'); closeCountrySelectorModal();" class="p-4 rounded-2xl bg-slate-950 hover:bg-slate-800/80 border border-slate-800 hover:border-blue-400 transition-all cursor-pointer group flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <svg class="w-8 h-5 rounded-md inline-block object-cover flex-shrink-0" viewBox="0 0 640 480" aria-label="Bandera de Chile">
+                                    <path fill="#ffffff" d="M213.3 0h426.7v240H213.3z"/>
+                                    <path fill="#D52B1E" d="M0 240h640v240H0z"/>
+                                    <path fill="#0039A6" d="M0 0h213.3v240H0z"/>
+                                    <polygon fill="#ffffff" points="106.7,68 119.5,107.5 161,107.5 127.5,131.8 140.3,171.3 106.7,147 73.1,171.3 85.9,131.8 52.3,107.5 93.8,107.5"/>
+                                </svg>
+                                <span id="cm-cl-tag" class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-black text-[9px] uppercase">LEY 21.030 • 3 CAUSALES</span>
+                            </div>
+                            <h5 id="cm-cl-title" class="text-base font-bold text-white group-hover:text-blue-400 transition-colors">Chile</h5>
+                            <p id="cm-cl-desc" class="text-xs text-slate-300 mt-1">Reducción histórica del 61.6%. Sistema de Garantías de la Niñez (Ley 21.430).</p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-blue-400 font-bold">
+                            <span id="cm-cl-fert">Fecundidad: 20.1/1k</span>
+                            <span id="cm-cl-btn" class="flex items-center gap-1">Ver Versión <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Colombia -->
+                    <div onclick="switchCountry('colombia'); closeCountrySelectorModal();" class="p-4 rounded-2xl bg-slate-950 hover:bg-slate-800/80 border border-slate-800 hover:border-amber-400 transition-all cursor-pointer group flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <svg class="w-8 h-5 rounded-md inline-block object-cover flex-shrink-0" viewBox="0 0 640 480" aria-label="Bandera de Colombia">
+                                    <path fill="#FCD116" d="M0 0h640v240H0z"/>
+                                    <path fill="#003893" d="M0 240h640v120H0z"/>
+                                    <path fill="#CE1126" d="M0 360h640v120H0z"/>
+                                </svg>
+                                <span id="cm-co-tag" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-black text-[9px] uppercase">RES. 309/2025 • RUTA 3280</span>
+                            </div>
+                            <h5 id="cm-co-title" class="text-base font-bold text-white group-hover:text-amber-400 transition-colors">Colombia</h5>
+                            <p id="cm-co-desc" class="text-xs text-slate-300 mt-1">Costo Inacción: USD 2,549M (0.58% PIB). 59% de madres en unión temprana.</p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-amber-400 font-bold">
+                            <span id="cm-co-fert">Fecundidad: 55.8/1k</span>
+                            <span id="cm-co-btn" class="flex items-center gap-1">Ver Versión <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Ecuador -->
+                    <div onclick="switchCountry('ecuador'); closeCountrySelectorModal();" class="p-4 rounded-2xl bg-slate-950 hover:bg-slate-800/80 border border-slate-800 hover:border-yellow-400 transition-all cursor-pointer group flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <svg class="w-8 h-5 rounded-md inline-block object-cover flex-shrink-0" viewBox="0 0 640 480" aria-label="Bandera de Ecuador">
+                                    <defs>
+                                        <clipPath id="ec-shield-clip">
+                                            <ellipse cx="320" cy="242" rx="54" ry="68"/>
+                                        </clipPath>
+                                    </defs>
+                                    <path fill="#FFD100" d="M0 0h640v240H0z"/>
+                                    <path fill="#0072CE" d="M0 240h640v120H0z"/>
+                                    <path fill="#ED1C24" d="M0 360h640v120H0z"/>
+                                    <g id="ec-coat-of-arms">
+                                        <line x1="220" y1="140" x2="420" y2="340" stroke="#718096" stroke-width="4"/>
+                                        <line x1="420" y1="140" x2="220" y2="340" stroke="#718096" stroke-width="4"/>
+                                        <polygon points="214,134 226,140 220,146" fill="#CBD5E1"/>
+                                        <polygon points="426,134 420,146 414,140" fill="#CBD5E1"/>
+                                        <path d="M235 170 C220 200 210 260 225 290 L265 290 C250 250 250 200 260 170 Z" fill="#FFD100"/>
+                                        <path d="M225 210 C215 240 210 270 220 295 L245 295 C235 270 235 240 245 210 Z" fill="#0072CE"/>
+                                        <path d="M218 245 C212 265 210 285 218 300 L232 300 C226 285 226 265 232 245 Z" fill="#ED1C24"/>
+                                        <path d="M405 170 C420 200 430 260 415 290 L375 290 C390 250 390 200 380 170 Z" fill="#FFD100"/>
+                                        <path d="M415 210 C425 240 430 270 420 295 L395 295 C405 270 405 240 395 210 Z" fill="#0072CE"/>
+                                        <path d="M422 245 C428 265 430 285 422 300 L408 300 C414 285 414 265 408 245 Z" fill="#ED1C24"/>
+                                        <path d="M260 200 Q250 240 265 285" stroke="#15803D" stroke-width="5" stroke-linecap="round" fill="none"/>
+                                        <path d="M380 200 Q390 240 375 285" stroke="#16A34A" stroke-width="5" stroke-linecap="round" fill="none"/>
+                                        <path d="M320 175 C270 145 230 140 205 155 C225 175 270 182 310 188 Z" fill="#292524"/>
+                                        <path d="M320 175 C370 145 410 140 435 155 C415 175 370 182 330 188 Z" fill="#292524"/>
+                                        <path d="M210 155 Q260 160 305 180 Q250 175 210 155 Z" fill="#78716C"/>
+                                        <path d="M430 155 Q380 160 335 180 Q390 175 430 155 Z" fill="#78716C"/>
+                                        <path d="M312 178 Q320 170 328 178 Q320 183 312 178 Z" fill="#FFFFFF"/>
+                                        <ellipse cx="320" cy="164" rx="8" ry="11" fill="#44403C"/>
+                                        <polygon points="325,160 335,164 325,168" fill="#F59E0B"/>
+                                        <circle cx="323" cy="162" r="1.5" fill="#FFFFFF"/>
+                                        <g clip-path="url(#ec-shield-clip)">
+                                            <rect x="250" y="160" width="140" height="170" fill="#60A5FA"/>
+                                            <path d="M260 212 Q320 195 380 212" stroke="#E2E8F0" stroke-width="8" fill="none"/>
+                                            <circle cx="320" cy="204" r="11" fill="#FBBF24"/>
+                                            <path d="M320 189 L320 193 M320 215 L320 219 M305 204 L309 204 M331 204 L335 204 M309 193 L312 196 M328 212 L331 215 M309 215 L312 212 M328 196 L331 193" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+                                            <path d="M260 270 Q290 250 320 222 Q350 250 380 270 Z" fill="#166534"/>
+                                            <polygon points="320,222 304,242 312,240 320,246 328,240 336,242" fill="#FFFFFF"/>
+                                            <path d="M304 242 L312 240 L320 246 L328 240 L336 242 L345 255 L295 255 Z" fill="#CBD5E1" opacity="0.6"/>
+                                            <rect x="260" y="265" width="120" height="50" fill="#22C55E"/>
+                                            <path d="M320 250 Q315 270 305 315 L335 315 Q325 270 320 250 Z" fill="#2563EB"/>
+                                            <rect x="312" y="278" width="16" height="5" rx="1.5" fill="#DC2626"/>
+                                            <rect x="317" y="273" width="6" height="5" fill="#FEF08A"/>
+                                            <line x1="320" y1="270" x2="320" y2="273" stroke="#1E293B" stroke-width="2"/>
+                                        </g>
+                                        <ellipse cx="320" cy="242" rx="54" ry="68" stroke="#D97706" stroke-width="5" fill="none"/>
+                                        <ellipse cx="320" cy="242" rx="51" ry="65" stroke="#FDE68A" stroke-width="1.5" fill="none"/>
+                                        <rect x="282" y="306" width="76" height="14" rx="3" fill="#78350F"/>
+                                        <line x1="294" y1="306" x2="294" y2="320" stroke="#FBBF24" stroke-width="2"/>
+                                        <line x1="320" y1="306" x2="320" y2="320" stroke="#FBBF24" stroke-width="2"/>
+                                        <line x1="346" y1="306" x2="346" y2="320" stroke="#FBBF24" stroke-width="2"/>
+                                        <path d="M312 320 L320 334 L328 320 Z" fill="#991B1B"/>
+                                    </g>
+                                </svg>
+                                <span id="cm-ec-tag" class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400 font-black text-[9px] uppercase">PIPENA • COIP ART. 171</span>
+                            </div>
+                            <h5 id="cm-ec-title" class="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">Ecuador</h5>
+                            <p id="cm-ec-desc" class="text-xs text-slate-300 mt-1">Costo Inacción: USD 221.6M (0.26% PIB). Amazonía en emergencia (Napo 85.6/1k).</p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-yellow-400 font-bold">
+                            <span id="cm-ec-fert">Fecundidad: 39.5/1k</span>
+                            <span id="cm-ec-btn" class="flex items-center gap-1">Ver Versión <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Venezuela -->
+                    <div onclick="switchCountry('venezuela'); closeCountrySelectorModal();" class="p-4 rounded-2xl bg-slate-950 hover:bg-slate-800/80 border border-slate-800 hover:border-pink-400 transition-all cursor-pointer group flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <svg class="w-8 h-5 rounded-md inline-block object-cover flex-shrink-0" viewBox="0 0 640 480" aria-label="Bandera de Venezuela">
+                                    <path fill="#FFCC00" d="M0 0h640v160H0z"/>
+                                    <path fill="#00247D" d="M0 160h640v160H0z"/>
+                                    <path fill="#CF142B" d="M0 320h640v160H0z"/>
+                                    <g id="ve-stars">
+                                        <polygon fill="#ffffff" points="245.4,237.7 248.3,245.6 256.8,246.0 250.2,251.2 252.4,259.4 245.4,254.7 238.3,259.4 240.6,251.2 234.0,246.0 242.4,245.6"/>
+                                        <polygon fill="#ffffff" points="262.1,219.1 265.1,227.0 273.6,227.3 266.9,232.6 269.2,240.8 262.1,236.1 255.1,240.8 257.4,232.6 250.7,227.3 259.2,227.0"/>
+                                        <polygon fill="#ffffff" points="283.4,205.8 286.4,213.7 294.8,214.1 288.2,219.3 290.4,227.5 283.4,222.8 276.3,227.5 278.6,219.3 272.0,214.1 280.4,213.7"/>
+                                        <polygon fill="#ffffff" points="307.5,198.9 310.4,206.8 318.9,207.2 312.3,212.4 314.5,220.6 307.5,215.9 300.4,220.6 302.7,212.4 296.1,207.2 304.5,206.8"/>
+                                        <polygon fill="#ffffff" points="332.5,198.9 335.5,206.8 343.9,207.2 337.3,212.4 339.6,220.6 332.5,215.9 325.5,220.6 327.7,212.4 321.1,207.2 329.6,206.8"/>
+                                        <polygon fill="#ffffff" points="356.6,205.8 359.6,213.7 368.0,214.1 361.4,219.3 363.7,227.5 356.6,222.8 349.6,227.5 351.8,219.3 345.2,214.1 353.6,213.7"/>
+                                        <polygon fill="#ffffff" points="377.9,219.1 380.8,227.0 389.3,227.3 382.6,232.6 384.9,240.8 377.9,236.1 370.8,240.8 373.1,232.6 366.4,227.3 374.9,227.0"/>
+                                        <polygon fill="#ffffff" points="394.6,237.7 397.6,245.6 406.0,246.0 399.4,251.2 401.7,259.4 394.6,254.7 387.6,259.4 389.8,251.2 383.2,246.0 391.7,245.6"/>
+                                    </g>
+                                </svg>
+                                <span id="cm-ve-tag" class="px-2 py-0.5 rounded bg-pink-500/20 text-pink-400 font-black text-[9px] uppercase">LOPNNA • PLAN PRETA</span>
+                            </div>
+                            <h5 id="cm-ve-title" class="text-base font-bold text-white group-hover:text-pink-400 transition-colors">Venezuela</h5>
+                            <p id="cm-ve-desc" class="text-xs text-slate-300 mt-1">Fecundidad más alta (81.7/1k) y &lt;15 años (4.81/1k). Prioridad LARC y AIPEO.</p>
+                        </div>
+                        <div class="mt-3 pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-pink-400 font-bold">
+                            <span id="cm-ve-fert">Fecundidad: 81.7/1k</span>
+                            <span id="cm-ve-btn" class="flex items-center gap-1">Ver Versión <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeCountrySelectorModal()" id="country-close-btn" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition-all cursor-pointer">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: MARCO MATRIZ PLANEA 2025-2030 (ORAS-CONHU) -->
+    <div id="planea-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="planea-modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+        <div class="bg-slate-900 border border-brand-teal/40 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[85vh] overflow-y-auto relative">
+            <div>
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="p-2 rounded-lg bg-brand-teal/10 text-brand-teal text-xl" aria-hidden="true">
+                            <i class="fa-solid fa-earth-americas"></i>
+                        </span>
+                        <h4 id="planea-modal-title" class="text-base sm:text-lg font-bold text-white font-heading">
+                            A. Marco Matriz PLANEA 2025-2030 (ORAS-CONHU)
+                        </h4>
+                    </div>
+                    <button onclick="closePlaneaModal()" aria-label="Cerrar Modal PLANEA" class="text-slate-400 hover:text-white text-lg font-bold p-1 cursor-pointer">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="py-2 space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="planea-sec1-title" class="text-brand-teal font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-bullseye text-brand-teal"></i> 1. Meta Estratégica Subregional al 2030</h5>
+                        <p id="planea-sec1-desc">Reducción acelerada de la Tasa Específica de Fecundidad Adolescente (TEFA) en los 6 países miembros y <strong>meta absoluta de Cero Embarazos en menores de 15 años al 2030</strong> bajo el principio de Cero Tolerancia a la Violencia Sexual Infantil.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="planea-sec2-title" class="text-brand-accent font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-landmark text-brand-accent"></i> 2. Resolución REMSAA XLI 569</h5>
+                        <p id="planea-sec2-desc">Acuerdo ministerial vinculante de los Ministerios de Salud de Bolivia, Chile, Colombia, Ecuador, Perú y Venezuela para etiquetar partidas presupuestales protegidas y monitoreo semestral de metas.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="planea-sec3-title" class="text-brand-purple font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-chart-column text-brand-purple"></i> 3. Siete Líneas Estratégicas Prioritarias</h5>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li id="planea-lp1"><strong>LP1:</strong> Gobernanza e intersectorialidad en salud, educación y protección.</li>
+                            <li id="planea-lp2"><strong>LP2:</strong> Educación Integral de la Sexualidad (EIS) adaptada a lenguas originarias.</li>
+                            <li id="planea-lp3"><strong>LP3:</strong> Servicios de salud diferenciados, confidenciales y amigables.</li>
+                            <li id="planea-lp4"><strong>LP4:</strong> Prevención y persecución efectiva de la violencia de género y abuso sexual.</li>
+                            <li id="planea-lp5"><strong>LP5:</strong> Participación protagónica y liderazgo de juventudes andinas.</li>
+                            <li id="planea-lp6"><strong>LP6:</strong> Gestión del conocimiento, datos abiertos y sistemas de información vital.</li>
+                            <li id="planea-lp7"><strong>LP7:</strong> Sostenibilidad financiera y asignación fiscal prioritaria (Calificación 5/5).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closePlaneaModal()" id="planea-close-btn" class="px-5 py-2.5 rounded-xl bg-brand-teal text-slate-950 font-bold text-xs hover:bg-brand-teal/90 transition-all cursor-pointer">
+                    Entendido / Cerrar Marco PLANEA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6: MARCO REGIONAL (ORAS, UNFPA, OPS, UNICEF) -->
+    <div id="regional-framework-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="regional-framework-modal-title" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+        <div class="bg-slate-900 border border-brand-purple/40 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl flex flex-col justify-between max-h-[85vh] overflow-y-auto relative">
+            <div>
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="p-2 rounded-lg bg-brand-purple/10 text-brand-purple text-xl" aria-hidden="true">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </span>
+                        <h4 id="regional-framework-modal-title" class="text-base sm:text-lg font-bold text-white font-heading">
+                            B. Marco Regional (ORAS-CONHU, UNFPA, OPS/OMS, UNICEF)
+                        </h4>
+                    </div>
+                    <button onclick="closeRegionalFrameworkModal()" aria-label="Cerrar Modal Marco Regional" class="text-slate-400 hover:text-white text-lg font-bold p-1 cursor-pointer">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="py-2 space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="regional-sec1-title" class="text-purple-300 font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-coins text-purple-400"></i> 1. Evidencia Actuarial Consolidada MILENA (15 Países)</h5>
+                        <p id="regional-sec1-desc">El estudio del UNFPA en América Latina y el Caribe cuantifica una pérdida económica agregada de <strong>USD 13,538 Millones</strong> anuales (1% del PIB regional). El 88.2% recae directamente sobre los ingresos y educación de las mujeres.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="regional-sec2-title" class="text-brand-teal font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-book-medical text-brand-teal"></i> 2. Guía Global AA-HA! (OPS / OMS)</h5>
+                        <p id="regional-sec2-desc">Aceleración de la Acción Mundial en favor de la Salud de los Adolescentes: intervenciones clínicas, consejería confidencial sin requerir acompañamiento adulto, y métodos anticonceptivos reversibles de larga duración (LARC).</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                        <h5 id="regional-sec3-title" class="text-brand-crimson font-bold text-sm mb-1 flex items-center gap-1.5"><i class="fa-solid fa-scale-balanced text-brand-crimson"></i> 3. Herramienta de Evaluación Rápida en Violencia Sexual (OPS)</h5>
+                        <p id="regional-sec3-desc">Protocolos de profilaxis post-exposición (PEP), anticoncepción de emergencia (AOE), y soporte psicosocial inmediato en el primer nivel de atención para niñas y adolescentes sobrevivientes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeRegionalFrameworkModal()" id="regional-close-btn" class="px-5 py-2.5 rounded-xl bg-brand-purple text-white font-bold text-xs hover:bg-brand-purple/90 transition-all cursor-pointer">
+                    Entendido / Cerrar Marco Regional
                 </button>
             </div>
         </div>
