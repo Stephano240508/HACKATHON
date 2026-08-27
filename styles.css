@@ -9,7 +9,10 @@
 [hidden],
 #deep-modal.hidden,
 #sci-modal.hidden,
-#summary-modal.hidden {
+#summary-modal.hidden,
+#country-modal.hidden,
+#planea-modal.hidden,
+#regional-framework-modal.hidden {
   display: none !important;
 }
 
@@ -99,15 +102,32 @@ body.light-theme #site-badge {
 }
 
 body.light-theme header nav a,
-body.light-theme header nav button {
+body.light-theme header nav button,
+body.light-theme #lang-dropdown-container > div {
   background-color: #F1F5F9 !important;
   color: #1E293B !important;
   border-color: #CBD5E1 !important;
 }
 
 body.light-theme header nav a:hover,
-body.light-theme header nav button:hover {
+body.light-theme header nav button:hover,
+body.light-theme #lang-dropdown-container > div:hover {
   background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+#lang-select option,
+#lang-select optgroup {
+  background-color: #0B192C;
+  color: #F1F5F9;
+  font-weight: 600;
+  padding: 4px 8px;
+}
+
+body.light-theme #lang-select,
+body.light-theme #lang-select option,
+body.light-theme #lang-select optgroup {
+  background-color: #FFFFFF !important;
   color: #0F172A !important;
 }
 
@@ -126,10 +146,18 @@ body.light-theme #endorsed-label {
   color: #475569 !important;
 }
 
-body.light-theme header div.hidden span {
-  background-color: #E2E8F0 !important;
-  color: #0F172A !important;
+body.light-theme #endorsed-container {
+  background-color: #F1F5F9 !important;
   border-color: #CBD5E1 !important;
+}
+
+body.light-theme #endorsed-container span[id^="endorsed-badge-"] {
+  background-color: #E2E8F0 !important;
+  border-color: #CBD5E1 !important;
+}
+
+body.light-theme #endorsed-badge-1 {
+  color: #0F172A !important;
 }
 
 /* WILDCARD OVERRIDES FOR ALL TAILWIND DARK BACKGROUND CLASSES & OPACITY VARIANTS */
@@ -152,12 +180,120 @@ body.light-theme .glass-card {
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
 }
 
-/* Section Containers & Hero Banner Override */
-body.light-theme section {
+/* Section Containers (Framed Card Sections with Smooth Rounded-3xl Corners) */
+body.light-theme #roi,
+body.light-theme section#roi,
+body.light-theme #explorador,
+body.light-theme section#explorador,
+body.light-theme #manifiesto,
+body.light-theme section#manifiesto,
+body.light-theme #fuentes,
+body.light-theme section#fuentes {
   background-color: #FFFFFF !important;
   background-image: none !important;
   border-color: #E2E8F0 !important;
+  border-radius: 1.5rem !important;
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04) !important;
+  overflow: hidden !important;
+}
+
+/* Transparent Grouping Sections (Eliminates Any Outer Sharp Box Behind Cards) */
+body.light-theme #sec-frameworks,
+body.light-theme section#sec-frameworks,
+body.light-theme #diagnostico,
+body.light-theme section#diagnostico,
+body.light-theme #graficas,
+body.light-theme section#graficas,
+body.light-theme #mitos,
+body.light-theme section#mitos,
+body.light-theme #legal,
+body.light-theme section#legal {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+body.light-theme #card-planea-framework {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 100%) !important;
+  background-image: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 100%) !important;
+  border-color: #99F6E4 !important;
+  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.08) !important;
+}
+
+body.light-theme #planea-badge-txt {
+  background-color: #CCFBF1 !important;
+  color: #0F766E !important;
+  border-color: #5EEAD4 !important;
+}
+
+body.light-theme #planea-tag {
+  color: #64748B !important;
+}
+
+body.light-theme #planea-card-title {
+  color: #0F172A !important;
+}
+
+body.light-theme #planea-card-desc {
+  color: #334155 !important;
+}
+
+body.light-theme #planea-card-desc strong {
+  color: #0F172A !important;
+}
+
+body.light-theme #btn-planea-framework {
+  background-color: #E6FFFA !important;
+  color: #0F766E !important;
+  border-color: #5EEAD4 !important;
+}
+
+body.light-theme #btn-planea-framework:hover {
+  background-color: #0D9488 !important;
+  color: #FFFFFF !important;
+}
+
+body.light-theme #card-regional-framework {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF5FF 100%) !important;
+  background-image: linear-gradient(135deg, #FFFFFF 0%, #FAF5FF 100%) !important;
+  border-color: #E9D5FF !important;
+  box-shadow: 0 4px 20px rgba(108, 74, 182, 0.08) !important;
+}
+
+body.light-theme #regional-badge-txt {
+  background-color: #F3E8FF !important;
+  color: #6B21A8 !important;
+  border-color: #D8B4FE !important;
+}
+
+body.light-theme #regional-tag {
+  color: #64748B !important;
+}
+
+body.light-theme #regional-card-title {
+  color: #0F172A !important;
+}
+
+body.light-theme #regional-card-desc {
+  color: #334155 !important;
+}
+
+body.light-theme #regional-card-desc strong {
+  color: #0F172A !important;
+}
+
+body.light-theme #btn-regional-framework {
+  background-color: #F3E8FF !important;
+  color: #6B21A8 !important;
+  border-color: #D8B4FE !important;
+}
+
+body.light-theme #btn-regional-framework:hover {
+  background-color: #6C4AB6 !important;
+  color: #FFFFFF !important;
 }
 
 body.light-theme section.bg-gradient-to-br {
@@ -184,6 +320,15 @@ body.light-theme #hero-badge {
 body.light-theme #hero-desc,
 body.light-theme #hero-desc strong {
   color: #1E293B !important;
+}
+
+/* EXCLUSIVE OVERRIDE: Keep text and icon inside #btn-hero-manifesto white in light mode */
+body.light-theme #btn-hero-manifesto,
+body.light-theme #btn-hero-manifesto *,
+body.light-theme #btn-hero-manifesto i,
+body.light-theme #btn-hero-manifesto span {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
 }
 
 /* Counter Boxes in Hero */
@@ -392,7 +537,10 @@ body.light-theme #m-item-5 {
 /* Modals Override */
 body.light-theme #deep-modal > div,
 body.light-theme #sci-modal > div,
-body.light-theme #summary-modal > div {
+body.light-theme #summary-modal > div,
+body.light-theme #country-modal > div,
+body.light-theme #planea-modal > div,
+body.light-theme #regional-framework-modal > div {
   background-color: #FFFFFF !important;
   border-color: #CBD5E1 !important;
   color: #0F172A !important;
@@ -401,7 +549,10 @@ body.light-theme #summary-modal > div {
 
 body.light-theme #deep-modal [class*="bg-slate-"],
 body.light-theme #sci-modal [class*="bg-slate-"],
-body.light-theme #summary-modal [class*="bg-slate-"] {
+body.light-theme #summary-modal [class*="bg-slate-"],
+body.light-theme #country-modal [class*="bg-slate-"],
+body.light-theme #planea-modal [class*="bg-slate-"],
+body.light-theme #regional-framework-modal [class*="bg-slate-"] {
   background-color: #F8FAFC !important;
   border-color: #E2E8F0 !important;
   color: #1E293B !important;
@@ -531,4 +682,136 @@ input:focus-visible {
   .glass-card {
     padding: 1.25rem !important;
   }
+}
+
+/* ==========================================================================
+   OPTIMIZED WCAG CONTRAST OVERRIDES FOR ICONS & BADGES (LIGHT THEME)
+   ========================================================================== */
+body.light-theme .text-rose-500,
+body.light-theme .text-rose-400 {
+  color: #BE123C !important;
+}
+
+body.light-theme .text-amber-500,
+body.light-theme .text-amber-400 {
+  color: #B45309 !important;
+}
+
+body.light-theme .text-yellow-500,
+body.light-theme .text-yellow-400 {
+  color: #A16207 !important;
+}
+
+body.light-theme .text-emerald-500,
+body.light-theme .text-emerald-400 {
+  color: #047857 !important;
+}
+
+body.light-theme .text-brand-teal {
+  color: #0284C7 !important;
+}
+
+body.light-theme .text-purple-400,
+body.light-theme .text-purple-300 {
+  color: #6D28D9 !important;
+}
+
+body.light-theme .text-pink-400 {
+  color: #BE185D !important;
+}
+
+body.light-theme .text-brand-accent {
+  color: #B45309 !important;
+}
+
+/* EXCLUSIVE RULE: #btn-hero-manifesto always keeps white icon and white text in both light and dark mode */
+body.light-theme #btn-hero-manifesto,
+body.light-theme #btn-hero-manifesto *,
+body.light-theme a#btn-hero-manifesto,
+body.light-theme a#btn-hero-manifesto i,
+body.light-theme a#btn-hero-manifesto span {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+
+
+
+/* ==========================================================================
+   CUSTOM FLUID LANGUAGE DROPDOWN (ZERO ORANGE BORDER / HIGH-AESTHETIC GLASSMORPHISM)
+   ========================================================================== */
+#btn-lang-dropdown,
+#btn-country-toggle,
+#btn-theme-toggle,
+#lang-select,
+#lang-dropdown-container button {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+#btn-lang-dropdown:focus,
+#btn-lang-dropdown:focus-visible,
+#btn-country-toggle:focus,
+#btn-country-toggle:focus-visible,
+#btn-theme-toggle:focus,
+#btn-theme-toggle:focus-visible {
+  outline: none !important;
+  border-color: rgba(0, 180, 216, 0.6) !important;
+  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2) !important;
+}
+
+#lang-custom-menu {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+}
+
+#lang-custom-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+#lang-custom-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#lang-custom-menu::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+
+#lang-custom-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 180, 216, 0.6);
+}
+
+/* Light Theme Styling for Fluid Language Dropdown */
+body.light-theme #btn-lang-dropdown {
+  background-color: #F1F5F9 !important;
+  color: #1E293B !important;
+  border-color: #CBD5E1 !important;
+}
+
+body.light-theme #btn-lang-dropdown:hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+body.light-theme #lang-custom-menu {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.14) !important;
+}
+
+body.light-theme #lang-custom-menu button {
+  color: #1E293B !important;
+}
+
+body.light-theme #lang-custom-menu button:hover {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+body.light-theme #lang-custom-menu button[aria-selected="true"] {
+  background-color: #CCFBF1 !important;
+  color: #0F766E !important;
+  border-color: #5EEAD4 !important;
 }
