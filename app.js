@@ -10865,10 +10865,6 @@ function changeLanguage(langCode) {
   updateRegionalExplorer();
 }
 
-function toggleLanguage() {
-  changeLanguage(currentLang === 'es' ? 'en' : 'es');
-}
-
 function applyLanguage() {
   const dict = i18n[currentLang] || i18n['es'];
   const country = currentCountry || 'peru';
@@ -11091,7 +11087,7 @@ window.openExecutiveSummarySheetModal = openExecutiveSummarySheetModal;
 window.closeExecutiveSummarySheetModal = closeExecutiveSummarySheetModal;
 window.changeLanguage = changeLanguage;
 window.populateLanguageDropdown = populateLanguageDropdown;
-window.toggleLanguage = toggleLanguage;
+window.toggleLanguageDropdown = toggleLanguageDropdown;
 window.toggleTheme = toggleTheme;
 window.updateRegionalExplorer = updateRegionalExplorer;
 
