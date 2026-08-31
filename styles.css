@@ -938,3 +938,28 @@ img, svg, video, canvas, audio, iframe, embed, object {
     font-size: 10px !important;
   }
 }
+
+
+/* Hardware GPU Acceleration & Layout Containment */
+#lang-custom-menu {
+  will-change: transform, opacity;
+  contain: layout style;
+  transform: translateZ(0);
+}
+
+[role="dialog"] {
+  will-change: opacity;
+  contain: layout style;
+}
+
+[role="dialog"] > div {
+  will-change: transform;
+  transform: translateZ(0);
+  overscroll-behavior: contain;
+}
+
+/* Smooth Momentum Scrolling */
+.custom-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
