@@ -815,3 +815,92 @@ body.light-theme #lang-custom-menu button[aria-selected="true"] {
   color: #0F766E !important;
   border-color: #5EEAD4 !important;
 }
+
+
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS & PHONE-ADAPTIVE ARCHITECTURE (ZERO DESKTOP REGRESSION)
+   ========================================================================== */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+/* Ensure no child media elements spill past mobile viewport */
+img, svg, video, canvas, audio, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mobile-Friendly Language Dropdown bounds */
+#lang-custom-menu {
+  max-width: calc(100vw - 1.5rem);
+}
+
+@media (max-width: 640px) {
+  /* Touch target sizes & comfortable mobile padding */
+  button, select, [role="button"], a {
+    min-height: 40px;
+    touch-action: manipulation;
+  }
+
+  /* Header compact mobile styles */
+  #endorsed-container {
+    padding: 0.375rem 0.5rem !important;
+  }
+
+  #btn-country-toggle,
+  #btn-theme-toggle,
+  #btn-lang-dropdown {
+    padding: 0.375rem 0.625rem !important;
+    font-size: 11px !important;
+  }
+
+  /* Make sure modal content fits seamlessly on mobile phone viewports */
+  [role="dialog"] > div {
+    max-height: 92vh !important;
+    margin: 0.5rem !important;
+    width: calc(100vw - 1rem) !important;
+    border-radius: 1rem !important;
+  }
+
+  /* Hero Policy Floating card on mobile - naturally stacks below hero graphic */
+  #hero-policy-card {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Territorial explorer inputs */
+  #exp-region {
+    font-size: 13px !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  /* Smooth chart bar labels */
+  #graficas .flex.justify-between {
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  /* Ultra-compact phone adjustments (iPhone SE / small Androids) */
+  #site-title {
+    font-size: 0.875rem !important;
+    line-height: 1.25 !important;
+  }
+
+  #site-badge {
+    font-size: 9px !important;
+    padding: 0.125rem 0.375rem !important;
+  }
+}
